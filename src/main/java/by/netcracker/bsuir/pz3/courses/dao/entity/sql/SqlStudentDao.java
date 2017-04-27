@@ -59,7 +59,7 @@ public enum SqlStudentDao implements StudentDao {
         List<Student> students = session.createQuery(StudentTable.GET_STUDENTS).list();
 
         for (Student student : students) {
-            logger.info(StudentTable.GET_STUDENTS + student);
+            logger.info(StudentTable.STUDENT_LIST + student);
         }
         return students;
     }
