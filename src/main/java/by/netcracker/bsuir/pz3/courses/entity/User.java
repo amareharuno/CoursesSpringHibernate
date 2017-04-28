@@ -3,6 +3,7 @@ package by.netcracker.bsuir.pz3.courses.entity;
 import by.netcracker.bsuir.pz3.courses.dao.constantString.UserTable;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = UserTable.USER_TABLE)
@@ -74,5 +75,36 @@ public class User {
 
     public void setMiddleName(String middleName) {
         MiddleName = middleName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                Objects.equals(login, user.login) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(FirstName, user.FirstName) &&
+                Objects.equals(LastName, user.LastName) &&
+                Objects.equals(MiddleName, user.MiddleName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, login, password, FirstName, LastName, MiddleName);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("User{");
+        sb.append("id=").append(id);
+        sb.append(", login='").append(login).append('\'');
+        sb.append(", password='").append(password).append('\'');
+        sb.append(", FirstName='").append(FirstName).append('\'');
+        sb.append(", LastName='").append(LastName).append('\'');
+        sb.append(", MiddleName='").append(MiddleName).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
