@@ -1,6 +1,6 @@
-package by.netcracker.bsuir.pz3.courses.dao.entity.sql;
+package by.netcracker.bsuir.pz3.courses.dao.entity.implementation;
 
-import by.netcracker.bsuir.pz3.courses.dao.constantString.FinishedCourseTable;
+import by.netcracker.bsuir.pz3.courses.dao.table.FinishedCourseTable;
 import by.netcracker.bsuir.pz3.courses.dao.entity.FinishedCourseDao;
 import by.netcracker.bsuir.pz3.courses.entity.FinishedCourse;
 import org.hibernate.Session;

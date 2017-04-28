@@ -1,4 +1,4 @@
-package by.netcracker.bsuir.pz3.courses.dao.constantString;
+package by.netcracker.bsuir.pz3.courses.dao.table;
 
 public class TeacherTable {
 
