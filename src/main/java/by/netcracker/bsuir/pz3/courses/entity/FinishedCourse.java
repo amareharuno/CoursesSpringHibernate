@@ -1,24 +1,26 @@
 package by.netcracker.bsuir.pz3.courses.entity;
 
-import by.netcracker.bsuir.pz3.courses.dao.table.FinishedCourseTable;
+import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.FinishedCourseTable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = FinishedCourseTable.FINISHED_COURSE_TABLE)
-public class FinishedCourse {
+public class FinishedCourse implements Serializable {
 
     @Id
     @Column(name = FinishedCourseTable.ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = FinishedCourseTable.ASSESSMENT)
     private int assessment;
-
     @Column(name = FinishedCourseTable.REVIEW)
     private String review;
+
+    public FinishedCourse() {
+    }
 
     public int getId() {
         return id;

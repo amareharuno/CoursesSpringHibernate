@@ -1,8 +1,8 @@
-package by.netcracker.bsuir.pz3.courses.dao.table;
+package by.netcracker.bsuir.pz3.courses.dao.bdTableInfo;
 
 public class CourseTable {
 
-    // table name
+    // bdTableInfo name
     public static final String COURSE_TABLE = "Course";
 
     // fields

@@ -1,18 +1,22 @@
 package by.netcracker.bsuir.pz3.courses.entity;
 
-import by.netcracker.bsuir.pz3.courses.dao.table.StudentTable;
+import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.StudentTable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = StudentTable.STUDENT_TABLE)
-public class Student {
+public class Student implements Serializable {
 
     @Id
     @Column(name = StudentTable.ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    public Student() {
+    }
 
     public int getId() {
         return id;

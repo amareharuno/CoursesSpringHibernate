@@ -1,33 +1,32 @@
 package by.netcracker.bsuir.pz3.courses.entity;
 
-import by.netcracker.bsuir.pz3.courses.dao.table.UserTable;
+import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.UserTable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = UserTable.USER_TABLE)
-public class User {
+public class User implements Serializable {
 
     @Id
     @Column(name = UserTable.ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = UserTable.LOGIN)
     private String login;
-
     @Column(name = UserTable.PASSWORD)
     private String password;
-
     @Column(name = UserTable.FIRST_NAME)
     private String FirstName;
-
     @Column(name = UserTable.LAST_NAME)
     private String LastName;
-
     @Column(name = UserTable.MIDDLE_NAME)
     private String MiddleName;
+
+    public User() {
+    }
 
     public int getId() {
         return id;

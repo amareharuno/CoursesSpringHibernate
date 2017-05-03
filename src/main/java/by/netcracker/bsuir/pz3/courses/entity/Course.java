@@ -1,32 +1,31 @@
 package by.netcracker.bsuir.pz3.courses.entity;
 
-import by.netcracker.bsuir.pz3.courses.dao.table.CourseTable;
+import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.CourseTable;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = CourseTable.COURSE_TABLE)
-public class Course {
+public class Course implements Serializable {
     @Id
     @Column(name = CourseTable.ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = CourseTable.SUBJECT)
     private String subject;
-
     @Column(name = CourseTable.NAME)
     private String courseName;
-
     @Column(name = CourseTable.LESSONS_COUNT)
     private int lessonsCount;
-
     @Column(name = CourseTable.LESSON_DURATION)
     private int lessonDuration;
-
     @Column(name = CourseTable.COURSE_DURATION)
     private int courseDuration;
+
+    public Course() {
+    }
 
     public int getId() {
         return id;
