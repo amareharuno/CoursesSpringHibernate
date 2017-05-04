@@ -3,8 +3,6 @@ package by.netcracker.bsuir.pz3.courses.dao.entity.implementation;
 import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.TeacherTable;
 import by.netcracker.bsuir.pz3.courses.dao.entity.TeacherDao;
 import by.netcracker.bsuir.pz3.courses.entity.Teacher;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

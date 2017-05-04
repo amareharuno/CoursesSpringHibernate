@@ -3,15 +3,12 @@ package by.netcracker.bsuir.pz3.courses.dao.entity.implementation;
 import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.StudentTable;
 import by.netcracker.bsuir.pz3.courses.dao.entity.StudentDao;
 import by.netcracker.bsuir.pz3.courses.entity.Student;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.io.Serializable;
 import java.util.List;
 
 @Repository

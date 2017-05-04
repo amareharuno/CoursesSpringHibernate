@@ -3,8 +3,6 @@ package by.netcracker.bsuir.pz3.courses.dao.entity.implementation;
 import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.FinishedCourseTable;
 import by.netcracker.bsuir.pz3.courses.dao.entity.FinishedCourseDao;
 import by.netcracker.bsuir.pz3.courses.entity.FinishedCourse;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;

@@ -3,15 +3,11 @@ package by.netcracker.bsuir.pz3.courses.dao.entity.implementation;
 import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.CourseTable;
 import by.netcracker.bsuir.pz3.courses.dao.entity.CourseDao;
 import by.netcracker.bsuir.pz3.courses.entity.Course;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
