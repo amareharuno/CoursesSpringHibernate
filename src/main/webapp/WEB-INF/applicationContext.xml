@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">-->
+    <!--</bean>-->
+
+    <bean id="course" class="by.netcracker.bsuir.pz3.courses.entity.Course"/>
+    <bean id="finishedCourse" class="by.netcracker.bsuir.pz3.courses.entity.FinishedCourse"/>
+    <bean id="student" class="by.netcracker.bsuir.pz3.courses.entity.Student"/>
+    <bean id="teacher" class="by.netcracker.bsuir.pz3.courses.entity.Teacher"/>
+    <bean id="user" class="by.netcracker.bsuir.pz3.courses.entity.User"/>
 </beans>

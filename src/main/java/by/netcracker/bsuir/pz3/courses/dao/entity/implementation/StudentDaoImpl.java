@@ -12,11 +12,11 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public enum SqlStudentDao implements StudentDao {
+public enum StudentDaoImpl implements StudentDao {
 
     INSTANCE;
 
-    private final Logger logger = LoggerFactory.getLogger(SqlStudentDao.class);
+    private final Logger logger = LoggerFactory.getLogger(StudentDaoImpl.class);
     @PersistenceContext(unitName = "courses_spring")
     private EntityManager entityManager;
 

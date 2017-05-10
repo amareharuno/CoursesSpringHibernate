@@ -3,24 +3,20 @@ package by.netcracker.bsuir.pz3.courses.dao.entity.implementation;
 import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.UserTable;
 import by.netcracker.bsuir.pz3.courses.dao.entity.UserDao;
 import by.netcracker.bsuir.pz3.courses.entity.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public enum  SqlUserDao implements UserDao {
+public enum UserDaoImpl implements UserDao {
 
     INSTANCE;
 
-    private final Logger logger = LoggerFactory.getLogger(SqlUserDao.class);
+    private final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
 
     @PersistenceContext(unitName = "courses_spring")
     private EntityManager entityManager;

@@ -12,13 +12,13 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public enum SqlFinishedCourseDao implements FinishedCourseDao{
+public enum FinishedCourseDaoImpl implements FinishedCourseDao{
 
     INSTANCE;
 
     @PersistenceContext(unitName = "courses_spring")
     private EntityManager entityManager;
-    private final Logger logger = LoggerFactory.getLogger(SqlFinishedCourseDao.class);
+    private final Logger logger = LoggerFactory.getLogger(FinishedCourseDaoImpl.class);
 
 //    private SessionFactory sessionFactory;
 //    public void setSessionFactory(SessionFactory sessionFactory) {
