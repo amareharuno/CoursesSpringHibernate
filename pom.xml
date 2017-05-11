@@ -9,6 +9,10 @@
     <packaging>war</packaging>
     <version>1.0</version>
 
+    <build>
+        <finalName>coursesSpring</finalName>
+    </build>
+
     <properties>
         <org.spring-framework-version>4.3.8.RELEASE</org.spring-framework-version>
         <org.aspectj-version>1.7.4</org.aspectj-version>
