@@ -10,18 +10,16 @@ import java.util.Objects;
 @Table(name = FinishedCourseTable.FINISHED_COURSE_TABLE)
 public class FinishedCourse implements Serializable {
 
-    @Id
-    @Column(name = FinishedCourseTable.ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = FinishedCourseTable.ASSESSMENT)
     private int assessment;
-    @Column(name = FinishedCourseTable.REVIEW)
     private String review;
 
     public FinishedCourse() {
     }
 
+    @Id
+    @Column(name = FinishedCourseTable.ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -30,6 +28,7 @@ public class FinishedCourse implements Serializable {
         this.id = id;
     }
 
+    @Column(name = FinishedCourseTable.ASSESSMENT)
     public int getAssessment() {
         return assessment;
     }
@@ -38,6 +37,7 @@ public class FinishedCourse implements Serializable {
         this.assessment = assessment;
     }
 
+    @Column(name = FinishedCourseTable.REVIEW)
     public String getReview() {
         return review;
     }

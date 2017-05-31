@@ -10,19 +10,11 @@ import java.util.Objects;
 @Table(name = UserTable.USER_TABLE)
 public class User implements Serializable {
 
-    @Id
-    @Column(name = UserTable.ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = UserTable.LOGIN)
     private String login;
-    @Column(name = UserTable.PASSWORD)
     private String password;
-    @Column(name = UserTable.FIRST_NAME)
     private String FirstName;
-    @Column(name = UserTable.LAST_NAME)
     private String LastName;
-    @Column(name = UserTable.MIDDLE_NAME)
     private String MiddleName;
 
     public User() {
@@ -36,6 +28,9 @@ public class User implements Serializable {
         MiddleName = middleName;
     }
 
+    @Id
+    @Column(name = UserTable.ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -44,6 +39,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
+    @Column(name = UserTable.LOGIN)
     public String getLogin() {
         return login;
     }
@@ -52,6 +48,7 @@ public class User implements Serializable {
         this.login = login;
     }
 
+    @Column(name = UserTable.PASSWORD)
     public String getPassword() {
         return password;
     }
@@ -60,6 +57,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    @Column(name = UserTable.FIRST_NAME)
     public String getFirstName() {
         return FirstName;
     }
@@ -68,6 +66,7 @@ public class User implements Serializable {
         FirstName = firstName;
     }
 
+    @Column(name = UserTable.LAST_NAME)
     public String getLastName() {
         return LastName;
     }
@@ -76,6 +75,7 @@ public class User implements Serializable {
         LastName = lastName;
     }
 
+    @Column(name = UserTable.MIDDLE_NAME)
     public String getMiddleName() {
         return MiddleName;
     }

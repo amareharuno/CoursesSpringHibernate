@@ -10,14 +10,14 @@ import java.util.Objects;
 @Table(name = TeacherTable.TEACHER_TABLE)
 public class Teacher implements Serializable {
 
-    @Id
-    @Column(name = TeacherTable.ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     public Teacher() {
     }
 
+    @Id
+    @Column(name = TeacherTable.ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }

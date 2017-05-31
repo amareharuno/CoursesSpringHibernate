@@ -9,24 +9,19 @@ import java.util.Objects;
 @Entity
 @Table(name = CourseTable.COURSE_TABLE)
 public class Course implements Serializable {
-    @Id
-    @Column(name = CourseTable.ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = CourseTable.SUBJECT)
     private String subject;
-    @Column(name = CourseTable.NAME)
     private String courseName;
-    @Column(name = CourseTable.LESSONS_COUNT)
     private int lessonsCount;
-    @Column(name = CourseTable.LESSON_DURATION)
     private int lessonDuration;
-    @Column(name = CourseTable.COURSE_DURATION)
     private int courseDuration;
 
     public Course() {
     }
 
+    @Id
+    @Column(name = CourseTable.ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -35,6 +30,7 @@ public class Course implements Serializable {
         this.id = id;
     }
 
+    @Column(name = CourseTable.SUBJECT)
     public String getSubject() {
         return subject;
     }
@@ -43,6 +39,7 @@ public class Course implements Serializable {
         this.subject = subject;
     }
 
+    @Column(name = CourseTable.NAME)
     public String getCourseName() {
         return courseName;
     }
@@ -51,6 +48,7 @@ public class Course implements Serializable {
         this.courseName = courseName;
     }
 
+    @Column(name = CourseTable.LESSONS_COUNT)
     public int getLessonsCount() {
         return lessonsCount;
     }
@@ -59,6 +57,7 @@ public class Course implements Serializable {
         this.lessonsCount = lessonsCount;
     }
 
+    @Column(name = CourseTable.LESSON_DURATION)
     public int getLessonDuration() {
         return lessonDuration;
     }
@@ -67,6 +66,7 @@ public class Course implements Serializable {
         this.lessonDuration = lessonDuration;
     }
 
+    @Column(name = CourseTable.COURSE_DURATION)
     public int getCourseDuration() {
         return courseDuration;
     }
