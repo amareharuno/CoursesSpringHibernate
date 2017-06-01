@@ -1,10 +1,10 @@
-package by.netcracker.bsuir.pz3.courses.dao.entity.implementation;
+package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.FinishedCourseTable;
-import by.netcracker.bsuir.pz3.courses.dao.entity.FinishedCourseDao;
+import by.netcracker.bsuir.pz3.courses.constant.FinishedCourseTable;
+import by.netcracker.bsuir.pz3.courses.dao.FinishedCourseDao;
 import by.netcracker.bsuir.pz3.courses.entity.FinishedCourse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -12,13 +12,11 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public enum FinishedCourseDaoImpl implements FinishedCourseDao{
-
-    INSTANCE;
+public class FinishedCourseDaoImpl implements FinishedCourseDao{
 
     @PersistenceContext(unitName = "courses_spring")
     private EntityManager entityManager;
-    private final Logger logger = LoggerFactory.getLogger(FinishedCourseDaoImpl.class);
+    private static Logger logger = LogManager.getLogger(FinishedCourseDao.class);
 
 //    private SessionFactory sessionFactory;
 //    public void setSessionFactory(SessionFactory sessionFactory) {

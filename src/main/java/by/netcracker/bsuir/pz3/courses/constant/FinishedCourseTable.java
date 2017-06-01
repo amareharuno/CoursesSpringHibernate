@@ -1,8 +1,8 @@
-package by.netcracker.bsuir.pz3.courses.dao.bdTableInfo;
+package by.netcracker.bsuir.pz3.courses.constant;
 
 public class FinishedCourseTable {
 
-    // bdTableInfo name
+    // implementation name
     public static final String FINISHED_COURSE_TABLE = "FinishedCourse";
 
     // fields

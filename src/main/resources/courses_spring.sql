@@ -16,7 +16,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for bdTableInfo `course`
+-- Table structure for implementation `course`
 --
 
 DROP TABLE IF EXISTS `course`;
@@ -38,7 +38,7 @@ CREATE TABLE `course` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for bdTableInfo `course`
+-- Dumping data for implementation `course`
 --
 
 LOCK TABLES `course` WRITE;
@@ -47,7 +47,7 @@ LOCK TABLES `course` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for bdTableInfo `finishedcourse`
+-- Table structure for implementation `finishedcourse`
 --
 
 DROP TABLE IF EXISTS `finishedcourse`;
@@ -66,7 +66,7 @@ CREATE TABLE `finishedcourse` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for bdTableInfo `finishedcourse`
+-- Dumping data for implementation `finishedcourse`
 --
 
 LOCK TABLES `finishedcourse` WRITE;
@@ -75,7 +75,7 @@ LOCK TABLES `finishedcourse` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for bdTableInfo `student`
+-- Table structure for implementation `student`
 --
 
 DROP TABLE IF EXISTS `student`;
@@ -93,7 +93,7 @@ CREATE TABLE `student` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for bdTableInfo `student`
+-- Dumping data for implementation `student`
 --
 
 LOCK TABLES `student` WRITE;
@@ -102,7 +102,7 @@ LOCK TABLES `student` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for bdTableInfo `student_has_course`
+-- Table structure for implementation `student_has_course`
 --
 
 DROP TABLE IF EXISTS `student_has_course`;
@@ -120,7 +120,7 @@ CREATE TABLE `student_has_course` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for bdTableInfo `student_has_course`
+-- Dumping data for implementation `student_has_course`
 --
 
 LOCK TABLES `student_has_course` WRITE;
@@ -129,7 +129,7 @@ LOCK TABLES `student_has_course` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for bdTableInfo `teacher`
+-- Table structure for implementation `teacher`
 --
 
 DROP TABLE IF EXISTS `teacher`;
@@ -146,7 +146,7 @@ CREATE TABLE `teacher` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for bdTableInfo `teacher`
+-- Dumping data for implementation `teacher`
 --
 
 LOCK TABLES `teacher` WRITE;
@@ -155,7 +155,7 @@ LOCK TABLES `teacher` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for bdTableInfo `user`
+-- Table structure for implementation `user`
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -176,7 +176,7 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for bdTableInfo `user`
+-- Dumping data for implementation `user`
 --
 
 LOCK TABLES `user` WRITE;

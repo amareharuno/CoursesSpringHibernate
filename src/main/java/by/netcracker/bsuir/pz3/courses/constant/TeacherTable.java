@@ -1,8 +1,8 @@
-package by.netcracker.bsuir.pz3.courses.dao.bdTableInfo;
+package by.netcracker.bsuir.pz3.courses.constant;
 
 public class TeacherTable {
 
-    // bdTableInfo nsme
+    // implementation nsme
     public static final String TEACHER_TABLE = "Teacher";
 
     // fields

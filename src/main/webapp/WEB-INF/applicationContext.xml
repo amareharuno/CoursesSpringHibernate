@@ -1,15 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">-->
-    <!--</bean>-->
+    <!-- Включение опции использования конфигурационных аннотаций @Autowired и т.д.-->
+    <context:annotation-config />
 
-    <bean id="course" class="by.netcracker.bsuir.pz3.courses.entity.Course"/>
-    <bean id="finishedCourse" class="by.netcracker.bsuir.pz3.courses.entity.FinishedCourse"/>
-    <bean id="student" class="by.netcracker.bsuir.pz3.courses.entity.Student"/>
-    <bean id="teacher" class="by.netcracker.bsuir.pz3.courses.entity.Teacher"/>
-    <bean id="user" class="by.netcracker.bsuir.pz3.courses.entity.User"/>
+    <!-- папки с бинами-компонентами -->
+    <context:component-scan base-package="by.netcracker.bsuir.pz3.courses.dao" />
+    <context:component-scan base-package="by.netcracker.bsuir.pz3.courses.service" />
+    <context:component-scan base-package="by.netcracker.bsuir.pz3.courses.web" />
+
+    <!-- бин, ответственный за подключение к БД -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="url" value="jdbc:mysql://localhost:3306/airline?useSSL=false" />
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="username" value="root"/>
+        <property name="password" value="SQL174"/>
+        <property name="initialSize" value="5"/>
+        <property name="maxTotal" value="10"/>
+    </bean>
+
+    <!-- Определение менеджера сущностей, c указанием бина поставщика данных, необходимых настроек -->
+    <bean id="entityManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="by.netcracker.bsuir.pz3.courses" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="showSql" value="true" />
+                <property name="database" value="MYSQL" />
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
+            </bean>
+        </property>
+    </bean>
+
+    <!-- Процессор для инъекции entityManager -->
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 </beans>

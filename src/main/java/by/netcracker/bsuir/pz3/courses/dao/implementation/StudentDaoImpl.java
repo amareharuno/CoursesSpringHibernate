@@ -1,10 +1,10 @@
-package by.netcracker.bsuir.pz3.courses.dao.entity.implementation;
+package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.dao.bdTableInfo.StudentTable;
-import by.netcracker.bsuir.pz3.courses.dao.entity.StudentDao;
+import by.netcracker.bsuir.pz3.courses.constant.StudentTable;
+import by.netcracker.bsuir.pz3.courses.dao.StudentDao;
 import by.netcracker.bsuir.pz3.courses.entity.Student;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -12,11 +12,10 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public enum StudentDaoImpl implements StudentDao {
+public class StudentDaoImpl implements StudentDao {
 
-    INSTANCE;
+    private static Logger logger = LogManager.getLogger(StudentDaoImpl.class);
 
-    private final Logger logger = LoggerFactory.getLogger(StudentDaoImpl.class);
     @PersistenceContext(unitName = "courses_spring")
     private EntityManager entityManager;
 

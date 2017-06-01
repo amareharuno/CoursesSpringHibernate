@@ -1,8 +1,8 @@
-package by.netcracker.bsuir.pz3.courses.dao.bdTableInfo;
+package by.netcracker.bsuir.pz3.courses.constant;
 
 public class StudentTable {
 
-    // bdTableInfo name
+    // implementation name
     public static final String STUDENT_TABLE = "Student";
 
     // fields

@@ -1,4 +1,4 @@
-package by.netcracker.bsuir.pz3.courses.dao.entity;
+package by.netcracker.bsuir.pz3.courses.dao;
 
 import by.netcracker.bsuir.pz3.courses.entity.User;
 
