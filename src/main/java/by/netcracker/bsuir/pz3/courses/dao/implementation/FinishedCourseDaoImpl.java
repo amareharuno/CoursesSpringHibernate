@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class FinishedCourseDaoImpl implements FinishedCourseDao{
 
-    @PersistenceContext(unitName = "courses_spring")
+    @PersistenceContext
     private EntityManager entityManager;
     private static Logger logger = LogManager.getLogger(FinishedCourseDao.class);
 

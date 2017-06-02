@@ -16,7 +16,7 @@ public class StudentDaoImpl implements StudentDao {
 
     private static Logger logger = LogManager.getLogger(StudentDaoImpl.class);
 
-    @PersistenceContext(unitName = "courses_spring")
+    @PersistenceContext
     private EntityManager entityManager;
 
 //    private SessionFactory sessionFactory;

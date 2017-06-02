@@ -16,7 +16,7 @@ public class UserDaoImpl implements UserDao {
 
     private static Logger logger = LogManager.getLogger(UserDaoImpl.class);
 
-    @PersistenceContext(unitName = "courses_spring")
+    @PersistenceContext
     private EntityManager entityManager;
 
     public void addUser(User user) {

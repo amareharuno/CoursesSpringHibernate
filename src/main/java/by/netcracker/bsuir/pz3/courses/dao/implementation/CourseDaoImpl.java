@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class CourseDaoImpl implements CourseDao {
 
-    @PersistenceContext(unitName = "courses_spring")
+    @PersistenceContext
     private EntityManager entityManager;
 
     private static Logger logger = LogManager.getLogger(CourseDaoImpl.class);

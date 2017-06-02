@@ -14,7 +14,7 @@ public class TeacherDaoImpl implements TeacherDao {
 
     private static Logger logger = LogManager.getLogger(TeacherDaoImpl.class);
 
-    @PersistenceContext(unitName = "courses_spring")
+    @PersistenceContext
     private EntityManager entityManager;
 
 //    private SessionFactory sessionFactory;
