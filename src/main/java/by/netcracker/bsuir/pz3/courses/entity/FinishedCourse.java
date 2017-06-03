@@ -1,13 +1,13 @@
 package by.netcracker.bsuir.pz3.courses.entity;
 
-import by.netcracker.bsuir.pz3.courses.constant.FinishedCourseTable;
+import by.netcracker.bsuir.pz3.courses.constant.DatabaseTableInfo;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = FinishedCourseTable.FINISHED_COURSE_TABLE)
+@Table(name = DatabaseTableInfo.FINISHED_COURSE_TABLE)
 public class FinishedCourse implements Serializable {
 
     private int id;
@@ -18,7 +18,7 @@ public class FinishedCourse implements Serializable {
     }
 
     @Id
-    @Column(name = FinishedCourseTable.ID)
+    @Column(name = DatabaseTableInfo.FINISHED_COURSE_ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
@@ -28,7 +28,7 @@ public class FinishedCourse implements Serializable {
         this.id = id;
     }
 
-    @Column(name = FinishedCourseTable.ASSESSMENT)
+    @Column(name = DatabaseTableInfo.ASSESSMENT)
     public int getAssessment() {
         return assessment;
     }
@@ -37,7 +37,7 @@ public class FinishedCourse implements Serializable {
         this.assessment = assessment;
     }
 
-    @Column(name = FinishedCourseTable.REVIEW)
+    @Column(name = DatabaseTableInfo.REVIEW)
     public String getReview() {
         return review;
     }

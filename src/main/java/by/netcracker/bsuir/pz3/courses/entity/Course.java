@@ -1,13 +1,13 @@
 package by.netcracker.bsuir.pz3.courses.entity;
 
-import by.netcracker.bsuir.pz3.courses.constant.CourseTable;
+import by.netcracker.bsuir.pz3.courses.constant.DatabaseTableInfo;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = CourseTable.COURSE_TABLE)
+@Table(name = DatabaseTableInfo.COURSE_TABLE)
 public class Course implements Serializable {
     private int id;
     private String subject;
@@ -20,7 +20,7 @@ public class Course implements Serializable {
     }
 
     @Id
-    @Column(name = CourseTable.ID)
+    @Column(name = DatabaseTableInfo.COURSE_ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
@@ -30,7 +30,7 @@ public class Course implements Serializable {
         this.id = id;
     }
 
-    @Column(name = CourseTable.SUBJECT)
+    @Column(name = DatabaseTableInfo.SUBJECT)
     public String getSubject() {
         return subject;
     }
@@ -39,7 +39,7 @@ public class Course implements Serializable {
         this.subject = subject;
     }
 
-    @Column(name = CourseTable.NAME)
+    @Column(name = DatabaseTableInfo.NAME)
     public String getCourseName() {
         return courseName;
     }
@@ -48,7 +48,7 @@ public class Course implements Serializable {
         this.courseName = courseName;
     }
 
-    @Column(name = CourseTable.LESSONS_COUNT)
+    @Column(name = DatabaseTableInfo.LESSONS_COUNT)
     public int getLessonsCount() {
         return lessonsCount;
     }
@@ -57,7 +57,7 @@ public class Course implements Serializable {
         this.lessonsCount = lessonsCount;
     }
 
-    @Column(name = CourseTable.LESSON_DURATION)
+    @Column(name = DatabaseTableInfo.LESSON_DURATION)
     public int getLessonDuration() {
         return lessonDuration;
     }
@@ -66,7 +66,7 @@ public class Course implements Serializable {
         this.lessonDuration = lessonDuration;
     }
 
-    @Column(name = CourseTable.COURSE_DURATION)
+    @Column(name = DatabaseTableInfo.COURSE_DURATION)
     public int getCourseDuration() {
         return courseDuration;
     }

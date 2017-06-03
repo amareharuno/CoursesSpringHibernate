@@ -1,13 +1,12 @@
 package by.netcracker.bsuir.pz3.courses.entity;
 
-import by.netcracker.bsuir.pz3.courses.constant.TeacherTable;
-
+import by.netcracker.bsuir.pz3.courses.constant.DatabaseTableInfo;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = TeacherTable.TEACHER_TABLE)
+@Table(name = DatabaseTableInfo.TEACHER_TABLE)
 public class Teacher implements Serializable {
 
     private int id;
@@ -16,7 +15,7 @@ public class Teacher implements Serializable {
     }
 
     @Id
-    @Column(name = TeacherTable.ID)
+    @Column(name = DatabaseTableInfo.TEACHER_ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;

@@ -1,13 +1,13 @@
 package by.netcracker.bsuir.pz3.courses.entity;
 
-import by.netcracker.bsuir.pz3.courses.constant.UserTable;
+import by.netcracker.bsuir.pz3.courses.constant.DatabaseTableInfo;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = UserTable.USER_TABLE)
+@Table(name = DatabaseTableInfo.USER_TABLE)
 public class User implements Serializable {
 
     private int id;
@@ -29,7 +29,7 @@ public class User implements Serializable {
     }
 
     @Id
-    @Column(name = UserTable.ID)
+    @Column(name = DatabaseTableInfo.USER_ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
@@ -39,7 +39,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    @Column(name = UserTable.LOGIN)
+    @Column(name = DatabaseTableInfo.LOGIN)
     public String getLogin() {
         return login;
     }
@@ -48,7 +48,7 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    @Column(name = UserTable.PASSWORD)
+    @Column(name = DatabaseTableInfo.PASSWORD)
     public String getPassword() {
         return password;
     }
@@ -57,7 +57,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @Column(name = UserTable.FIRST_NAME)
+    @Column(name = DatabaseTableInfo.FIRST_NAME)
     public String getFirstName() {
         return FirstName;
     }
@@ -66,7 +66,7 @@ public class User implements Serializable {
         FirstName = firstName;
     }
 
-    @Column(name = UserTable.LAST_NAME)
+    @Column(name = DatabaseTableInfo.LAST_NAME)
     public String getLastName() {
         return LastName;
     }
@@ -75,7 +75,7 @@ public class User implements Serializable {
         LastName = lastName;
     }
 
-    @Column(name = UserTable.MIDDLE_NAME)
+    @Column(name = DatabaseTableInfo.MIDDLE_NAME)
     public String getMiddleName() {
         return MiddleName;
     }

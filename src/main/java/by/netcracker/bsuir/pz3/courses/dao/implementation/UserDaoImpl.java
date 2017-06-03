@@ -1,6 +1,7 @@
 package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.constant.UserTable;
+import by.netcracker.bsuir.pz3.courses.constant.Logging;
+import by.netcracker.bsuir.pz3.courses.constant.Queries;
 import by.netcracker.bsuir.pz3.courses.dao.UserDao;
 import by.netcracker.bsuir.pz3.courses.entity.User;
 import org.apache.log4j.LogManager;
@@ -22,13 +23,13 @@ public class UserDaoImpl implements UserDao {
     public void addUser(User user) {
 
         entityManager.persist(user);
-        logger.info(UserTable.ADD_LOG + user);
+        logger.info(Logging.ADD_USER_LOG + user);
     }
 
     public User getUserById(int id) {
 
         User user = entityManager.find(User.class, id);
-        logger.info(UserTable.GET_BY_ID_LOG + user);
+        logger.info(Logging.GET_USER_BY_ID_LOG + user);
 
         return user;
     }
@@ -36,7 +37,7 @@ public class UserDaoImpl implements UserDao {
     public void updateUser(User user) {
 
         entityManager.merge(user);
-        logger.info(UserTable.UPDATE_LOG + user);
+        logger.info(Logging.UPDATE_USER_LOG + user);
     }
 
     public void deleteUser(int id) {
@@ -46,15 +47,15 @@ public class UserDaoImpl implements UserDao {
         if (user != null) {
             entityManager.remove(user);
         }
-        logger.info(UserTable.DELETE_LOG + user);
+        logger.info(Logging.DELETE_USER_LOG + user);
     }
 
     public List<User> getUsers() {
 
-        List<User> users = entityManager.createQuery(UserTable.GET_USERS).getResultList();
+        List<User> users = entityManager.createQuery(Queries.GET_USERS).getResultList();
 
         for (User user: users) {
-            logger.info(UserTable.USER_LIST_LOG + user);
+            logger.info(Logging.USER_LIST_LOG + user);
         }
 
         return users;

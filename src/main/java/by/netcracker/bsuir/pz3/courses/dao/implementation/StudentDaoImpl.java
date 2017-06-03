@@ -1,6 +1,7 @@
 package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.constant.StudentTable;
+import by.netcracker.bsuir.pz3.courses.constant.Logging;
+import by.netcracker.bsuir.pz3.courses.constant.Queries;
 import by.netcracker.bsuir.pz3.courses.dao.StudentDao;
 import by.netcracker.bsuir.pz3.courses.entity.Student;
 import org.apache.log4j.LogManager;
@@ -22,18 +23,18 @@ public class StudentDaoImpl implements StudentDao {
     public void addStudent(Student student) {
 
         entityManager.persist(student);
-        logger.info(StudentTable.ADD_LOG);
+        logger.info(Logging.ADD_STUDENT_LOG);
     }
 
     public Student getStudentById(int id) {
         Student student = entityManager.find(Student.class, id);
-        logger.info(StudentTable.GET_BY_ID_LOG + student);
+        logger.info(Logging.GET_STUDENT_BY_ID_LOG + student);
         return student;
     }
 
     public void updateStudent(Student student) {
         entityManager.merge(student);
-        logger.info(StudentTable.UPDATE_LOG + student);
+        logger.info(Logging.UPDATE_STUDENT_LOG + student);
     }
 
     public void deleteStudent(Student id) {
@@ -42,13 +43,13 @@ public class StudentDaoImpl implements StudentDao {
             entityManager.remove(student);
         }
 
-        logger.info(StudentTable.DELETE_LOG + student);
+        logger.info(Logging.DELETE_STUDENT_LOG + student);
     }
 
     public List<Student> getStudents() {
-        List<Student> students = entityManager.createQuery(StudentTable.GET_STUDENTS).getResultList();
+        List<Student> students = entityManager.createQuery(Queries.GET_STUDENTS).getResultList();
         for (Student student : students) {
-            logger.info(StudentTable.STUDENT_LIST + student);
+            logger.info(Logging.STUDENT_LIST_LOG + student);
         }
         return students;
     }

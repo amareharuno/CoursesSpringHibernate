@@ -1,6 +1,7 @@
 package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.constant.TeacherTable;
+import by.netcracker.bsuir.pz3.courses.constant.Logging;
+import by.netcracker.bsuir.pz3.courses.constant.Queries;
 import by.netcracker.bsuir.pz3.courses.dao.TeacherDao;
 import by.netcracker.bsuir.pz3.courses.entity.Teacher;
 import org.apache.log4j.LogManager;
@@ -20,19 +21,19 @@ public class TeacherDaoImpl implements TeacherDao {
     public void addTeacher(Teacher teacher) {
 
         entityManager.persist(teacher);
-        logger.info(TeacherTable.ADD_LOG + teacher);
+        logger.info(Logging.ADD_TEACHER_LOG + teacher);
     }
 
     public Teacher getTeacherById(int id) {
         Teacher teacher = entityManager.find(Teacher.class, id);
-        logger.info(TeacherTable.GET_BY_ID_LOG + teacher);
+        logger.info(Logging.GET_TEACHER_BY_ID_LOG + teacher);
 
         return teacher;
     }
 
     public void updateTeacher(Teacher teacher) {
         entityManager.merge(teacher);
-        logger.info(TeacherTable.UPDATE_LOG + teacher);
+        logger.info(Logging.UPDATE_TEACHER_LOG + teacher);
     }
 
     public void deleteTeacher(int id) {
@@ -41,13 +42,13 @@ public class TeacherDaoImpl implements TeacherDao {
             entityManager.remove(teacher);
         }
 
-        logger.info(TeacherTable.DELETE_LOG + teacher);
+        logger.info(Logging.DELETE_TEACHER_LOG + teacher);
     }
 
     public List<Teacher> getTeachers() {
-        List<Teacher> teachers = entityManager.createQuery(TeacherTable.GET_TEACHERS).getResultList();
+        List<Teacher> teachers = entityManager.createQuery(Queries.GET_TEACHERS).getResultList();
         for (Teacher teacher: teachers) {
-            logger.info(TeacherTable.TEACHER_LIST + teacher);
+            logger.info(Logging.TEACHER_LIST_LOG + teacher);
         }
 
         return teachers;

@@ -1,6 +1,7 @@
 package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.constant.FinishedCourseTable;
+import by.netcracker.bsuir.pz3.courses.constant.Logging;
+import by.netcracker.bsuir.pz3.courses.constant.Queries;
 import by.netcracker.bsuir.pz3.courses.dao.FinishedCourseDao;
 import by.netcracker.bsuir.pz3.courses.entity.FinishedCourse;
 import org.apache.log4j.LogManager;
@@ -20,19 +21,19 @@ public class FinishedCourseDaoImpl implements FinishedCourseDao{
 
     public void AddFinishedCourse(FinishedCourse finishedCourse) {
         entityManager.persist(finishedCourse);
-        logger.info(FinishedCourseTable.ADD_LOG + finishedCourse);
+        logger.info(Logging.ADD_FINISHED_COURSE_LOG + finishedCourse);
     }
 
     public FinishedCourse getFinishedCourseById(int id) {
         FinishedCourse finishedCourse = entityManager.find(FinishedCourse.class, id);
-        logger.info(FinishedCourseTable.GET_BY_ID_LOG + finishedCourse);
+        logger.info(Logging.GET_FINISHED_COURSE_BY_ID_LOG + finishedCourse);
 
         return finishedCourse;
     }
 
     public void updateFinishedCourse(FinishedCourse finishedCourse) {
         entityManager.merge(finishedCourse);
-        logger.info(FinishedCourseTable.UPDATE_LOG + finishedCourse);
+        logger.info(Logging.UPDATE_FINISHED_COURSE_LOG + finishedCourse);
     }
 
     public void deleteFinishedCourse(int id) {
@@ -42,14 +43,14 @@ public class FinishedCourseDaoImpl implements FinishedCourseDao{
             entityManager.remove(finishedCourse);
         }
 
-        logger.info(FinishedCourseTable.DELETE_LOG + finishedCourse);
+        logger.info(Logging.DELETE_FINISHED_COURSE_LOG + finishedCourse);
     }
 
     public List<FinishedCourse> getFinishedCourses() {
-        List<FinishedCourse> finishedCourses = entityManager.createQuery(FinishedCourseTable.GET_FINISHED_COURSES)
+        List<FinishedCourse> finishedCourses = entityManager.createQuery(Queries.GET_FINISHED_COURSES)
                 .getResultList();
         for (FinishedCourse finishedCourse : finishedCourses) {
-            logger.info(FinishedCourseTable.GET_ALL_LOG + finishedCourse);
+            logger.info(Logging.GET_ALL_FINISHED_COURSE_LOG + finishedCourse);
         }
         return finishedCourses;
     }

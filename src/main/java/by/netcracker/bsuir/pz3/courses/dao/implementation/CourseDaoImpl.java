@@ -1,6 +1,7 @@
 package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.constant.CourseTable;
+import by.netcracker.bsuir.pz3.courses.constant.Logging;
+import by.netcracker.bsuir.pz3.courses.constant.Queries;
 import by.netcracker.bsuir.pz3.courses.dao.CourseDao;
 import by.netcracker.bsuir.pz3.courses.entity.Course;
 import org.apache.log4j.LogManager;
@@ -21,19 +22,19 @@ public class CourseDaoImpl implements CourseDao {
 
     public void addCourse(Course course) {
         entityManager.persist(course);
-        logger.info(CourseTable.ADD_LOG + course);
+        logger.info(Logging.ADD_COURSE_LOG + course);
     }
 
     public Course getCourseById(int id) {
         Course course = entityManager.find(Course.class, id);
-        logger.info(CourseTable.GET_BY_ID_LOG + course);
+        logger.info(Logging.GET_COURSE_BY_ID_LOG + course);
 
         return course;
     }
 
     public void updateCourse(Course course) {
         entityManager.merge(course);
-        logger.info(CourseTable.UPDATE_LOG + course);
+        logger.info(Logging.UPDATE_COURSE_LOG + course);
     }
 
     public void deleteCourse(int id) {
@@ -42,13 +43,13 @@ public class CourseDaoImpl implements CourseDao {
         if (course != null) {
             entityManager.remove(course);
         }
-        logger.info(CourseTable.DELETE_LOG + course);
+        logger.info(Logging.DELETE_COURSE_LOG + course);
     }
 
     public List<Course> getCourses() {
-        List<Course> courses = entityManager.createQuery(CourseTable.GET_COURSES).getResultList();
+        List<Course> courses = entityManager.createQuery(Queries.GET_COURSES).getResultList();
         for (Course course: courses) {
-            logger.info(CourseTable.COURSE_LIST + course);
+            logger.info(Logging.COURSE_LIST_LOG + course);
         }
 
         return courses;
