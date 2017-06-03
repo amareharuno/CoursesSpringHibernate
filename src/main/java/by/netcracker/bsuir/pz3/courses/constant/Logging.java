@@ -18,7 +18,7 @@ public final class Logging {
     public static final String FINISHED_COURSE_DAO_IMPL_GET = "getById method: FinishedCourseDaoImpl";
     public static final String FINISHED_COURSE_DAO_IMPL_UPDATE = "update method: FinishedCourseDaoImpl";
     public static final String FINISHED_COURSE_DAO_IMPL_DELETE = "delete: FinishedCourseDaoImpl";
-    public static final String FINISHED_COURSE_DAO_IMPL_ALL = "getAll method: FinishedCourseDaoImpl";
+    public static final String FINISHED_COURSE_DAO_IMPL_GET_ALL = "getAll method: FinishedCourseDaoImpl";
 
     public static final String ADD_FINISHED_COURSE_LOG = "Finished course successfully added. Finished course details: ";
     public static final String GET_FINISHED_COURSE_BY_ID_LOG = "Finished course successfully got. Finished course details: ";
