@@ -42,7 +42,7 @@ public final class Logging {
     public static final String TEACHER_DAO_IMPL_GET = "getById method: TeacherDaoImpl";
     public static final String TEACHER_DAO_IMPL_UPDATE = "update method: TeacherDaoImpl";
     public static final String TEACHER_DAO_IMPL_DELETE = "delete: TeacherDaoImpl";
-    public static final String TEACHER_DAO_IMPL_ALL = "getAll method: TeacherDaoImpl";
+    public static final String TEACHER_DAO_IMPL_GET_ALL = "getAll method: TeacherDaoImpl";
 
     public static final String ADD_TEACHER_LOG = "Teacher added successfully. Details: ";
     public static final String GET_TEACHER_BY_ID_LOG = "Teacher successfully got. Details: ";
