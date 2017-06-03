@@ -4,6 +4,7 @@ import by.netcracker.bsuir.pz3.courses.constant.Logging;
 import by.netcracker.bsuir.pz3.courses.constant.Queries;
 import by.netcracker.bsuir.pz3.courses.dao.UserDao;
 import by.netcracker.bsuir.pz3.courses.entity.User;
+import by.netcracker.bsuir.pz3.courses.exception.DaoException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
@@ -20,13 +21,13 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void addUser(User user) {
+    public void addUser(User user) throws DaoException {
 
         entityManager.persist(user);
         logger.info(Logging.ADD_USER_LOG + user);
     }
 
-    public User getUserById(int id) {
+    public User getUserById(int id) throws DaoException {
 
         User user = entityManager.find(User.class, id);
         logger.info(Logging.GET_USER_BY_ID_LOG + user);
@@ -34,13 +35,13 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    public void updateUser(User user) {
+    public void updateUser(User user) throws DaoException {
 
         entityManager.merge(user);
         logger.info(Logging.UPDATE_USER_LOG + user);
     }
 
-    public void deleteUser(int id) {
+    public void deleteUser(int id) throws DaoException {
 
         User user = entityManager.find(User.class, id);
 
@@ -50,7 +51,7 @@ public class UserDaoImpl implements UserDao {
         logger.info(Logging.DELETE_USER_LOG + user);
     }
 
-    public List<User> getUsers() {
+    public List<User> getUsers() throws DaoException {
 
         List<User> users = entityManager.createQuery(Queries.GET_USERS).getResultList();
 
