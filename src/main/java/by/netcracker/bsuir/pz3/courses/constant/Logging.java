@@ -54,7 +54,7 @@ public final class Logging {
     public static final String USER_DAO_IMPL_GET = "getById method: UserDaoImpl";
     public static final String USER_DAO_IMPL_UPDATE = "update method: UserDaoImpl";
     public static final String USER_DAO_IMPL_DELETE = "delete: UserDaoImpl";
-    public static final String USER_DAO_IMPL_ALL = "getAll method: UserDaoImpl";
+    public static final String USER_DAO_IMPL_GET_ALL = "getAll method: UserDaoImpl";
 
     public static final String ADD_USER_LOG = "User successfully added. Details: ";
     public static final String GET_USER_BY_ID_LOG = "User successfully got. Details: ";

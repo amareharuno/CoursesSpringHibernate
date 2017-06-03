@@ -22,14 +22,10 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
-
     public void addUser(User user) throws DaoException {
-        logger.debug(Logging.COURSE_DAO_IMPL_ADD);
+        logger.debug(Logging.USER_DAO_IMPL_ADD);
         try {
-            getEntityManager().persist(user);
+            entityManager.persist(user);
         } catch (HibernateException exception) {
             logger.debug(exception);
             throw new DaoException(Logging.ADD_FAIL, exception);
@@ -38,7 +34,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     public User getUserById(int id) throws DaoException {
-        logger.debug(Logging.COURSE_DAO_IMPL_GET);
+        logger.debug(Logging.USER_DAO_IMPL_GET);
         User user;
         try {
             user = entityManager.find(User.class, id);
@@ -51,7 +47,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     public void updateUser(User user) throws DaoException {
-        logger.debug(Logging.COURSE_DAO_IMPL_UPDATE);
+        logger.debug(Logging.USER_DAO_IMPL_UPDATE);
         try {
             entityManager.merge(user);
         } catch (HibernateException exception) {
@@ -62,9 +58,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     public void deleteUser(int id) throws DaoException {
-        logger.debug(Logging.COURSE_DAO_IMPL_DELETE);
+        logger.debug(Logging.USER_DAO_IMPL_DELETE);
         User user;
-
         try {
             user = entityManager.find(User.class, id);
             if (user != null) {
@@ -78,7 +73,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     public List<User> getUsers() throws DaoException {
-        logger.debug(Logging.COURSE_DAO_IMPL_GET_ALL);
+        logger.debug(Logging.USER_DAO_IMPL_GET_ALL);
         List<User> users;
         try {
             users = entityManager.createQuery(Queries.GET_USERS).getResultList();
