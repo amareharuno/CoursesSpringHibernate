@@ -3,8 +3,8 @@ package by.netcracker.bsuir.pz3.courses.dao.implementation;
 import by.netcracker.bsuir.pz3.courses.constant.UserTable;
 import by.netcracker.bsuir.pz3.courses.dao.UserDao;
 import by.netcracker.bsuir.pz3.courses.entity.User;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
