@@ -30,7 +30,7 @@ public final class Logging {
     public static final String STUDENT_DAO_IMPL_GET = "getById method: StudentDaoImpl";
     public static final String STUDENT_DAO_IMPL_UPDATE = "update method: StudentDaoImpl";
     public static final String STUDENT_DAO_IMPL_DELETE = "delete: StudentDaoImpl";
-    public static final String STUDENT_DAO_IMPL_ALL = "getAll method: StudentDaoImpl";
+    public static final String STUDENT_DAO_IMPL_GET_ALL = "getAll method: StudentDaoImpl";
 
     public static final String ADD_STUDENT_LOG = "Student successfully added. Student details: ";
     public static final String GET_STUDENT_BY_ID_LOG = "Student successfully got. Details: ";
