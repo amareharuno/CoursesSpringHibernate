@@ -22,6 +22,7 @@ public class TeacherDaoImpl extends DaoImpl<Teacher> implements TeacherDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Override
     public void add(Teacher teacher) throws DaoException {
         logger.info(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_ADD);
         try {
@@ -33,6 +34,7 @@ public class TeacherDaoImpl extends DaoImpl<Teacher> implements TeacherDao {
         logger.info(LoggingAndExceptionMessage.ADD_TEACHER_LOG + teacher);
     }
 
+    @Override
     public Teacher getById(int id) throws DaoException {
         logger.info(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_GET);
         Teacher teacher;
@@ -46,6 +48,7 @@ public class TeacherDaoImpl extends DaoImpl<Teacher> implements TeacherDao {
         return teacher;
     }
 
+    @Override
     public void update(Teacher teacher) throws DaoException {
         logger.info(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_UPDATE);
         try {
@@ -57,6 +60,7 @@ public class TeacherDaoImpl extends DaoImpl<Teacher> implements TeacherDao {
         logger.info(LoggingAndExceptionMessage.UPDATE_TEACHER_LOG + teacher);
     }
 
+    @Override
     public void delete(int id) throws DaoException {
         logger.info(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_DELETE);
 
@@ -73,6 +77,7 @@ public class TeacherDaoImpl extends DaoImpl<Teacher> implements TeacherDao {
         logger.info(LoggingAndExceptionMessage.DELETE_TEACHER_LOG + teacher);
     }
 
+    @Override
     public List<Teacher> getAll() throws DaoException {
         logger.info(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_GET_ALL);
         List<Teacher> teachers;

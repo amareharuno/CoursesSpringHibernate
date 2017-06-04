@@ -22,6 +22,7 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Override
     public void add(User user) throws DaoException {
         logger.info(LoggingAndExceptionMessage.USER_DAO_IMPL_ADD);
         try {
@@ -33,6 +34,7 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
         logger.info(LoggingAndExceptionMessage.ADD_USER_LOG + user);
     }
 
+    @Override
     public User getById(int id) throws DaoException {
         logger.info(LoggingAndExceptionMessage.USER_DAO_IMPL_GET);
         User user;
@@ -46,6 +48,7 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
         return user;
     }
 
+    @Override
     public void update(User user) throws DaoException {
         logger.info(LoggingAndExceptionMessage.USER_DAO_IMPL_UPDATE);
         try {
@@ -57,6 +60,7 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
         logger.info(LoggingAndExceptionMessage.UPDATE_USER_LOG + user);
     }
 
+    @Override
     public void delete(int id) throws DaoException {
         logger.info(LoggingAndExceptionMessage.USER_DAO_IMPL_DELETE);
         User user;
@@ -72,6 +76,7 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
         logger.info(LoggingAndExceptionMessage.DELETE_USER_LOG + user);
     }
 
+    @Override
     public List<User> getAll() throws DaoException {
         logger.info(LoggingAndExceptionMessage.USER_DAO_IMPL_GET_ALL);
         List<User> users;

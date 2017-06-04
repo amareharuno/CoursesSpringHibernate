@@ -22,6 +22,7 @@ public class CourseDaoImpl extends DaoImpl<Course> implements CourseDao {
 
     private static Logger logger = LogManager.getLogger(CourseDaoImpl.class);
 
+    @Override
     public void add(Course course) throws DaoException {
         logger.info(LoggingAndExceptionMessage.COURSE_DAO_IMPL_ADD);
         try {
@@ -33,6 +34,7 @@ public class CourseDaoImpl extends DaoImpl<Course> implements CourseDao {
         logger.info(LoggingAndExceptionMessage.ADD_COURSE_LOG + course);
     }
 
+    @Override
     public Course getById(int id) throws DaoException {
         logger.info(LoggingAndExceptionMessage.COURSE_DAO_IMPL_GET);
         Course course;
@@ -46,6 +48,7 @@ public class CourseDaoImpl extends DaoImpl<Course> implements CourseDao {
         return course;
     }
 
+    @Override
     public void update(Course course) throws DaoException {
         logger.info(LoggingAndExceptionMessage.COURSE_DAO_IMPL_UPDATE);
         try {
@@ -57,6 +60,7 @@ public class CourseDaoImpl extends DaoImpl<Course> implements CourseDao {
         logger.info(LoggingAndExceptionMessage.UPDATE_COURSE_LOG + course);
     }
 
+    @Override
     public void delete(int id) throws DaoException {
         logger.info(LoggingAndExceptionMessage.COURSE_DAO_IMPL_DELETE);
         Course course;
@@ -72,6 +76,7 @@ public class CourseDaoImpl extends DaoImpl<Course> implements CourseDao {
         logger.info(LoggingAndExceptionMessage.DELETE_COURSE_LOG + course);
     }
 
+    @Override
     public List<Course> getAll() throws DaoException {
         logger.info(LoggingAndExceptionMessage.COURSE_DAO_IMPL_GET_ALL);
         List<Course> courses;

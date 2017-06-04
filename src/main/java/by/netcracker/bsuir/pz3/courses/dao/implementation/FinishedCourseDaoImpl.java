@@ -22,6 +22,7 @@ public class FinishedCourseDaoImpl extends DaoImpl<FinishedCourse> implements Fi
 
     private static Logger logger = LogManager.getLogger(FinishedCourseDao.class);
 
+    @Override
     public void add(FinishedCourse finishedCourse) throws DaoException {
         logger.info(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_ADD);
         try {
@@ -33,6 +34,7 @@ public class FinishedCourseDaoImpl extends DaoImpl<FinishedCourse> implements Fi
         logger.info(LoggingAndExceptionMessage.ADD_FINISHED_COURSE_LOG + finishedCourse);
     }
 
+    @Override
     public FinishedCourse getById(int id) throws DaoException {
         logger.info(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_GET);
         FinishedCourse finishedCourse;
@@ -46,6 +48,7 @@ public class FinishedCourseDaoImpl extends DaoImpl<FinishedCourse> implements Fi
         return finishedCourse;
     }
 
+    @Override
     public void update(FinishedCourse finishedCourse) throws DaoException {
         logger.info(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_UPDATE);
         try {
@@ -72,6 +75,7 @@ public class FinishedCourseDaoImpl extends DaoImpl<FinishedCourse> implements Fi
         logger.info(LoggingAndExceptionMessage.DELETE_FINISHED_COURSE_LOG + finishedCourse);
     }
 
+    @Override
     public List<FinishedCourse> getAll() throws DaoException {
         logger.info(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_GET_ALL);
         List<FinishedCourse> finishedCourses;
