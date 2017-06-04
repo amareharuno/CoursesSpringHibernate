@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public class StudentDaoImpl implements StudentDao {
+public class StudentDaoImpl extends DaoImpl<Student> implements StudentDao {
 
     private static Logger logger = LogManager.getLogger(StudentDaoImpl.class);
 

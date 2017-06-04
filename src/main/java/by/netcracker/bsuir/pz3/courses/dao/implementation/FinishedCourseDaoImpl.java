@@ -15,10 +15,11 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public class FinishedCourseDaoImpl implements FinishedCourseDao{
+public class FinishedCourseDaoImpl extends DaoImpl<FinishedCourse> implements FinishedCourseDao{
 
     @PersistenceContext
     private EntityManager entityManager;
+
     private static Logger logger = LogManager.getLogger(FinishedCourseDao.class);
 
     public void add(FinishedCourse finishedCourse) throws DaoException {

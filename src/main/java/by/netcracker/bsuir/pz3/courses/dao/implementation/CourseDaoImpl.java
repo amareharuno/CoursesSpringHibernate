@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public class CourseDaoImpl implements CourseDao {
+public class CourseDaoImpl extends DaoImpl<Course> implements CourseDao {
 
     @PersistenceContext
     private EntityManager entityManager;
