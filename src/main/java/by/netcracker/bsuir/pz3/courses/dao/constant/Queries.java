@@ -1,4 +1,4 @@
-package by.netcracker.bsuir.pz3.courses.constant;
+package by.netcracker.bsuir.pz3.courses.dao.constant;
 
 public final class Queries {
     public static final String GET_COURSES = "from Course";

@@ -1,4 +1,4 @@
-package by.netcracker.bsuir.pz3.courses.exception;
+package by.netcracker.bsuir.pz3.courses.dao.exception;
 
 import org.hibernate.HibernateException;
 

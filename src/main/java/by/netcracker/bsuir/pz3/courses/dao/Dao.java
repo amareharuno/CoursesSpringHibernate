@@ -1,6 +1,6 @@
 package by.netcracker.bsuir.pz3.courses.dao;
 
-import by.netcracker.bsuir.pz3.courses.exception.DaoException;
+import by.netcracker.bsuir.pz3.courses.dao.exception.DaoException;
 
 import java.util.List;
 

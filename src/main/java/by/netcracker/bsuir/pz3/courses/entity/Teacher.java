@@ -1,6 +1,6 @@
 package by.netcracker.bsuir.pz3.courses.entity;
 
-import by.netcracker.bsuir.pz3.courses.constant.DatabaseTableInfo;
+import by.netcracker.bsuir.pz3.courses.dao.constant.DatabaseTableInfo;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;

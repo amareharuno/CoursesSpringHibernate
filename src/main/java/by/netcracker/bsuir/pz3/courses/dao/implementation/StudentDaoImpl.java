@@ -1,10 +1,10 @@
 package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.constant.LoggingAndExceptionMessage;
-import by.netcracker.bsuir.pz3.courses.constant.Queries;
+import by.netcracker.bsuir.pz3.courses.dao.constant.LoggingAndExceptionMessage;
+import by.netcracker.bsuir.pz3.courses.dao.constant.Queries;
 import by.netcracker.bsuir.pz3.courses.dao.StudentDao;
 import by.netcracker.bsuir.pz3.courses.entity.Student;
-import by.netcracker.bsuir.pz3.courses.exception.DaoException;
+import by.netcracker.bsuir.pz3.courses.dao.exception.DaoException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
@@ -23,11 +23,11 @@ public class StudentDaoImpl extends DaoImpl<Student> implements StudentDao {
     private EntityManager entityManager;
 
     public void add(Student student) throws DaoException {
-        logger.debug(LoggingAndExceptionMessage.STUDENT_DAO_IMPL_ADD);
+        logger.info(LoggingAndExceptionMessage.STUDENT_DAO_IMPL_ADD);
         try {
             entityManager.persist(student);
         }  catch (HibernateException exception) {
-            logger.debug(exception);
+            logger.error(exception);
             throw new DaoException(LoggingAndExceptionMessage.ADD_FAIL, exception);
         }
 
@@ -35,12 +35,12 @@ public class StudentDaoImpl extends DaoImpl<Student> implements StudentDao {
     }
 
     public Student getById(int id) throws DaoException {
-        logger.debug(LoggingAndExceptionMessage.STUDENT_DAO_IMPL_GET);
+        logger.info(LoggingAndExceptionMessage.STUDENT_DAO_IMPL_GET);
         Student student;
         try {
             student = entityManager.find(Student.class, id);
         } catch (HibernateException exception) {
-            logger.debug(exception);
+            logger.error(exception);
             throw new DaoException(LoggingAndExceptionMessage.GET_FAIL, exception);
         }
         logger.info(LoggingAndExceptionMessage.GET_STUDENT_BY_ID_LOG + student);
@@ -48,18 +48,18 @@ public class StudentDaoImpl extends DaoImpl<Student> implements StudentDao {
     }
 
     public void update(Student student) throws DaoException {
-        logger.debug(LoggingAndExceptionMessage.STUDENT_DAO_IMPL_UPDATE);
+        logger.info(LoggingAndExceptionMessage.STUDENT_DAO_IMPL_UPDATE);
         try {
             entityManager.merge(student);
         } catch (HibernateException exception) {
-            logger.debug(exception);
+            logger.error(exception);
             throw new DaoException(LoggingAndExceptionMessage.UPDATE_FAIL, exception);
         }
         logger.info(LoggingAndExceptionMessage.UPDATE_STUDENT_LOG + student);
     }
 
     public void delete(int id) throws DaoException {
-        logger.debug(LoggingAndExceptionMessage.STUDENT_DAO_IMPL_DELETE);
+        logger.info(LoggingAndExceptionMessage.STUDENT_DAO_IMPL_DELETE);
         Student student;
         try {
             student = entityManager.find(Student.class, id);
@@ -67,19 +67,19 @@ public class StudentDaoImpl extends DaoImpl<Student> implements StudentDao {
                 entityManager.remove(student);
             }
         } catch (HibernateException exception) {
-            logger.debug(exception);
+            logger.error(exception);
             throw new DaoException(LoggingAndExceptionMessage.DELETE_FAIL, exception);
         }
         logger.info(LoggingAndExceptionMessage.DELETE_STUDENT_LOG + student);
     }
 
     public List<Student> getAll() throws DaoException {
-        logger.debug(LoggingAndExceptionMessage.STUDENT_DAO_IMPL_GET_ALL);
+        logger.info(LoggingAndExceptionMessage.STUDENT_DAO_IMPL_GET_ALL);
         List<Student> students;
         try {
             students = entityManager.createQuery(Queries.GET_STUDENTS).getResultList();
         }  catch (HibernateException exception) {
-            logger.debug(exception);
+            logger.error(exception);
             throw new DaoException(LoggingAndExceptionMessage.GET_ALL_FAIL, exception);
         }
         for (Student student : students) {
