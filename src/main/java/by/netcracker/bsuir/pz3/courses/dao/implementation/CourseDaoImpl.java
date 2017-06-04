@@ -1,6 +1,6 @@
 package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.constant.Logging;
+import by.netcracker.bsuir.pz3.courses.constant.LoggingAndExceptionMessage;
 import by.netcracker.bsuir.pz3.courses.constant.Queries;
 import by.netcracker.bsuir.pz3.courses.dao.CourseDao;
 import by.netcracker.bsuir.pz3.courses.entity.Course;
@@ -23,42 +23,42 @@ public class CourseDaoImpl implements CourseDao {
     private static Logger logger = LogManager.getLogger(CourseDaoImpl.class);
 
     public void addCourse(Course course) throws DaoException {
-        logger.debug(Logging.COURSE_DAO_IMPL_ADD);
+        logger.debug(LoggingAndExceptionMessage.COURSE_DAO_IMPL_ADD);
         try {
             entityManager.persist(course);
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.ADD_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.ADD_FAIL, exception);
         }
-        logger.debug(Logging.ADD_COURSE_LOG + course);
+        logger.debug(LoggingAndExceptionMessage.ADD_COURSE_LOG + course);
     }
 
     public Course getCourseById(int id) throws DaoException {
-        logger.debug(Logging.COURSE_DAO_IMPL_GET);
+        logger.debug(LoggingAndExceptionMessage.COURSE_DAO_IMPL_GET);
         Course course;
         try {
             course = entityManager.find(Course.class, id);
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.GET_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.GET_FAIL, exception);
         }
-        logger.debug(Logging.GET_COURSE_BY_ID_LOG + course);
+        logger.debug(LoggingAndExceptionMessage.GET_COURSE_BY_ID_LOG + course);
         return course;
     }
 
     public void updateCourse(Course course) throws DaoException {
-        logger.debug(Logging.COURSE_DAO_IMPL_UPDATE);
+        logger.debug(LoggingAndExceptionMessage.COURSE_DAO_IMPL_UPDATE);
         try {
             entityManager.merge(course);
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.UPDATE_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.UPDATE_FAIL, exception);
         }
-        logger.debug(Logging.UPDATE_COURSE_LOG + course);
+        logger.debug(LoggingAndExceptionMessage.UPDATE_COURSE_LOG + course);
     }
 
     public void deleteCourse(int id) throws DaoException {
-        logger.debug(Logging.COURSE_DAO_IMPL_DELETE);
+        logger.debug(LoggingAndExceptionMessage.COURSE_DAO_IMPL_DELETE);
         Course course;
         try {
             course = entityManager.find(Course.class, id);
@@ -67,22 +67,22 @@ public class CourseDaoImpl implements CourseDao {
             }
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.DELETE_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.DELETE_FAIL, exception);
         }
-        logger.debug(Logging.DELETE_COURSE_LOG + course);
+        logger.debug(LoggingAndExceptionMessage.DELETE_COURSE_LOG + course);
     }
 
     public List<Course> getCourses() throws DaoException {
-        logger.debug(Logging.COURSE_DAO_IMPL_GET_ALL);
+        logger.debug(LoggingAndExceptionMessage.COURSE_DAO_IMPL_GET_ALL);
         List<Course> courses;
         try {
             courses = entityManager.createQuery(Queries.GET_COURSES).getResultList();
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.GET_ALL_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.GET_ALL_FAIL, exception);
         }
         for (Course course: courses) {
-            logger.debug(Logging.COURSE_LIST_LOG + course);
+            logger.debug(LoggingAndExceptionMessage.COURSE_LIST_LOG + course);
         }
         return courses;
     }

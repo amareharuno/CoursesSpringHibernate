@@ -1,6 +1,6 @@
 package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.constant.Logging;
+import by.netcracker.bsuir.pz3.courses.constant.LoggingAndExceptionMessage;
 import by.netcracker.bsuir.pz3.courses.constant.Queries;
 import by.netcracker.bsuir.pz3.courses.dao.TeacherDao;
 import by.netcracker.bsuir.pz3.courses.entity.Teacher;
@@ -21,42 +21,42 @@ public class TeacherDaoImpl implements TeacherDao {
     private EntityManager entityManager;
 
     public void addTeacher(Teacher teacher) throws DaoException {
-        logger.debug(Logging.TEACHER_DAO_IMPL_ADD);
+        logger.debug(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_ADD);
         try {
             entityManager.persist(teacher);
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.ADD_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.ADD_FAIL, exception);
         }
-        logger.info(Logging.ADD_TEACHER_LOG + teacher);
+        logger.info(LoggingAndExceptionMessage.ADD_TEACHER_LOG + teacher);
     }
 
     public Teacher getTeacherById(int id) throws DaoException {
-        logger.debug(Logging.TEACHER_DAO_IMPL_GET);
+        logger.debug(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_GET);
         Teacher teacher;
         try {
             teacher = entityManager.find(Teacher.class, id);
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.GET_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.GET_FAIL, exception);
         }
-        logger.info(Logging.GET_TEACHER_BY_ID_LOG + teacher);
+        logger.info(LoggingAndExceptionMessage.GET_TEACHER_BY_ID_LOG + teacher);
         return teacher;
     }
 
     public void updateTeacher(Teacher teacher) throws DaoException {
-        logger.debug(Logging.TEACHER_DAO_IMPL_UPDATE);
+        logger.debug(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_UPDATE);
         try {
             entityManager.merge(teacher);
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.UPDATE_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.UPDATE_FAIL, exception);
         }
-        logger.info(Logging.UPDATE_TEACHER_LOG + teacher);
+        logger.info(LoggingAndExceptionMessage.UPDATE_TEACHER_LOG + teacher);
     }
 
     public void deleteTeacher(int id) throws DaoException {
-        logger.debug(Logging.TEACHER_DAO_IMPL_DELETE);
+        logger.debug(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_DELETE);
 
         Teacher teacher;
         try {
@@ -66,22 +66,22 @@ public class TeacherDaoImpl implements TeacherDao {
             }
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.DELETE_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.DELETE_FAIL, exception);
         }
-        logger.info(Logging.DELETE_TEACHER_LOG + teacher);
+        logger.info(LoggingAndExceptionMessage.DELETE_TEACHER_LOG + teacher);
     }
 
     public List<Teacher> getTeachers() throws DaoException {
-        logger.debug(Logging.TEACHER_DAO_IMPL_GET_ALL);
+        logger.debug(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_GET_ALL);
         List<Teacher> teachers;
         try {
             teachers = entityManager.createQuery(Queries.GET_TEACHERS).getResultList();
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.GET_ALL_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.GET_ALL_FAIL, exception);
         }
         for (Teacher teacher: teachers) {
-            logger.info(Logging.TEACHER_LIST_LOG + teacher);
+            logger.info(LoggingAndExceptionMessage.TEACHER_LIST_LOG + teacher);
         }
         return teachers;
     }

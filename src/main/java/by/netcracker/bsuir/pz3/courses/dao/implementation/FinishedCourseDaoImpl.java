@@ -1,6 +1,6 @@
 package by.netcracker.bsuir.pz3.courses.dao.implementation;
 
-import by.netcracker.bsuir.pz3.courses.constant.Logging;
+import by.netcracker.bsuir.pz3.courses.constant.LoggingAndExceptionMessage;
 import by.netcracker.bsuir.pz3.courses.constant.Queries;
 import by.netcracker.bsuir.pz3.courses.dao.FinishedCourseDao;
 import by.netcracker.bsuir.pz3.courses.entity.FinishedCourse;
@@ -22,42 +22,42 @@ public class FinishedCourseDaoImpl implements FinishedCourseDao{
     private static Logger logger = LogManager.getLogger(FinishedCourseDao.class);
 
     public void AddFinishedCourse(FinishedCourse finishedCourse) throws DaoException {
-        logger.debug(Logging.FINISHED_COURSE_DAO_IMPL_ADD);
+        logger.debug(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_ADD);
         try {
             entityManager.persist(finishedCourse);
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.ADD_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.ADD_FAIL, exception);
         }
-        logger.info(Logging.ADD_FINISHED_COURSE_LOG + finishedCourse);
+        logger.info(LoggingAndExceptionMessage.ADD_FINISHED_COURSE_LOG + finishedCourse);
     }
 
     public FinishedCourse getFinishedCourseById(int id) throws DaoException {
-        logger.debug(Logging.FINISHED_COURSE_DAO_IMPL_GET);
+        logger.debug(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_GET);
         FinishedCourse finishedCourse;
         try {
             finishedCourse = entityManager.find(FinishedCourse.class, id);
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.GET_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.GET_FAIL, exception);
         }
-        logger.info(Logging.GET_FINISHED_COURSE_BY_ID_LOG + finishedCourse);
+        logger.info(LoggingAndExceptionMessage.GET_FINISHED_COURSE_BY_ID_LOG + finishedCourse);
         return finishedCourse;
     }
 
     public void updateFinishedCourse(FinishedCourse finishedCourse) throws DaoException {
-        logger.debug(Logging.FINISHED_COURSE_DAO_IMPL_UPDATE);
+        logger.debug(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_UPDATE);
         try {
             entityManager.merge(finishedCourse);
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.UPDATE_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.UPDATE_FAIL, exception);
         }
-        logger.info(Logging.UPDATE_FINISHED_COURSE_LOG + finishedCourse);
+        logger.info(LoggingAndExceptionMessage.UPDATE_FINISHED_COURSE_LOG + finishedCourse);
     }
 
     public void deleteFinishedCourse(int id) throws DaoException {
-        logger.debug(Logging.FINISHED_COURSE_DAO_IMPL_DELETE);
+        logger.debug(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_DELETE);
         FinishedCourse finishedCourse;
         try {
             finishedCourse = entityManager.find(FinishedCourse.class, id);
@@ -66,22 +66,22 @@ public class FinishedCourseDaoImpl implements FinishedCourseDao{
             }
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.DELETE_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.DELETE_FAIL, exception);
         }
-        logger.info(Logging.DELETE_FINISHED_COURSE_LOG + finishedCourse);
+        logger.info(LoggingAndExceptionMessage.DELETE_FINISHED_COURSE_LOG + finishedCourse);
     }
 
     public List<FinishedCourse> getFinishedCourses() throws DaoException {
-        logger.debug(Logging.FINISHED_COURSE_DAO_IMPL_GET_ALL);
+        logger.debug(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_GET_ALL);
         List<FinishedCourse> finishedCourses;
         try {
             finishedCourses = entityManager.createQuery(Queries.GET_FINISHED_COURSES).getResultList();
         } catch (HibernateException exception) {
             logger.debug(exception);
-            throw new DaoException(Logging.GET_ALL_FAIL, exception);
+            throw new DaoException(LoggingAndExceptionMessage.GET_ALL_FAIL, exception);
         }
         for (FinishedCourse finishedCourse : finishedCourses) {
-            logger.info(Logging.GET_ALL_FINISHED_COURSE_LOG + finishedCourse);
+            logger.info(LoggingAndExceptionMessage.GET_ALL_FINISHED_COURSE_LOG + finishedCourse);
         }
         return finishedCourses;
     }

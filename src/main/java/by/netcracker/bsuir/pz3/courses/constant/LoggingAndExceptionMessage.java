@@ -1,6 +1,6 @@
 package by.netcracker.bsuir.pz3.courses.constant;
 
-public final class Logging {
+public final class LoggingAndExceptionMessage {
     // Course
     public static final String COURSE_DAO_IMPL_ADD = "add method: CourseDaoImpl";
     public static final String COURSE_DAO_IMPL_GET = "getById method: CourseDaoImpl";
