@@ -22,7 +22,7 @@ public class CourseDaoImpl implements CourseDao {
 
     private static Logger logger = LogManager.getLogger(CourseDaoImpl.class);
 
-    public void addCourse(Course course) throws DaoException {
+    public void add(Course course) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.COURSE_DAO_IMPL_ADD);
         try {
             entityManager.persist(course);
@@ -33,7 +33,7 @@ public class CourseDaoImpl implements CourseDao {
         logger.debug(LoggingAndExceptionMessage.ADD_COURSE_LOG + course);
     }
 
-    public Course getCourseById(int id) throws DaoException {
+    public Course getById(int id) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.COURSE_DAO_IMPL_GET);
         Course course;
         try {
@@ -46,7 +46,7 @@ public class CourseDaoImpl implements CourseDao {
         return course;
     }
 
-    public void updateCourse(Course course) throws DaoException {
+    public void update(Course course) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.COURSE_DAO_IMPL_UPDATE);
         try {
             entityManager.merge(course);
@@ -57,7 +57,7 @@ public class CourseDaoImpl implements CourseDao {
         logger.debug(LoggingAndExceptionMessage.UPDATE_COURSE_LOG + course);
     }
 
-    public void deleteCourse(int id) throws DaoException {
+    public void delete(int id) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.COURSE_DAO_IMPL_DELETE);
         Course course;
         try {
@@ -72,7 +72,7 @@ public class CourseDaoImpl implements CourseDao {
         logger.debug(LoggingAndExceptionMessage.DELETE_COURSE_LOG + course);
     }
 
-    public List<Course> getCourses() throws DaoException {
+    public List<Course> getAll() throws DaoException {
         logger.debug(LoggingAndExceptionMessage.COURSE_DAO_IMPL_GET_ALL);
         List<Course> courses;
         try {

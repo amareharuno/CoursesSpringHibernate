@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void addUser(User user) throws DaoException {
+    public void add(User user) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.USER_DAO_IMPL_ADD);
         try {
             entityManager.persist(user);
@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
         logger.info(LoggingAndExceptionMessage.ADD_USER_LOG + user);
     }
 
-    public User getUserById(int id) throws DaoException {
+    public User getById(int id) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.USER_DAO_IMPL_GET);
         User user;
         try {
@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    public void updateUser(User user) throws DaoException {
+    public void update(User user) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.USER_DAO_IMPL_UPDATE);
         try {
             entityManager.merge(user);
@@ -57,7 +57,7 @@ public class UserDaoImpl implements UserDao {
         logger.info(LoggingAndExceptionMessage.UPDATE_USER_LOG + user);
     }
 
-    public void deleteUser(int id) throws DaoException {
+    public void delete(int id) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.USER_DAO_IMPL_DELETE);
         User user;
         try {
@@ -72,7 +72,7 @@ public class UserDaoImpl implements UserDao {
         logger.info(LoggingAndExceptionMessage.DELETE_USER_LOG + user);
     }
 
-    public List<User> getUsers() throws DaoException {
+    public List<User> getAll() throws DaoException {
         logger.debug(LoggingAndExceptionMessage.USER_DAO_IMPL_GET_ALL);
         List<User> users;
         try {

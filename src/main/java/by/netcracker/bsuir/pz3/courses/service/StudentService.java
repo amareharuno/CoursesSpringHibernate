@@ -1,4 +1,6 @@
 package by.netcracker.bsuir.pz3.courses.service;
 
-public interface StudentService {
+import by.netcracker.bsuir.pz3.courses.entity.Student;
+
+public interface StudentService extends Service<Student> {
 }

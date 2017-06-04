@@ -8,11 +8,13 @@ import by.netcracker.bsuir.pz3.courses.exception.DaoException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Repository
 public class TeacherDaoImpl implements TeacherDao {
 
     private static Logger logger = LogManager.getLogger(TeacherDaoImpl.class);
@@ -20,7 +22,7 @@ public class TeacherDaoImpl implements TeacherDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void addTeacher(Teacher teacher) throws DaoException {
+    public void add(Teacher teacher) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_ADD);
         try {
             entityManager.persist(teacher);
@@ -31,7 +33,7 @@ public class TeacherDaoImpl implements TeacherDao {
         logger.info(LoggingAndExceptionMessage.ADD_TEACHER_LOG + teacher);
     }
 
-    public Teacher getTeacherById(int id) throws DaoException {
+    public Teacher getById(int id) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_GET);
         Teacher teacher;
         try {
@@ -44,7 +46,7 @@ public class TeacherDaoImpl implements TeacherDao {
         return teacher;
     }
 
-    public void updateTeacher(Teacher teacher) throws DaoException {
+    public void update(Teacher teacher) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_UPDATE);
         try {
             entityManager.merge(teacher);
@@ -55,7 +57,7 @@ public class TeacherDaoImpl implements TeacherDao {
         logger.info(LoggingAndExceptionMessage.UPDATE_TEACHER_LOG + teacher);
     }
 
-    public void deleteTeacher(int id) throws DaoException {
+    public void delete(int id) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_DELETE);
 
         Teacher teacher;
@@ -71,7 +73,7 @@ public class TeacherDaoImpl implements TeacherDao {
         logger.info(LoggingAndExceptionMessage.DELETE_TEACHER_LOG + teacher);
     }
 
-    public List<Teacher> getTeachers() throws DaoException {
+    public List<Teacher> getAll() throws DaoException {
         logger.debug(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_GET_ALL);
         List<Teacher> teachers;
         try {

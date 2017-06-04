@@ -21,7 +21,7 @@ public class FinishedCourseDaoImpl implements FinishedCourseDao{
     private EntityManager entityManager;
     private static Logger logger = LogManager.getLogger(FinishedCourseDao.class);
 
-    public void AddFinishedCourse(FinishedCourse finishedCourse) throws DaoException {
+    public void add(FinishedCourse finishedCourse) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_ADD);
         try {
             entityManager.persist(finishedCourse);
@@ -32,7 +32,7 @@ public class FinishedCourseDaoImpl implements FinishedCourseDao{
         logger.info(LoggingAndExceptionMessage.ADD_FINISHED_COURSE_LOG + finishedCourse);
     }
 
-    public FinishedCourse getFinishedCourseById(int id) throws DaoException {
+    public FinishedCourse getById(int id) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_GET);
         FinishedCourse finishedCourse;
         try {
@@ -45,7 +45,7 @@ public class FinishedCourseDaoImpl implements FinishedCourseDao{
         return finishedCourse;
     }
 
-    public void updateFinishedCourse(FinishedCourse finishedCourse) throws DaoException {
+    public void update(FinishedCourse finishedCourse) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_UPDATE);
         try {
             entityManager.merge(finishedCourse);
@@ -56,7 +56,7 @@ public class FinishedCourseDaoImpl implements FinishedCourseDao{
         logger.info(LoggingAndExceptionMessage.UPDATE_FINISHED_COURSE_LOG + finishedCourse);
     }
 
-    public void deleteFinishedCourse(int id) throws DaoException {
+    public void delete(int id) throws DaoException {
         logger.debug(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_DELETE);
         FinishedCourse finishedCourse;
         try {
@@ -71,7 +71,7 @@ public class FinishedCourseDaoImpl implements FinishedCourseDao{
         logger.info(LoggingAndExceptionMessage.DELETE_FINISHED_COURSE_LOG + finishedCourse);
     }
 
-    public List<FinishedCourse> getFinishedCourses() throws DaoException {
+    public List<FinishedCourse> getAll() throws DaoException {
         logger.debug(LoggingAndExceptionMessage.FINISHED_COURSE_DAO_IMPL_GET_ALL);
         List<FinishedCourse> finishedCourses;
         try {
