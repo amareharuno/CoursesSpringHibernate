@@ -49,6 +49,7 @@ public final class LoggingAndExceptionMessage {
     public static final String UPDATE_TEACHER_LOG = "Teacher successfully updated. Details: ";
     public static final String DELETE_TEACHER_LOG = "Teacher successfully deleted. Details";
     public static final String TEACHER_LIST_LOG = "Teacher list: ";
+
     // User
     public static final String USER_DAO_IMPL_ADD = "add method: UserDaoImpl";
     public static final String USER_DAO_IMPL_GET = "getById method: UserDaoImpl";

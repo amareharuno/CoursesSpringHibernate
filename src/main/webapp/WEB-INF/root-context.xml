@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--
+        root-context.xml — это общий, расшаренный контекст, содержащий бины, которые будут использоваться
+        всеми сервлетами приложения. Загрузка этого контекста описывается в web.xml.
+
+        Должен содержать:
+        1. Бин dataSource, ответственный за подключение к БД.
+        2. Бины слоя доступа к данным (dao) и сервисов (service).
+        3. Контейнер менеджеров сущностей EntityManagerFactory.
+        4. Инициализация транзакции. Менеджер транзакций и tx:annotation-driven должны находится здесь.
+        5. Spring Security. Всё описание должно располагаться здесь.
+
+        Бины, объявленные в корневой или общем (root-context.xml) контексте не имеют доступа к бинам,
+        описанным в контекстах сервлетов.
+    -->
+
+    <!-- Активирует аннотации такие как @Autowired, @Required. -->
+    <context:annotation-config />
+    <!--
+        Без этой строчки бины будут созданы, но не будут связаны.
+        Фактически заменяет подобные строки:
+        <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+
+        (В AutowiredAnnotationBeanPostProcessor реализована логика, которая выискивает все помеченные аннотацией @Autowired
+        поля и через рефлекшен кладет в них что-то, например другой бин. Затем, после обработки кастомного бина
+        бином BeanPostProcessor, обработанный бин возвращается в BeanFactory, которая уже полностью готовый бин, кладет в контейнер)
+    -->
+
+    <!-- 1. Бин, ответственный за подключение к БД -->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <!-- BasicDataSource - реализация интерфейсса DataSource. Фабрика коннекшенов к физической БД,
+        которую представляет объект DataSource -->
+        <property name="url" value="jdbc:mysql://localhost:3306/courses_spring?useSSL=false" />
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="username" value="root"/>
+        <property name="password" value="SQL174"/>
+        <property name="initialSize" value="5"/>
+        <property name="maxTotal" value="10"/>
+    </bean>
+
+    <!-- 2. Папки с бинами-компонентами -->
+    <context:component-scan base-package="by.netcracker.bsuir.pz3.courses.dao"/>
+    <context:component-scan base-package="by.netcracker.bsuir.pz3.courses.service"/>
+
+    <!-- 3. EntityManager (LocalContainerEntityManagerFactoryBean - бин-поставщика данных) -->
+    <bean id="entityManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <!--
+            LocalContainerEntityManagerFactoryBean - FactoryBean, который создает JPA EntityManagerFactory.
+            Это самый мощный способ настроить общий JPA EntityManagerFactory в контексте приложения Spring;
+            EntityManagerFactory затем может быть передан в DAO на основе JPA посредством инъекции зависимостей.
+        -->
+        <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
+
+        <!-- Свойства/описание dataSource инжекируются по ссылке из бина с id="dataSource" -->
+        <property name="dataSource" ref="dataSource" />
+
+        <property name="packagesToScan" value="by.netcracker.bsuir.pz3.courses" />
+
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="showSql" value="true" />
+                <property name="database" value="MYSQL" />
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
+            </bean>
+        </property>
+        <property name="jpaDialect" ref="jpaDialect"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="debug">true</prop>
+                <prop key="connection.isolation">2</prop>
+                <prop key="hibernate.cglib.use_reflection_optimizer">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+    <!--
+        HibernateJpaDialect имплементация JpaDialect для Hibernate EntityManager.
+        JpaDialect - это интерфейс, который инкапсулирует определенные функции, которые JPA 1.0 не предлагает,
+        например, доступ к базовому соединению JDBC.
+    -->
+
+    <!-- Процессор для инъекции entityManager -->
+    <!--<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />-->
+    <!--
+        BeanPostProcessor обрабатывает аннотации PersistenceUnit и PersistenceContext, для инжектирования
+        соответствующих JPA ресурсов EntityManagerFactory и EntityManager. Любые поля или методы в любом объекте,
+        управляемом Spring, аннотированные таким образом, будут автоматически инжектированны.
+    -->
+
+    <!-- 4. Инициализация транзакции -->
+    <!-- Активирует аннотации @Transactional -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="jpaDialect" ref="jpaDialect"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="entityManagerFactory" ref="entityManager"/>
+    </bean>
+</beans>

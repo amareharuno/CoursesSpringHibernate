@@ -4,6 +4,7 @@ import by.netcracker.bsuir.pz3.courses.dao.constant.DatabaseTableInfo;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,8 +16,28 @@ public class Course implements Serializable {
     private int lessonsCount;
     private int lessonDuration;
     private int courseDuration;
+    private Teacher teacher;
+    private List<Student> students;
 
     public Course() {
+    }
+
+    public Course(String subject, String courseName, int lessonsCount, int lessonDuration) {
+        this.subject = subject;
+        this.courseName = courseName;
+        this.lessonsCount = lessonsCount;
+        this.lessonDuration = lessonDuration;
+        this.courseDuration = lessonsCount*lessonDuration;
+    }
+
+    public Course(String subject, String courseName, int lessonsCount,
+                  int lessonDuration, Teacher teacher) {
+        this.subject = subject;
+        this.courseName = courseName;
+        this.lessonsCount = lessonsCount;
+        this.lessonDuration = lessonDuration;
+        this.courseDuration = lessonsCount*lessonDuration;
+        this.teacher = teacher;
     }
 
     @Id
@@ -75,6 +96,25 @@ public class Course implements Serializable {
         this.courseDuration = courseDuration;
     }
 
+    @ManyToOne
+    @JoinColumn(name = DatabaseTableInfo.COURSE_TEACHER_ID)
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    @ManyToMany
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -85,12 +125,13 @@ public class Course implements Serializable {
                 lessonDuration == course.lessonDuration &&
                 courseDuration == course.courseDuration &&
                 Objects.equals(subject, course.subject) &&
-                Objects.equals(courseName, course.courseName);
+                Objects.equals(courseName, course.courseName) &&
+                Objects.equals(teacher, course.teacher);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, subject, courseName, lessonsCount, lessonDuration, courseDuration);
+        return Objects.hash(id, subject, courseName, lessonsCount, lessonDuration, courseDuration, teacher);
     }
 
     @Override
@@ -102,6 +143,8 @@ public class Course implements Serializable {
         sb.append(", lessonsCount=").append(lessonsCount);
         sb.append(", lessonDuration=").append(lessonDuration);
         sb.append(", courseDuration=").append(courseDuration);
+        sb.append(", teacher=").append(teacher);
+        sb.append(", students=").append(students);
         sb.append('}');
         return sb.toString();
     }

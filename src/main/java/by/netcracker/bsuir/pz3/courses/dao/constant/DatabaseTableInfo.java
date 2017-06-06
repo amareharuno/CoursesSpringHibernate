@@ -11,11 +11,13 @@ public final class DatabaseTableInfo {
     public static final String LESSONS_COUNT = "lessonsCount";
     public static final String LESSON_DURATION = "lessonDuration";
     public static final String COURSE_DURATION = "courseDuration";
+    public static final String COURSE_TEACHER_ID = "Teacher_teacherId";
 
     // ----- FINISHED COURSE TABLE -----
     public static final String FINISHED_COURSE_TABLE = "FinishedCourse";
     // fields
     public static final String FINISHED_COURSE_ID = "finishedCourseId";
+    public static final String FINISHED_COURSE_STUDENT_ID = "Student_studentId";
     public static final String ASSESSMENT = "assessment";
     public static final String REVIEW = "review";
 
@@ -23,11 +25,13 @@ public final class DatabaseTableInfo {
     public static final String STUDENT_TABLE = "Student";
     // fields
     public static final String STUDENT_ID = "studentId";
+    public static final String STUDENT_USER_ID = "User_userId";
 
     // ----- TEACHER TABLE -----
     public static final String TEACHER_TABLE = "Teacher";
     // fields
     public static final String TEACHER_ID = "teacherId";
+    public static final String TEACHER_USER_ID = "User_userId";
 
     // ----- USER TABLE -----
     public static final String USER_TABLE = "User";

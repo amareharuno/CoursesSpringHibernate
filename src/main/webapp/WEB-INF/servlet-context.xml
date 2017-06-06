@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+	   http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--
+        servlet-context.xml - это контекст самого сервлета. Сервлетов в одном приложении может быть несколько.
+        В web.xml можно задавать их порядок загрузки, если нужно.
+
+        Должен содержать:
+        1. Инициализацию Spring MVC (mvc:annotation-driven).
+        2. Все бины контроллеров сервлета (web).
+        3. Бины локализации: messageSource, localeResolver.
+        4. Бины тем представлений: themeSource, themeResolver.
+        5. Обработчик представлений и всё, что связано непосредственно с пользовательским вводом/выводом.
+
+        Бины, описанные в контекстах сервлетов имеют доступ к бинам в общем контексте (root-context.xml).
+    -->
+
+    <!-- Подключаем использование аннотаций Spring MVC -->
+    <mvc:annotation-driven/>
+
+    <!-- Папка с бинами-компонентами -->
+    <context:component-scan base-package="by.netcracker.bsuir.pz3.courses.web"/>
+
+    <!-- Путь к папке с jsp, html,css... -->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+</beans>
