@@ -14,7 +14,7 @@
         servlet-context.xml - это контекст самого сервлета. Сервлетов в одном приложении может быть несколько.
         В web.xml можно задавать их порядок загрузки, если нужно.
 
-        Должен содержать:
+        Должен/может содержать:
         1. Инициализацию Spring MVC (mvc:annotation-driven).
         2. Все бины контроллеров сервлета (web).
         3. Бины локализации: messageSource, localeResolver.
@@ -24,12 +24,44 @@
         Бины, описанные в контекстах сервлетов имеют доступ к бинам в общем контексте (root-context.xml).
     -->
 
-    <!-- Подключаем использование аннотаций Spring MVC -->
+    <!-- 1. Подключаем использование аннотаций Spring MVC -->
     <mvc:annotation-driven/>
 
-    <!-- Папка с бинами-компонентами -->
+    <!-- 2. Папка с бинами-компонентами -->
     <context:component-scan base-package="by.netcracker.bsuir.pz3.courses.web"/>
 
-    <!-- Путь к папке с jsp, html,css... -->
+    <!-- Путь к папке с css, fonts, img... -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <!-- Отображение видов на jsp-файлы, лежащие в папке /WEB-INF/webPage -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <!--
+        InternalResourceViewResolver - удобный подкласс UrlBasedViewResolver,
+        который поддерживает InternalResourceView (т. е. сервлеты и JSP)
+
+        UrlBasedViewResolver - простая реализация интерфейса ViewResolver, позволяющая напрямую представлять
+        символическое имя view-файла в URL, без явного маппинга.
+
+        InternalResourceView - обертка для JSP или другого ресурса в рамках одного и того же веб-приложения.
+        Предоставляет объекты модели в качестве атрибутов запроса и перенаправляет запрос на указанный URL ресурса
+        с помощью RequestDispatcher.
+    -->
+        <property name="order" value="1" />
+        <!--
+            Если есть несколько viewResolver-ов (например InternalResourceViewResolver, ResourceBundleViewResolver,
+            XmlViewResolver), то можно указать приоритет, в котором они будут применяться. Чем меньше число, тем он выше
+        -->
+
+        <property name="prefix" value="/WEB-INF/webPage/" />
+        <!--
+           Поместив JSP-файлы, которые просто служат в качестве представлений, в WEB-INF, скрываю их
+           от прямого доступа (например, через введенный вручную URL). Обращаться к ним могут только контроллеры.
+        -->
+
+        <property name="suffix" value=".jsp"/>
+        <!--
+            Каждое имя view, возвращаемое обработчиком, будет транслированно в ресурс JSP
+            (например: «index» -> «/WEB-INF/webPage/index.jsp»).
+        -->
+    </bean>
 </beans>

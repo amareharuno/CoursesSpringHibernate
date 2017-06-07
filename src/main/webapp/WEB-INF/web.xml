@@ -30,6 +30,7 @@
         <!-- load-on-startup — описывает что сервлет будет загружаться первым -->
         <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>appServlet</servlet-name>
         <!-- Сервлет будет отвечать на запросы по пути <имя_сайта/localhost:8080>/<имя_приложения/war_файла>/**-->

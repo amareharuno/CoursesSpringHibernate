@@ -87,7 +87,7 @@
 
     <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
     <!--
-        HibernateJpaDialect имплементация JpaDialect для Hibernate EntityManager.
+        HibernateJpaDialect - имплементация JpaDialect для Hibernate EntityManager.
         JpaDialect - это интерфейс, который инкапсулирует определенные функции, которые JPA 1.0 не предлагает,
         например, доступ к базовому соединению JDBC.
     -->

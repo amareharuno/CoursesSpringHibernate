@@ -5,15 +5,40 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="courses_spring" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <!--
+        Файл persistence.xml дает полную гибкость для настройки EntityManager.
 
+        persistence.xml является стандартным файлом конфигурации в JPA.
+        Он должен находиться в каталоге META-INF внутри JAR-файла, который содержит сущности-компоненты.
+
+        Файл persistence.xml должен определять persistence-unit-ы с уникальными именами.
+        Поскольку может быть несколько экземпляров persistence-unit, определенных в одном приложении,
+        в аннотации @PersistenceContext нужно указать, какой именно persistence-unit использовать.
+        Например, @PersistenceContext (name = "JpaPersistenceUnitCoursesSpring") инжектирует EntityManager из
+        persistence-unit с именем «JpaPersistenceUnitCoursesSpring».
+        Если persistence-unit один, имя в аннотации можно не указывать.
+    -->
+
+    <!--
+        The set of entity types that can be managed by a given entity manager is defined by a persistence unit.
+        A persistence unit defines the set of all classes that are related or grouped by the application,
+        and which must be collocated in their mapping to a single data store.
+    -->
+    <persistence-unit name="JpaPersistenceUnitCoursesSpring" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!--
+            provider означает какая реализация JPA должна быть использована.
+            Hibernate представлен org.hibernate.jpa.HibernatePersistenceProvider.
+        -->
+
+        <!-- The "class" elements specify names of managed persistable classes -->
         <class>by.netcracker.bsuir.pz3.courses.entity.Course</class>
         <class>by.netcracker.bsuir.pz3.courses.entity.FinishedCourse</class>
         <class>by.netcracker.bsuir.pz3.courses.entity.Student</class>
         <class>by.netcracker.bsuir.pz3.courses.entity.Teacher</class>
         <class>by.netcracker.bsuir.pz3.courses.entity.User</class>
 
+        <!-- Настройки для Hibernate -->
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
             <property name="hibernate.generate_statistics" value="true" />
