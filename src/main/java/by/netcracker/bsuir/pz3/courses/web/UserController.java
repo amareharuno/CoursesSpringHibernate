@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
+@Controller("/userController")
 public class UserController {
 
     private Logger logger = LogManager.getLogger(UserService.class.getName());
@@ -25,22 +25,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(name = "/signIn", method = RequestMethod.GET)
+    @RequestMapping(value = "/signIn", method = RequestMethod.GET)
     public ModelAndView getSignInPage() {
         return new ModelAndView(WebPage.SIGN_IN);
     }
 
-    @RequestMapping(name = "/signUp", method = RequestMethod.GET)
+    @RequestMapping(value = "/signUp", method = RequestMethod.GET)
     public ModelAndView getSignUpPage() {
         return new ModelAndView(WebPage.SIGN_UP);
     }
 
-    @RequestMapping(name = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView getIndexPage() {
         return new ModelAndView(WebPage.INDEX);
     }
 
-    @RequestMapping(name = "/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
     public void signInUser(HttpServletRequest request) {
         logger.info(LoggingAndExceptionMessage.USER_CONTROLLER_SIGN_IN);
 
@@ -62,7 +62,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping(name = "coursesSpring/user", method = RequestMethod.POST)
+    @RequestMapping(value = "coursesSpring/user1", method = RequestMethod.POST)
     public void signUpUser(HttpServletRequest request) {
         logger.info(LoggingAndExceptionMessage.USER_CONTROLLER_SIGN_UP);
 
