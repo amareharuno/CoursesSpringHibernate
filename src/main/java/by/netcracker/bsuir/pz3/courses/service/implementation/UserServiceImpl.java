@@ -9,6 +9,7 @@ import by.netcracker.bsuir.pz3.courses.service.exception.ServiceException;
 import by.netcracker.bsuir.pz3.courses.service.util.RoleChecker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 @Service
 public class UserServiceImpl extends ServiceImpl<User> implements UserService {
@@ -20,6 +21,11 @@ public class UserServiceImpl extends ServiceImpl<User> implements UserService {
     StudentService studentService;
 
     @Override
+    public void signInUser(String login, String password) throws ServiceException {
+
+    }
+
+    @Override
     public void signUpUser(String login, String password, String name,
                            String lastName, String middleName, String role) throws ServiceException {
         User user = new User(login, password, name, lastName, middleName);
@@ -29,10 +35,4 @@ public class UserServiceImpl extends ServiceImpl<User> implements UserService {
             studentService.add(student);
         }
     }
-
-    @Override
-    public void signInUser(String login, String password) throws ServiceException {
-
-    }
-
 }

@@ -6,7 +6,7 @@
 
     <display-name>coursesSpring</display-name>
     <welcome-file-list>
-        <welcome-file>webapp/index.html</welcome-file>
+        <welcome-file>/WEB-INF/webPage/index.jsp</welcome-file>
     </welcome-file-list>
 
     <!-- Загрузка root-context -->
@@ -17,6 +17,9 @@
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    <!--<listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>-->
 
     <!-- Загрузка servlet-context -->
     <servlet>

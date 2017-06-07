@@ -4,6 +4,7 @@ import by.netcracker.bsuir.pz3.courses.service.UserService;
 import by.netcracker.bsuir.pz3.courses.service.exception.ServiceException;
 import by.netcracker.bsuir.pz3.courses.web.constant.LoggingAndExceptionMessage;
 import by.netcracker.bsuir.pz3.courses.web.constant.RequestParameter;
+import by.netcracker.bsuir.pz3.courses.web.constant.WebPage;
 import by.netcracker.bsuir.pz3.courses.web.util.InputValidation;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,8 +25,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @ResponseBody
-    @RequestMapping(name = "coursesSpring/user", method = RequestMethod.POST)
+    @RequestMapping(name = "/signIn", method = RequestMethod.GET)
+    public ModelAndView getSignInPage() {
+        return new ModelAndView(WebPage.SIGN_IN);
+    }
+
+    @RequestMapping(name = "/signUp", method = RequestMethod.GET)
+    public ModelAndView getSignUpPage() {
+        return new ModelAndView(WebPage.SIGN_UP);
+    }
+
+    @RequestMapping(name = "/index", method = RequestMethod.GET)
+    public ModelAndView getIndexPage() {
+        return new ModelAndView(WebPage.INDEX);
+    }
+
+    @RequestMapping(name = "/user", method = RequestMethod.POST)
     public void signInUser(HttpServletRequest request) {
         logger.info(LoggingAndExceptionMessage.USER_CONTROLLER_SIGN_IN);
 

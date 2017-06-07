@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @org.springframework.stereotype.Service
-public class ServiceImpl<T> implements Service<T>{
+public abstract class ServiceImpl<T> implements Service<T>{
 
     private Logger logger = LogManager.getLogger(ServiceImpl.class);
 

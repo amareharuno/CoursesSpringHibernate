@@ -25,6 +25,16 @@
         and which must be collocated in their mapping to a single data store.
     -->
     <persistence-unit name="JpaPersistenceUnitCoursesSpring" transaction-type="RESOURCE_LOCAL">
+    <!--
+        With <persistence-unit transaction-type="RESOURCE_LOCAL"> you are responsible
+        for EntityManager (PersistenceContext/Cache) creating and tracking
+
+        Resource_Local and JTA (also transaction-type) are transaction managers (methods of doing transactions).
+        This is not the property of database but the component responsible for coordinating transactions.
+        JPA and JTA transaction managers are different. JPA transaction manager is responsible for JPA transactions
+        and you want to use one if you are only doing JPA transaction. JTA transaction manager is
+        general purpose transaction manager and can enlist other resources such as JMS queues in transaction.
+    -->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!--
             provider означает какая реализация JPA должна быть использована.
