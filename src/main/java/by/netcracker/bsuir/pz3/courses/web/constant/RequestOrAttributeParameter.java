@@ -17,4 +17,9 @@ public final class RequestOrAttributeParameter {
 
     public static final String ASSESSMENT = "assessment";
     public static final String REVIEW = "review";
+
+    // teacher.jsp
+    public static final String TEACHERS = "teachers";
+    public static final String STUDENTS = "students";
+    public static final String COURSES = "courses";
 }
