@@ -1,8 +1,8 @@
 package by.netcracker.bsuir.pz3.courses.web;
 
-import by.netcracker.bsuir.pz3.courses.constant.UserRole;
 import by.netcracker.bsuir.pz3.courses.service.UserService;
 import by.netcracker.bsuir.pz3.courses.service.exception.ServiceException;
+import by.netcracker.bsuir.pz3.courses.util.RoleChecker;
 import by.netcracker.bsuir.pz3.courses.web.constant.LoggingAndExceptionMessage;
 import by.netcracker.bsuir.pz3.courses.web.constant.RequestOrAttributeParameter;
 import by.netcracker.bsuir.pz3.courses.web.constant.WebPage;
@@ -58,9 +58,9 @@ public class UserController {
         if (InputValidation.validateInput(login, password, firstName, lastName, middleName)){
             try {
                 userService.signUpUser(login, password, firstName, lastName, middleName, role);
-                if (role.equals(UserRole.STUDENT)) {
+                if (RoleChecker.INSTANCE.isStudent(role)) {
                     modelAndView.setViewName(WebPage.STUDENT);
-                } else if (role.equals(UserRole.TEACHER)) {
+                } else if (RoleChecker.INSTANCE.isTeacher(role)) {
                     modelAndView.setViewName(WebPage.TEACHER);
                 }
                 modelAndView.addObject(RequestOrAttributeParameter.LOGIN, login);

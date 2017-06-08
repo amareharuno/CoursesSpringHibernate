@@ -67,7 +67,7 @@
                                    value="Create an account">
                         </p>
                         <label>
-                            <input type="checkbox" name="isTeacher">
+                            <input type="checkbox" name="role">
                             I'm a teacher.
                         </label>
                     </form>

@@ -2,6 +2,10 @@ package by.netcracker.bsuir.pz3.courses.service.constant;
 
 public final class LoggingAndExceptionMessage {
 
+    //user
+    public static final String USER_SIGN_IN = "signInUser method: UserServiceImpl";
+    public static final String USER_SIGN_UP = "signUpUser method: UserServiceImpl";
+
     public static final String SERVICE_ADD = "add method: ServiceImpl";
     public static final String SERVICE_GET = "getById method: ServiceImpl";
     public static final String SERVICE_UPDATE = "update method: ServiceImpl";

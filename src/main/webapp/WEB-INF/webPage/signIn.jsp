@@ -39,7 +39,7 @@
                     <hr class="intro-divider">
 
                     <%--SIGN IN FORM--%>
-                    <form class="list-inline" action="${pageContext.request.contextPath}/signedInUser">
+                    <form class="list-inline" action="${pageContext.request.contextPath}/signedInUser" method="post">
                         <input type="hidden" name="command" value="login">
                         <p>
                             <input class="lead" type="text" required style="color: #122b40"

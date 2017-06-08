@@ -6,9 +6,11 @@ import by.netcracker.bsuir.pz3.courses.entity.User;
 import by.netcracker.bsuir.pz3.courses.service.StudentService;
 import by.netcracker.bsuir.pz3.courses.service.TeacherService;
 import by.netcracker.bsuir.pz3.courses.service.UserService;
-import by.netcracker.bsuir.pz3.courses.constant.UserRole;
+import by.netcracker.bsuir.pz3.courses.service.constant.LoggingAndExceptionMessage;
 import by.netcracker.bsuir.pz3.courses.service.exception.ServiceException;
-import by.netcracker.bsuir.pz3.courses.service.util.RoleChecker;
+import by.netcracker.bsuir.pz3.courses.util.RoleChecker;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,13 +24,12 @@ public class UserServiceImpl extends ServiceImpl<User> implements UserService {
     @Autowired
     StudentService studentService;
 
+    Logger logger = LogManager.getLogger(UserServiceImpl.class);
+
     @Transactional
     @Override
-    public String signInUser(String login, String password) throws ServiceException {
-        String userRole = UserRole.TEACHER;
-
-        userRole = UserRole.STUDENT;
-        return userRole;
+    public void signInUser(String login, String password) throws ServiceException {
+        logger.info(LoggingAndExceptionMessage.USER_SIGN_IN);
     }
 
     @Transactional
@@ -36,12 +37,13 @@ public class UserServiceImpl extends ServiceImpl<User> implements UserService {
     public void signUpUser(String login, String password, String name,
                            String lastName, String middleName, String role) throws ServiceException {
 
+        logger.info(LoggingAndExceptionMessage.USER_SIGN_UP);
         User user = new User(login, password, name, lastName, middleName);
         this.add(user);
-        if (RoleChecker.INSTANSE.isStudent(role)) {
+        if (RoleChecker.INSTANCE.isStudent(role)) {
             Student student = new Student(user);
             studentService.add(student);
-        } else {
+        } else if (RoleChecker.INSTANCE.isTeacher(role)){
             Teacher teacher = new Teacher(user);
             teacherService.add(teacher);
         }
