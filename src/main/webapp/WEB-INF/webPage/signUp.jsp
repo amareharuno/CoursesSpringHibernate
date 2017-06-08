@@ -35,7 +35,7 @@
                     <h1>Sign up to Courses</h1>
                     <h3>Create your personal account</h3>
                     <hr class="intro-divider">
-                    <form class="list-inline" action="#" method="post">
+                    <form class="list-inline" action="${pageContext.request.contextPath}/signedUpUser" method="post">
                         <p>
                             <input type="hidden"
                                    name="command" value="register">

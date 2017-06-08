@@ -9,4 +9,5 @@ public final class WebPage {
     public static final String COURSES = "courses";
     public static final String FINISHED_COURSES = "finishedCourses";
 
+    public static final String ERROR = "error";
 }

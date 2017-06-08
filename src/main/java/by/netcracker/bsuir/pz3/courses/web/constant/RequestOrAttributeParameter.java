@@ -1,6 +1,6 @@
 package by.netcracker.bsuir.pz3.courses.web.constant;
 
-public final class RequestParameter {
+public final class RequestOrAttributeParameter {
     public static final String LOGIN = "login";
     public static final String PASSWORD = "password";
     public static final String FIRST_NAME = "firstName";

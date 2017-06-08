@@ -91,4 +91,18 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
         }
         return users;
     }
+
+    @Override
+    public User getUserByLogin(String login) throws DaoException {
+        logger.info(LoggingAndExceptionMessage.USER_DAO_IMPL_GET_USER_BY_LOGIN);
+        User user;
+        try {
+            user = entityManager.find(User.class, login);
+        } catch (HibernateException exception) {
+            logger.error(exception);
+            throw new DaoException(LoggingAndExceptionMessage.GET_USER_BY_LOGIN_FAIL, exception);
+        }
+        logger.info(LoggingAndExceptionMessage.GET_USER_BY_LOGIN_LOG + user);
+        return user;
+    }
 }

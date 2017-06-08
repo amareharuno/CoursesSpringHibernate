@@ -56,12 +56,14 @@ public final class LoggingAndExceptionMessage {
     public static final String USER_DAO_IMPL_UPDATE = "update method: UserDaoImpl";
     public static final String USER_DAO_IMPL_DELETE = "delete method: UserDaoImpl";
     public static final String USER_DAO_IMPL_GET_ALL = "getAll method: UserDaoImpl";
+    public static final String USER_DAO_IMPL_GET_USER_BY_LOGIN = "getUserByLogin method: UserDaoImpl";
 
     public static final String ADD_USER_LOG = "User successfully added. Details: ";
     public static final String GET_USER_BY_ID_LOG = "User successfully got. Details: ";
     public static final String UPDATE_USER_LOG = "User updated successfully. Details: ";
     public static final String DELETE_USER_LOG = "User successfully deleted. Details:..?";
     public static final String USER_LIST_LOG = "User list: ";
+    public static final String GET_USER_BY_LOGIN_LOG = "User successfully got. Details: ";
 
     // Exceptions message
     public static final String ADD_FAIL = "Adding was failed";
@@ -69,4 +71,6 @@ public final class LoggingAndExceptionMessage {
     public static final String UPDATE_FAIL = "Updating was failed";
     public static final String DELETE_FAIL = "Deleting was failed";
     public static final String GET_ALL_FAIL = "Getting all was failed";
+
+    public static final String GET_USER_BY_LOGIN_FAIL = "Getting by login was failed";
 }

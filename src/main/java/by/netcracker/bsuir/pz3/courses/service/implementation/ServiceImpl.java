@@ -8,6 +8,7 @@ import by.netcracker.bsuir.pz3.courses.service.Service;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public abstract class ServiceImpl<T> implements Service<T>{
     @Autowired
     private Dao<T> dao;
 
+    @Transactional
     @Override
     public void add(T entity) throws ServiceException {
         logger.info(LoggingAndExceptionMessage.SERVICE_ADD);
@@ -31,6 +33,7 @@ public abstract class ServiceImpl<T> implements Service<T>{
         }
     }
 
+    @Transactional(readOnly = true)
     @Override
     public T getById(int id) throws ServiceException {
         logger.info(LoggingAndExceptionMessage.SERVICE_GET);
@@ -44,6 +47,7 @@ public abstract class ServiceImpl<T> implements Service<T>{
         }
     }
 
+    @Transactional
     @Override
     public void update(T entity) throws ServiceException {
         logger.info(LoggingAndExceptionMessage.SERVICE_UPDATE);
@@ -56,6 +60,7 @@ public abstract class ServiceImpl<T> implements Service<T>{
         }
     }
 
+    @Transactional
     @Override
     public void delete(int id) throws ServiceException {
         logger.info(LoggingAndExceptionMessage.SERVICE_DELETE);
@@ -68,6 +73,7 @@ public abstract class ServiceImpl<T> implements Service<T>{
         }
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<T> getAll() throws ServiceException {
         logger.info(LoggingAndExceptionMessage.SERVICE_GET_ALL);
