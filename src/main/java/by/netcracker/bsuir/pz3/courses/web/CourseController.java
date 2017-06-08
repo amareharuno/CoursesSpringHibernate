@@ -1,7 +1,6 @@
 package by.netcracker.bsuir.pz3.courses.web;
 
 import by.netcracker.bsuir.pz3.courses.service.CourseService;
-import by.netcracker.bsuir.pz3.courses.service.TeacherService;
 import by.netcracker.bsuir.pz3.courses.service.exception.ServiceException;
 import by.netcracker.bsuir.pz3.courses.web.constant.RequestOrAttributeParameter;
 import by.netcracker.bsuir.pz3.courses.web.constant.WebPage;

@@ -10,14 +10,32 @@ import java.util.Objects;
 @Entity
 @Table(name = DatabaseTableInfo.COURSE_TABLE)
 public class Course implements Serializable {
+    @Id
+    @Column(name = DatabaseTableInfo.COURSE_ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = DatabaseTableInfo.SUBJECT)
     private String subject;
+
+    @Column(name = DatabaseTableInfo.NAME)
     private String courseName;
+
+    @Column(name = DatabaseTableInfo.LESSONS_COUNT)
     private int lessonsCount;
+
+    @Column(name = DatabaseTableInfo.LESSON_DURATION)
     private int lessonDuration;
+
+    @Column(name = DatabaseTableInfo.COURSE_DURATION)
     private int courseDuration;
+
+    @ManyToOne
+    @JoinColumn(name = DatabaseTableInfo.COURSE_TEACHER_ID)
     private Teacher teacher;
-    private List<Student> students;
+
+//    @ManyToMany
+//    private List<Student> students;
 
     public Course() {
     }
@@ -40,9 +58,6 @@ public class Course implements Serializable {
         this.teacher = teacher;
     }
 
-    @Id
-    @Column(name = DatabaseTableInfo.COURSE_ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -51,7 +66,6 @@ public class Course implements Serializable {
         this.id = id;
     }
 
-    @Column(name = DatabaseTableInfo.SUBJECT)
     public String getSubject() {
         return subject;
     }
@@ -60,7 +74,6 @@ public class Course implements Serializable {
         this.subject = subject;
     }
 
-    @Column(name = DatabaseTableInfo.NAME)
     public String getCourseName() {
         return courseName;
     }
@@ -69,7 +82,6 @@ public class Course implements Serializable {
         this.courseName = courseName;
     }
 
-    @Column(name = DatabaseTableInfo.LESSONS_COUNT)
     public int getLessonsCount() {
         return lessonsCount;
     }
@@ -78,7 +90,6 @@ public class Course implements Serializable {
         this.lessonsCount = lessonsCount;
     }
 
-    @Column(name = DatabaseTableInfo.LESSON_DURATION)
     public int getLessonDuration() {
         return lessonDuration;
     }
@@ -87,7 +98,6 @@ public class Course implements Serializable {
         this.lessonDuration = lessonDuration;
     }
 
-    @Column(name = DatabaseTableInfo.COURSE_DURATION)
     public int getCourseDuration() {
         return courseDuration;
     }
@@ -96,8 +106,6 @@ public class Course implements Serializable {
         this.courseDuration = courseDuration;
     }
 
-    @ManyToOne
-    @JoinColumn(name = DatabaseTableInfo.COURSE_TEACHER_ID)
     public Teacher getTeacher() {
         return teacher;
     }
@@ -106,14 +114,13 @@ public class Course implements Serializable {
         this.teacher = teacher;
     }
 
-    @ManyToMany
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
+//    public List<Student> getStudents() {
+//        return students;
+//    }
+//
+//    public void setStudents(List<Student> students) {
+//        this.students = students;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -144,7 +151,6 @@ public class Course implements Serializable {
         sb.append(", lessonDuration=").append(lessonDuration);
         sb.append(", courseDuration=").append(courseDuration);
         sb.append(", teacher=").append(teacher);
-        sb.append(", students=").append(students);
         sb.append('}');
         return sb.toString();
     }

@@ -10,9 +10,17 @@ import java.util.Objects;
 @Table(name = DatabaseTableInfo.TEACHER_TABLE)
 public class Teacher implements Serializable {
 
+    @Id
+    @Column(name = DatabaseTableInfo.TEACHER_ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @OneToOne
+    @JoinColumn(name = DatabaseTableInfo.TEACHER_USER_ID)
     private User user;
-    private List<Course> taughtCourses;
+
+//    @OneToMany
+//    private List<Course> taughtCourses;
 
     public Teacher() {
     }
@@ -21,9 +29,6 @@ public class Teacher implements Serializable {
         this.user = user;
     }
 
-    @Id
-    @Column(name = DatabaseTableInfo.TEACHER_ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -32,8 +37,6 @@ public class Teacher implements Serializable {
         this.id = id;
     }
 
-    @OneToOne
-    @JoinColumn(name = DatabaseTableInfo.TEACHER_USER_ID)
     public User getUser() {
         return user;
     }
@@ -42,14 +45,13 @@ public class Teacher implements Serializable {
         this.user = user;
     }
 
-    @OneToMany
-    public List<Course> getTaughtCourses() {
-        return taughtCourses;
-    }
-
-    public void setTaughtCourses(List<Course> taughtCourses) {
-        this.taughtCourses = taughtCourses;
-    }
+//    public List<Course> getTaughtCourses() {
+//        return taughtCourses;
+//    }
+//
+//    public void setTaughtCourses(List<Course> taughtCourses) {
+//        this.taughtCourses = taughtCourses;
+//    }
 
     @Override
     public boolean equals(Object o) {

@@ -11,10 +11,20 @@ import java.util.Objects;
 @Table(name = DatabaseTableInfo.STUDENT_TABLE)
 public class Student implements Serializable {
 
+    @Id
+    @Column(name = DatabaseTableInfo.STUDENT_ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @OneToOne
+    @JoinColumn(name = DatabaseTableInfo.STUDENT_USER_ID)
     private User user;
-    private List<Course> courses;
-    private List<FinishedCourse> finishedCourses;
+
+//    @ManyToMany
+//    private List<Course> courses;
+
+//    @OneToMany
+//    private List<FinishedCourse> finishedCourses;
 
     public Student() {
     }
@@ -23,9 +33,6 @@ public class Student implements Serializable {
         this.user = user;
     }
 
-    @Id
-    @Column(name = DatabaseTableInfo.STUDENT_ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -34,8 +41,6 @@ public class Student implements Serializable {
         this.id = id;
     }
 
-    @OneToOne
-    @JoinColumn(name = DatabaseTableInfo.STUDENT_USER_ID)
     public User getUser() {
         return user;
     }
@@ -44,23 +49,21 @@ public class Student implements Serializable {
         this.user = user;
     }
 
-    @ManyToMany
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
-
-    @OneToMany
-    public List<FinishedCourse> getFinishedCourses() {
-        return finishedCourses;
-    }
-
-    public void setFinishedCourses(List<FinishedCourse> finishedCourses) {
-        this.finishedCourses = finishedCourses;
-    }
+//    public List<Course> getCourses() {
+//        return courses;
+//    }
+//
+//    public void setCourses(List<Course> courses) {
+//        this.courses = courses;
+//    }
+//
+//    public List<FinishedCourse> getFinishedCourses() {
+//        return finishedCourses;
+//    }
+//
+//    public void setFinishedCourses(List<FinishedCourse> finishedCourses) {
+//        this.finishedCourses = finishedCourses;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -81,7 +84,6 @@ public class Student implements Serializable {
         final StringBuilder sb = new StringBuilder("Student{");
         sb.append("id=").append(id);
         sb.append(", user=").append(user);
-        sb.append(", courses=").append(courses);
         sb.append('}');
         return sb.toString();
     }

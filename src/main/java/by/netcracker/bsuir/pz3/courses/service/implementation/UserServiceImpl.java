@@ -30,6 +30,7 @@ public class UserServiceImpl extends ServiceImpl<User> implements UserService {
     @Override
     public void signInUser(String login, String password) throws ServiceException {
         logger.info(LoggingAndExceptionMessage.USER_SIGN_IN);
+
     }
 
     @Transactional

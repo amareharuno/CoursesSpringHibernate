@@ -10,11 +10,24 @@ import java.util.Objects;
 @Table(name = DatabaseTableInfo.USER_TABLE)
 public class User implements Serializable {
 
+    @Id
+    @Column(name = DatabaseTableInfo.USER_ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = DatabaseTableInfo.LOGIN)
     private String login;
+
+    @Column(name = DatabaseTableInfo.PASSWORD)
     private String password;
+
+    @Column(name = DatabaseTableInfo.FIRST_NAME)
     private String FirstName;
+
+    @Column(name = DatabaseTableInfo.LAST_NAME)
     private String LastName;
+
+    @Column(name = DatabaseTableInfo.MIDDLE_NAME)
     private String MiddleName;
 
     public User() {
@@ -28,9 +41,6 @@ public class User implements Serializable {
         MiddleName = middleName;
     }
 
-    @Id
-    @Column(name = DatabaseTableInfo.USER_ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -39,7 +49,6 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    @Column(name = DatabaseTableInfo.LOGIN)
     public String getLogin() {
         return login;
     }
@@ -48,7 +57,6 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    @Column(name = DatabaseTableInfo.PASSWORD)
     public String getPassword() {
         return password;
     }
@@ -57,7 +65,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @Column(name = DatabaseTableInfo.FIRST_NAME)
     public String getFirstName() {
         return FirstName;
     }
@@ -66,7 +73,6 @@ public class User implements Serializable {
         FirstName = firstName;
     }
 
-    @Column(name = DatabaseTableInfo.LAST_NAME)
     public String getLastName() {
         return LastName;
     }
@@ -75,7 +81,6 @@ public class User implements Serializable {
         LastName = lastName;
     }
 
-    @Column(name = DatabaseTableInfo.MIDDLE_NAME)
     public String getMiddleName() {
         return MiddleName;
     }

@@ -10,9 +10,19 @@ import java.util.Objects;
 @Table(name = DatabaseTableInfo.FINISHED_COURSE_TABLE)
 public class FinishedCourse implements Serializable {
 
+    @Id
+    @Column(name = DatabaseTableInfo.FINISHED_COURSE_ID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @ManyToOne
+    @JoinColumn (name = DatabaseTableInfo.FINISHED_COURSE_STUDENT_ID)
     private Student student;
+
+    @Column(name = DatabaseTableInfo.ASSESSMENT)
     private int assessment;
+
+    @Column(name = DatabaseTableInfo.REVIEW)
     private String review;
 
     public FinishedCourse() {
@@ -29,9 +39,6 @@ public class FinishedCourse implements Serializable {
         this.review = review;
     }
 
-    @Id
-    @Column(name = DatabaseTableInfo.FINISHED_COURSE_ID)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -40,8 +47,6 @@ public class FinishedCourse implements Serializable {
         this.id = id;
     }
 
-    @ManyToOne
-    @JoinColumn (name = DatabaseTableInfo.FINISHED_COURSE_STUDENT_ID)
     public Student getStudent() {
         return student;
     }
@@ -50,7 +55,6 @@ public class FinishedCourse implements Serializable {
         this.student = student;
     }
 
-    @Column(name = DatabaseTableInfo.ASSESSMENT)
     public int getAssessment() {
         return assessment;
     }
@@ -59,7 +63,6 @@ public class FinishedCourse implements Serializable {
         this.assessment = assessment;
     }
 
-    @Column(name = DatabaseTableInfo.REVIEW)
     public String getReview() {
         return review;
     }
