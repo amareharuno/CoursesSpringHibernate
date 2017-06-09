@@ -14,4 +14,6 @@ public final class LoggingAndExceptionMessage {
     public static final String EMPTY_FIELDS = "Some form fields may be empty. Please enter all required information.";
     public static final String NO_ROLE_DEFINED_TO_THE_USER = "No role (teacher|student) defined to the user." +
             "You can sign up or enter other logIn information.";
+    public static final String WRONG_INPUT = "Some form fields contains wrong information. Please enter wright values.";
+    public static final String NO_CHECKED_ITEM = "No checked item.";
 }

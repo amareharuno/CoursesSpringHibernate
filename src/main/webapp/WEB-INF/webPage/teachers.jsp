@@ -34,7 +34,7 @@
 
                     <table id="teachersTable" class="table-bordered" style="background-color: #adadad">
                         <caption style="color: #122b40">
-                            <h4>Teachers</h4>
+                            <h3>Teachers</h3>
                         </caption>
                         <tr>
                             <th></th>

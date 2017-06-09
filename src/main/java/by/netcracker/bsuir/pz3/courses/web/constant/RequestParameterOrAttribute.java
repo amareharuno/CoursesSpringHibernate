@@ -12,8 +12,8 @@ public final class RequestParameterOrAttribute {
     public static final String COURSE_NAME = "courseName";
     public static final String LESSONS_COUNT = "lessonsCount";
     public static final String LESSON_DURATION = "lessonDuration";
-    public static final String COURSE_DURATION = "courseDuration";
-    public static final String COURSE_TEACHER_ID = "Teacher_teacherId";
+//    public static final String COURSE_DURATION = "courseDuration";
+    public static final String TEACHER_ID = "teacherId";
 
     public static final String ASSESSMENT = "assessment";
     public static final String REVIEW = "review";
@@ -28,4 +28,6 @@ public final class RequestParameterOrAttribute {
     public static final String SOMETHING_WRONG_SIGN_IN_MESSAGE = "somethingWrongSignInMessage";
     public static final String STUDENT = "student";
     public static final String TEACHER = "teacher";
+    public static final String SOMETHING_WRONG_MESSAGE = "somethingWrongMessage";
+    public static final String RADIO_ID = "radioId";
 }

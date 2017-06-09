@@ -15,13 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@RequestMapping("/teacher")
 public class TeacherController {
     private static Logger logger = LogManager.getLogger(TeacherController.class);
 
     @Autowired
     private TeacherService teacherService;
 
-    @RequestMapping(value = "/teacher/teachers", method = RequestMethod.GET)
+    @RequestMapping(value = "/teachers", method = RequestMethod.GET)
     public ModelAndView getTeachersPage(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         try {

@@ -9,7 +9,9 @@ public final class WebPage {
     public static final String TEACHER = "teacher";
     public static final String TEACHERS = "teachers";
     public static final String COURSES = "courses";
+    public static final String COURSES_TO_CHANGE = "coursesToChange";
     public static final String FINISHED_COURSES = "finishedCourses";
 
     public static final String ERROR = "error";
+    public static final String ADDING_COURSE_PAGE = "addingCoursePage";
 }

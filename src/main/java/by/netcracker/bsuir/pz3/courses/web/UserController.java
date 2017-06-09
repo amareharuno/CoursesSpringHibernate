@@ -99,29 +99,24 @@ public class UserController {
         logger.info(LoggingAndExceptionMessage.USER_CONTROLLER_SIGN_IN_USER);
         ModelAndView modelAndView = new ModelAndView();
 
-        if (InputValidation.validateInput(
-                request.getParameter(RequestParameterOrAttribute.LOGIN),
+        if (InputValidation.validateInput(request.getParameter(RequestParameterOrAttribute.LOGIN),
                 request.getParameter(RequestParameterOrAttribute.PASSWORD))){
             try {
-                User userFound = userService.signInUser(
-                        request.getParameter(RequestParameterOrAttribute.LOGIN),
+                User userFound = userService.signInUser(request.getParameter(RequestParameterOrAttribute.LOGIN),
                         request.getParameter(RequestParameterOrAttribute.PASSWORD));
-
                 if (userFound != null) {
                     if (teacherService.getByUserId(userFound.getId()) != null) {
                         modelAndView.setViewName(WebPage.TEACHER);
                     } else if (studentService.getByUserId(userFound.getId()) != null) {
                         modelAndView.setViewName(WebPage.STUDENT);
                     } else {
-                        request.setAttribute(
-                                RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_IN_MESSAGE,
+                        request.setAttribute(RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_IN_MESSAGE,
                                 LoggingAndExceptionMessage.NO_ROLE_DEFINED_TO_THE_USER); // сообщение о том, что не существует такого пользователя
                         modelAndView.setViewName(WebPage.SIGN_IN);
                     }
                 } else {
                     logger.info(LoggingAndExceptionMessage.NO_SUCH_USER);
-                    request.setAttribute(
-                            RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_IN_MESSAGE,
+                    request.setAttribute(RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_IN_MESSAGE,
                             LoggingAndExceptionMessage.NO_SUCH_USER); // сообщение о том, что не существует такого пользователя
                     modelAndView.setViewName(WebPage.SIGN_IN);
                 }
@@ -130,8 +125,7 @@ public class UserController {
             }
         } else {
             logger.info(LoggingAndExceptionMessage.EMPTY_FIELDS);
-            request.setAttribute(
-                    RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_IN_MESSAGE,
+            request.setAttribute(RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_IN_MESSAGE,
                     LoggingAndExceptionMessage.EMPTY_FIELDS); // сообщение о некорректности введенных данных (пустые поля)
             modelAndView.setViewName(WebPage.SIGN_IN);
         }

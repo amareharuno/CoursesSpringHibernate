@@ -34,7 +34,7 @@
                             <form action="${pageContext.request.contextPath}/teacher/teachers" method="get">
                                 <input type="submit" value="Show teachers" required style="color: #122b40">
                             </form>
-                            <form action="${pageContext.request.contextPath}/course/courses" method="get">
+                            <form action="${pageContext.request.contextPath}/course/coursesToChange" method="get">
                                 <input type="submit" value="Show courses" required style="color: #122b40">
                             </form>
                         </div>
