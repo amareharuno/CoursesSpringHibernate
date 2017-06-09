@@ -18,6 +18,9 @@ public final class LoggingAndExceptionMessage {
     public static final String DELETE_OK = "Delete complete: service";
     public static final String GET_ALL_OK = "Get all complete: service";
 
+    public static final String USER_ALREADY_EXISTS = "User already exists";
+    public static final String NO_SUCH_USER = "No such user found.";
+
     // Exceptions message
     public static final String ADD_FAIL = "Adding was failed: service";
     public static final String GET_FAIL = "Getting by id was failed: service";

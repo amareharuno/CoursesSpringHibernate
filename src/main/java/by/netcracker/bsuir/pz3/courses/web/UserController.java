@@ -1,10 +1,12 @@
 package by.netcracker.bsuir.pz3.courses.web;
 
+import by.netcracker.bsuir.pz3.courses.entity.User;
+import by.netcracker.bsuir.pz3.courses.service.StudentService;
+import by.netcracker.bsuir.pz3.courses.service.TeacherService;
 import by.netcracker.bsuir.pz3.courses.service.UserService;
 import by.netcracker.bsuir.pz3.courses.service.exception.ServiceException;
-import by.netcracker.bsuir.pz3.courses.util.RoleChecker;
 import by.netcracker.bsuir.pz3.courses.web.constant.LoggingAndExceptionMessage;
-import by.netcracker.bsuir.pz3.courses.web.constant.RequestOrAttributeParameter;
+import by.netcracker.bsuir.pz3.courses.web.constant.RequestParameterOrAttribute;
 import by.netcracker.bsuir.pz3.courses.web.constant.WebPage;
 import by.netcracker.bsuir.pz3.courses.web.util.InputValidation;
 import org.apache.log4j.LogManager;
@@ -17,13 +19,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller("/userController")
+@Controller
 public class UserController {
 
     private Logger logger = LogManager.getLogger(UserService.class.getName());
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TeacherService teacherService;
+
+    @Autowired
+    private StudentService studentService;
 
     @RequestMapping(value = "/signIn", method = RequestMethod.GET)
     public ModelAndView getSignInPage() {
@@ -48,27 +56,29 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView();
         logger.info(LoggingAndExceptionMessage.USER_CONTROLLER_SIGN_UP_USER);
 
-        String login = request.getParameter(RequestOrAttributeParameter.LOGIN);
-        String password = request.getParameter(RequestOrAttributeParameter.PASSWORD);
-        String firstName = request.getParameter(RequestOrAttributeParameter.FIRST_NAME);
-        String lastName = request.getParameter(RequestOrAttributeParameter.LAST_NAME);
-        String middleName = request.getParameter(RequestOrAttributeParameter.MIDDLE_NAME);
-        String role = request.getParameter(RequestOrAttributeParameter.ROLE);
+        String login = request.getParameter(RequestParameterOrAttribute.LOGIN);
+        String password = request.getParameter(RequestParameterOrAttribute.PASSWORD);
+        String firstName = request.getParameter(RequestParameterOrAttribute.FIRST_NAME);
+        String lastName = request.getParameter(RequestParameterOrAttribute.LAST_NAME);
+        String middleName = request.getParameter(RequestParameterOrAttribute.MIDDLE_NAME);
+        String role = request.getParameter(RequestParameterOrAttribute.ROLE);
 
         if (InputValidation.validateInput(login, password, firstName, lastName, middleName)){
             try {
-                userService.signUpUser(login, password, firstName, lastName, middleName, role);
-                if (RoleChecker.INSTANCE.isStudent(role)) {
-                    modelAndView.setViewName(WebPage.STUDENT);
-                } else if (RoleChecker.INSTANCE.isTeacher(role)) {
-                    modelAndView.setViewName(WebPage.TEACHER);
+                boolean userCreated = userService.signUpUser(login, password, firstName, lastName, middleName, role);
+                if (userCreated) {
+                    if (role.equals(RequestParameterOrAttribute.STUDENT)) {
+                        modelAndView.setViewName(WebPage.STUDENT);
+                    } else if (role.equals(RequestParameterOrAttribute.TEACHER)) {
+                        modelAndView.setViewName(WebPage.TEACHER);
+                    }
+                } else {
+                    logger.info(LoggingAndExceptionMessage.USER_ALREADY_EXISTS);
+                    request.setAttribute(
+                            RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_UP_MESSAGE,
+                            LoggingAndExceptionMessage.USER_ALREADY_EXISTS); // сообщение о том, что такой юзер уже есть
+                    modelAndView.setViewName(WebPage.SIGN_UP);
                 }
-                modelAndView.addObject(RequestOrAttributeParameter.LOGIN, login);
-                modelAndView.addObject(RequestOrAttributeParameter.PASSWORD, password);
-                modelAndView.addObject(RequestOrAttributeParameter.FIRST_NAME, firstName);
-                modelAndView.addObject(RequestOrAttributeParameter.LAST_NAME, lastName);
-                modelAndView.addObject(RequestOrAttributeParameter.MIDDLE_NAME, middleName);
-                modelAndView.addObject(RequestOrAttributeParameter.ROLE, role);
             } catch (ServiceException exception) {
                 logger.error(exception);
                 modelAndView.setViewName(WebPage.ERROR);
@@ -76,8 +86,10 @@ public class UserController {
             }
         } else {
             logger.info(LoggingAndExceptionMessage.EMPTY_FIELDS);
-            // вывод на страницу сообщения о некорректности введенных данных
-            modelAndView.setViewName(WebPage.ERROR); // пока так
+            request.setAttribute(
+                    RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_UP_MESSAGE,
+                    LoggingAndExceptionMessage.EMPTY_FIELDS); // сообщение о некорректности введенных данных (пустые поля)
+            modelAndView.setViewName(WebPage.SIGN_UP);
         }
         return modelAndView;
     }
@@ -85,22 +97,44 @@ public class UserController {
     @RequestMapping(value = "/signedInUser", method = RequestMethod.POST)
     public ModelAndView signInUser(HttpServletRequest request) {
         logger.info(LoggingAndExceptionMessage.USER_CONTROLLER_SIGN_IN_USER);
+        ModelAndView modelAndView = new ModelAndView();
 
         if (InputValidation.validateInput(
-                request.getParameter(RequestOrAttributeParameter.LOGIN),
-                request.getParameter(RequestOrAttributeParameter.PASSWORD))){
+                request.getParameter(RequestParameterOrAttribute.LOGIN),
+                request.getParameter(RequestParameterOrAttribute.PASSWORD))){
             try {
-                userService.signInUser(
-                        request.getParameter(RequestOrAttributeParameter.LOGIN),
-                        request.getParameter(RequestOrAttributeParameter.PASSWORD));
+                User userFound = userService.signInUser(
+                        request.getParameter(RequestParameterOrAttribute.LOGIN),
+                        request.getParameter(RequestParameterOrAttribute.PASSWORD));
 
+                if (userFound != null) {
+                    if (teacherService.getByUserId(userFound.getId()) != null) {
+                        modelAndView.setViewName(WebPage.TEACHER);
+                    } else if (studentService.getByUserId(userFound.getId()) != null) {
+                        modelAndView.setViewName(WebPage.STUDENT);
+                    } else {
+                        request.setAttribute(
+                                RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_IN_MESSAGE,
+                                LoggingAndExceptionMessage.NO_ROLE_DEFINED_TO_THE_USER); // сообщение о том, что не существует такого пользователя
+                        modelAndView.setViewName(WebPage.SIGN_IN);
+                    }
+                } else {
+                    logger.info(LoggingAndExceptionMessage.NO_SUCH_USER);
+                    request.setAttribute(
+                            RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_IN_MESSAGE,
+                            LoggingAndExceptionMessage.NO_SUCH_USER); // сообщение о том, что не существует такого пользователя
+                    modelAndView.setViewName(WebPage.SIGN_IN);
+                }
             } catch (ServiceException exception) {
                 logger.error(exception);
             }
         } else {
             logger.info(LoggingAndExceptionMessage.EMPTY_FIELDS);
-            // вывод на страницу сообщения о некорректности введенных данных
+            request.setAttribute(
+                    RequestParameterOrAttribute.SOMETHING_WRONG_SIGN_IN_MESSAGE,
+                    LoggingAndExceptionMessage.EMPTY_FIELDS); // сообщение о некорректности введенных данных (пустые поля)
+            modelAndView.setViewName(WebPage.SIGN_IN);
         }
-        return new ModelAndView(WebPage.TEACHER);
+        return modelAndView;
     }
 }

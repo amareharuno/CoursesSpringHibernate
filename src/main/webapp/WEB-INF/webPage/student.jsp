@@ -3,37 +3,46 @@
 <html>
 <head>
     <title>Student</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
+          rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+          rel="stylesheet"
+          type="text/css">
 </head>
 <body>
+<!-- Header -->
+<a name="about"></a>
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message" align="center">
+                    <h1>Hello, student</h1>
+                    <h3>Please choose what do you want to do:</h3>
+                    <hr class="intro-divider">
 
-<div class="container">
-    <div class="row" align="center">
-        <form action="${pageContext.request.contextPath}/student/students" method="get">
-            <input type="submit" value="Show students">
-        </form>
-        <table id="studentTable" class="table-bordered">
-            <caption>Students</caption>
-            <tr>
-                <th></th>
-                <th>Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Middle name</th>
-            </tr>
-            <c:forEach var="student" items="${students}">
-                <tr>
-                    <td>
-                        <input type="radio" name="teacherId" id="${student.id}" value="${student.id}">
-                    </td>
-                    <td>${student.id}</td>
-                    <td>${student.user.firstName}</td>
-                    <td>${student.user.lastName}</td>
-                    <td>${student.user.middleName}</td>
-                </tr>
-            </c:forEach>
-        </table>
+                    <div align="center">
+                        <form action="${pageContext.request.contextPath}/student/students" method="get">
+                            <input type="submit" value="Show students" required style="color: #122b40">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- /.container -->
 </div>
+<!-- /.intro-header -->
 </body>
 </html>
 

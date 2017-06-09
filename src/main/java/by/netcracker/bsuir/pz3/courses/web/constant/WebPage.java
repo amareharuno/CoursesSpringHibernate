@@ -5,7 +5,9 @@ public final class WebPage {
     public static final String SIGN_IN = "signIn";
     public static final String SIGN_UP = "signUp";
     public static final String STUDENT = "student";
+    public static final String STUDENTS = "students";
     public static final String TEACHER = "teacher";
+    public static final String TEACHERS = "teachers";
     public static final String COURSES = "courses";
     public static final String FINISHED_COURSES = "finishedCourses";
 

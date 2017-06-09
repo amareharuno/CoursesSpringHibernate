@@ -2,7 +2,7 @@ package by.netcracker.bsuir.pz3.courses.web;
 
 import by.netcracker.bsuir.pz3.courses.service.CourseService;
 import by.netcracker.bsuir.pz3.courses.service.exception.ServiceException;
-import by.netcracker.bsuir.pz3.courses.web.constant.RequestOrAttributeParameter;
+import by.netcracker.bsuir.pz3.courses.web.constant.RequestParameterOrAttribute;
 import by.netcracker.bsuir.pz3.courses.web.constant.WebPage;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -25,7 +25,7 @@ public class CourseController {
     public ModelAndView getAppointmentAirplanePage(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         try {
-            request.setAttribute(RequestOrAttributeParameter.COURSES, courseService.getAll());
+            request.setAttribute(RequestParameterOrAttribute.COURSES, courseService.getAll());
         }  catch (ServiceException e) {
             logger.debug(e);
             modelAndView.setViewName(WebPage.ERROR);

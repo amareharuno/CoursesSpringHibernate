@@ -31,24 +31,29 @@ public final class LoggingAndExceptionMessage {
     public static final String STUDENT_DAO_IMPL_UPDATE = "update method: StudentDaoImpl";
     public static final String STUDENT_DAO_IMPL_DELETE = "delete method: StudentDaoImpl";
     public static final String STUDENT_DAO_IMPL_GET_ALL = "getAll method: StudentDaoImpl";
+    public static final String STUDENT_DAO_IMPL_GET_BY_USER_ID = "getStudentByUserId method: StudentDaoImpl";
 
     public static final String ADD_STUDENT_LOG = "Student successfully added. Student details: ";
     public static final String GET_STUDENT_BY_ID_LOG = "Student successfully got. Details: ";
     public static final String UPDATE_STUDENT_LOG = "Student successfully updated. Details: ";
     public static final String DELETE_STUDENT_LOG = "Student successfully deleted. Details: ";
     public static final String STUDENT_LIST_LOG = "Student list: ";
+    public static final String GET_STUDENT_BY_USER_ID_LOG = "Student successfully got. Details: ";
+
     // Teacher
     public static final String TEACHER_DAO_IMPL_ADD = "add method: TeacherDaoImpl";
     public static final String TEACHER_DAO_IMPL_GET = "getById method: TeacherDaoImpl";
     public static final String TEACHER_DAO_IMPL_UPDATE = "update method: TeacherDaoImpl";
     public static final String TEACHER_DAO_IMPL_DELETE = "delete method: TeacherDaoImpl";
     public static final String TEACHER_DAO_IMPL_GET_ALL = "getAll method: TeacherDaoImpl";
+    public static final String TEACHER_DAO_IMPL_GET_BY_USER_ID = "getTeacherByUserId method: TeacherDaoImpl";
 
     public static final String ADD_TEACHER_LOG = "Teacher added successfully. Details: ";
     public static final String GET_TEACHER_BY_ID_LOG = "Teacher successfully got. Details: ";
     public static final String UPDATE_TEACHER_LOG = "Teacher successfully updated. Details: ";
     public static final String DELETE_TEACHER_LOG = "Teacher successfully deleted. Details";
     public static final String TEACHER_LIST_LOG = "Teacher list: ";
+    public static final String GET_TEACHER_BY_BY_USER_ID_LOG = "Teacher successfully got. Details: ";
 
     // User
     public static final String USER_DAO_IMPL_ADD = "add method: UserDaoImpl";
@@ -57,6 +62,8 @@ public final class LoggingAndExceptionMessage {
     public static final String USER_DAO_IMPL_DELETE = "delete method: UserDaoImpl";
     public static final String USER_DAO_IMPL_GET_ALL = "getAll method: UserDaoImpl";
     public static final String USER_DAO_IMPL_GET_USER_BY_LOGIN = "getUserByLogin method: UserDaoImpl";
+    public static final String USER_DAO_IMPL_GET_USER_BY_PASSWORD = "getUserByPassword method: UserDaoImpl";
+    public static final String USER_DAO_IMPL_GET_USER_BY_LOGIN_AND_PASSWORD = "getUserByLoginAndPassword method: UserDaoImpl";
 
     public static final String ADD_USER_LOG = "User successfully added. Details: ";
     public static final String GET_USER_BY_ID_LOG = "User successfully got. Details: ";
@@ -64,6 +71,8 @@ public final class LoggingAndExceptionMessage {
     public static final String DELETE_USER_LOG = "User successfully deleted. Details:..?";
     public static final String USER_LIST_LOG = "User list: ";
     public static final String GET_USER_BY_LOGIN_LOG = "User successfully got. Details: ";
+    public static final String GET_USER_BY_PASSWORD_LOG = "User successfully got. Details: ";
+    public static final String GET_USER_BY_LOGIN_AND_PASSWORD_LOG = "User successfully got. Details: ";
 
     // Exceptions message
     public static final String ADD_FAIL = "Adding was failed";
@@ -73,4 +82,8 @@ public final class LoggingAndExceptionMessage {
     public static final String GET_ALL_FAIL = "Getting all was failed";
 
     public static final String GET_USER_BY_LOGIN_FAIL = "Getting by login was failed";
+    public static final String GET_USER_BY_PASSWORD_FAIL = "Getting by password was failed";
+    public static final String GET_USER_BY_LOGIN_AND_PASSWORD_FAIL = "Getting by login and password was failed";
+    public static final String GET_TEACHER_BY_BY_USER_ID_FAIL = "Getting teacher by user id was failed";
+    public static final String GET_STUDENT_BY_USER_ID_FAIL = "getStudentByUserId method: StudentDaoImpl";
 }

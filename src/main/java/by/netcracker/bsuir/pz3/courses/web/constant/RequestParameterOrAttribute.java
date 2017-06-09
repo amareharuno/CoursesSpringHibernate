@@ -1,6 +1,6 @@
 package by.netcracker.bsuir.pz3.courses.web.constant;
 
-public final class RequestOrAttributeParameter {
+public final class RequestParameterOrAttribute {
     public static final String LOGIN = "login";
     public static final String PASSWORD = "password";
     public static final String FIRST_NAME = "firstName";
@@ -22,4 +22,10 @@ public final class RequestOrAttributeParameter {
     public static final String TEACHERS = "teachers";
     public static final String STUDENTS = "students";
     public static final String COURSES = "courses";
+
+    // signIn and signUp
+    public static final String SOMETHING_WRONG_SIGN_UP_MESSAGE = "somethingWrongSignUpMessage";
+    public static final String SOMETHING_WRONG_SIGN_IN_MESSAGE = "somethingWrongSignInMessage";
+    public static final String STUDENT = "student";
+    public static final String TEACHER = "teacher";
 }

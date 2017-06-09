@@ -3,36 +3,47 @@
 <html>
 <head>
     <title>Teacher</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
+          rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+          rel="stylesheet"
+          type="text/css">
 </head>
 <body>
-    <div class="container" align="center">
-        <form action="${pageContext.request.contextPath}/teacher/teachers" method="get">
-            <input type="submit" value="Show teachers">
-        </form>
-        <form action="${pageContext.request.contextPath}/course/courses" method="get">
-            <input type="submit" value="Show courses">
-        </form>
-        <table id="teachersTable" class="table-bordered">
-            <caption>Teachers</caption>
-            <tr>
-                <th></th>
-                <th>Id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Middle name</th>
-            </tr>
-            <c:forEach var="teacher" items="${teachers}">
-                <tr>
-                    <td>
-                        <input type="radio" name="teacherId" id="${teacher.id}" value="${teacher.id}">
-                    </td>
-                    <td>${teacher.id}</td>
-                    <td>${teacher.user.firstName}</td>
-                    <td>${teacher.user.lastName}</td>
-                    <td>${teacher.user.middleName}</td>
-                </tr>
-            </c:forEach>
-        </table>
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message" align="center">
+                        <h1>Hello, teacher</h1>
+                        <h3>Please choose what do you want to do:</h3>
+                        <hr class="intro-divider">
+
+                        <div align="center">
+                            <form action="${pageContext.request.contextPath}/teacher/teachers" method="get">
+                                <input type="submit" value="Show teachers" required style="color: #122b40">
+                            </form>
+                            <form action="${pageContext.request.contextPath}/course/courses" method="get">
+                                <input type="submit" value="Show courses" required style="color: #122b40">
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
     </div>
 </body>
 </html>

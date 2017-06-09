@@ -11,7 +11,9 @@ import org.hibernate.HibernateException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -97,12 +99,56 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
         logger.info(LoggingAndExceptionMessage.USER_DAO_IMPL_GET_USER_BY_LOGIN);
         User user;
         try {
-            user = entityManager.find(User.class, login);
+            Query query = entityManager.createQuery(Queries.GET_USER_BY_LOGIN);
+            query.setParameter("login", login);
+            user = (User) query.getSingleResult();
+        } catch (NoResultException exception) {
+            logger.info(LoggingAndExceptionMessage.GET_USER_BY_LOGIN_FAIL);
+            user = null;
         } catch (HibernateException exception) {
             logger.error(exception);
             throw new DaoException(LoggingAndExceptionMessage.GET_USER_BY_LOGIN_FAIL, exception);
         }
         logger.info(LoggingAndExceptionMessage.GET_USER_BY_LOGIN_LOG + user);
+        return user;
+    }
+
+    @Override
+    public User getUserByPassword(String password) throws DaoException {
+        logger.info(LoggingAndExceptionMessage.USER_DAO_IMPL_GET_USER_BY_PASSWORD);
+        User user;
+        try {
+            Query query = entityManager.createQuery(Queries.GET_USER_BY_PASSWORD);
+            query.setParameter("password", password);
+            user = (User) query.getSingleResult();
+        } catch (NoResultException exception) {
+            logger.info(LoggingAndExceptionMessage.GET_USER_BY_PASSWORD_FAIL);
+            user = null;
+        } catch (HibernateException exception) {
+            logger.error(exception);
+            throw new DaoException(LoggingAndExceptionMessage.GET_USER_BY_PASSWORD_FAIL, exception);
+        }
+        logger.info(LoggingAndExceptionMessage.GET_USER_BY_PASSWORD_LOG + user);
+        return user;
+    }
+
+    @Override
+    public User getUserByLoginAndPassword(String login, String password) throws DaoException {
+        logger.info(LoggingAndExceptionMessage.USER_DAO_IMPL_GET_USER_BY_LOGIN_AND_PASSWORD);
+        User user;
+        try {
+            Query query = entityManager.createQuery(Queries.GET_USER_BY_LOGIN_AND_PASSWORD);
+            query.setParameter("password", password);
+            query.setParameter("login", login);
+            user = (User) query.getSingleResult();
+        } catch (NoResultException exception) { // если такой юзер не найден
+            logger.info(LoggingAndExceptionMessage.GET_USER_BY_LOGIN_AND_PASSWORD_FAIL);
+            user = null;
+        } catch (HibernateException exception) {
+            logger.error(exception);
+            throw new DaoException(LoggingAndExceptionMessage.GET_USER_BY_LOGIN_AND_PASSWORD_FAIL, exception);
+        }
+        logger.info(LoggingAndExceptionMessage.GET_USER_BY_LOGIN_AND_PASSWORD_LOG + user);
         return user;
     }
 }

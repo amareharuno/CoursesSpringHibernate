@@ -11,7 +11,9 @@ import org.hibernate.HibernateException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -91,5 +93,24 @@ public class TeacherDaoImpl extends DaoImpl<Teacher> implements TeacherDao {
             logger.info(LoggingAndExceptionMessage.TEACHER_LIST_LOG + teacher);
         }
         return teachers;
+    }
+
+    @Override
+    public Teacher getByUserId(int userId) {
+        logger.info(LoggingAndExceptionMessage.TEACHER_DAO_IMPL_GET_BY_USER_ID);
+        Teacher teacher;
+        try {
+            Query query = entityManager.createQuery(Queries.GET_TEACHER_BY_USER_ID);
+            query.setParameter("userId", userId);
+            teacher = (Teacher) query.getSingleResult();
+        } catch (NoResultException exception) {
+            logger.info(LoggingAndExceptionMessage.GET_TEACHER_BY_BY_USER_ID_FAIL);
+            teacher = null;
+        } catch (HibernateException exception) {
+            logger.error(exception);
+            throw new DaoException(LoggingAndExceptionMessage.GET_TEACHER_BY_BY_USER_ID_FAIL, exception);
+        }
+        logger.info(LoggingAndExceptionMessage.GET_TEACHER_BY_BY_USER_ID_LOG + teacher);
+        return teacher;
     }
 }

@@ -13,6 +13,7 @@
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+    <link href="${pageContext.request.contextPath}/resources/myCss.css">
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -35,7 +36,8 @@
                     <h1>Sign up to Courses</h1>
                     <h3>Create your personal account</h3>
                     <hr class="intro-divider">
-                    <form class="list-inline" action="${pageContext.request.contextPath}/signedUpUser" method="post">
+                    <label style="color: yellow; size: 26pt">${somethingWrongSignUpMessage}</label>
+                    <form id="signUpForm" class="list-inline" action="${pageContext.request.contextPath}/signedUpUser" method="post">
                         <p>
                             <input type="hidden"
                                    name="command" value="register">
@@ -60,16 +62,22 @@
                             <input class="lead" type="password"
                                    name="password" placeholder="Password"
                                    required style="color: #122b40">
+                            <br>
+                            <select class="lead" name="role" form="signUpForm" required style="color: #122b40">
+                                <option selected class="lead" value="teacher">Teacher</option>
+                                <option class="lead" value="student">Student</option>
+                            </select>
                         </p>
                         <p>
-                            <br>
                             <input class="btn btn-default btn-lg" type="submit"
                                    value="Create an account">
                         </p>
+                        <%--
                         <label>
                             <input type="checkbox" name="role">
                             I'm a teacher.
                         </label>
+                        --%>
                     </form>
 
                     <p class="network-name">

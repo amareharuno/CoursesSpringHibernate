@@ -2,7 +2,7 @@ package by.netcracker.bsuir.pz3.courses.web;
 
 import by.netcracker.bsuir.pz3.courses.service.TeacherService;
 import by.netcracker.bsuir.pz3.courses.service.exception.ServiceException;
-import by.netcracker.bsuir.pz3.courses.web.constant.RequestOrAttributeParameter;
+import by.netcracker.bsuir.pz3.courses.web.constant.RequestParameterOrAttribute;
 import by.netcracker.bsuir.pz3.courses.web.constant.WebPage;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -25,13 +25,13 @@ public class TeacherController {
     public ModelAndView getTeachersPage(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
         try {
-            request.setAttribute(RequestOrAttributeParameter.TEACHERS, teacherService.getAll());
+            request.setAttribute(RequestParameterOrAttribute.TEACHERS, teacherService.getAll());
         }  catch (ServiceException e) {
             logger.debug(e);
             modelAndView.setViewName(WebPage.ERROR);
             return modelAndView;
         }
-        modelAndView.setViewName(WebPage.TEACHER);
+        modelAndView.setViewName(WebPage.TEACHERS);
         return modelAndView;
     }
 }

@@ -39,6 +39,7 @@
                     <hr class="intro-divider">
 
                     <%--SIGN IN FORM--%>
+                    <label style="color: yellow; size: 26pt">${somethingWrongSignInMessage}</label>
                     <form class="list-inline" action="${pageContext.request.contextPath}/signedInUser" method="post">
                         <input type="hidden" name="command" value="login">
                         <p>
