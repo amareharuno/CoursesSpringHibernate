@@ -33,6 +33,16 @@ public class UserController {
     @Autowired
     private StudentService studentService;
 
+    @RequestMapping(value = "/teacher", method = RequestMethod.GET)
+    public ModelAndView getTeacherPage() {
+        return new ModelAndView(WebPage.TEACHER);
+    }
+
+    @RequestMapping(value = "/student", method = RequestMethod.GET)
+    public ModelAndView getStudentPage() {
+        return new ModelAndView(WebPage.STUDENT);
+    }
+
     @RequestMapping(value = "/signIn", method = RequestMethod.GET)
     public ModelAndView getSignInPage() {
         logger.info(LoggingAndExceptionMessage.USER_CONTROLLER_SIGN_IN);

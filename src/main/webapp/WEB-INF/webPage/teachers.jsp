@@ -9,6 +9,7 @@
 
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/profileStyle.css">
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
@@ -19,7 +20,13 @@
           type="text/css">
 </head>
 <body>
-
+<div class="header_back">
+    <div class="header">
+        <div class="logo_pic">
+            <a href="<c:url value="/index"/>" style="color: #5bc0de">Log out</a>
+        </div>
+    </div>
+</div>
 <!-- Header -->
 <a name="about"></a>
 <div class="banner">
@@ -29,25 +36,25 @@
                 <div class="intro-message" align="center">
 
                     <form action="${pageContext.request.contextPath}/teacher/teachers" method="get">
-                        <input type="submit" value="Update teachers list" required style="color: #122b40">
+                        <input type="submit" value="Refresh teachers list" required style="color: #122b40">
                     </form>
 
                     <table id="teachersTable" class="table-bordered" style="background-color: #adadad">
                         <caption style="color: #122b40">
-                            <h3>Teachers</h3>
+                            <h2>Teachers</h2>
                         </caption>
                         <tr>
-                            <th></th>
+                            <%--<th></th>--%>
                             <th>Id</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Middle name</th>
                         </tr>
                         <c:forEach var="teacher" items="${teachers}">
-                            <tr>
+                            <tr><%--
                                 <td>
                                     <input type="radio" name="teacherId" id="${teacher.id}" value="${teacher.id}">
-                                </td>
+                                </td>--%>
                                 <td>${teacher.id}</td>
                                 <td>${teacher.user.firstName}</td>
                                 <td>${teacher.user.lastName}</td>
@@ -55,7 +62,6 @@
                             </tr>
                         </c:forEach>
                     </table>
-
                 </div>
             </div>
         </div>

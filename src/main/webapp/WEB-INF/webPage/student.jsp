@@ -9,6 +9,7 @@
 
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/profileStyle.css">
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
@@ -19,6 +20,13 @@
           type="text/css">
 </head>
 <body>
+<div class="header_back">
+    <div class="header">
+        <div class="logo_pic">
+            <a href="<c:url value="/index"/>" style="color: #5bc0de">Log out</a>
+        </div>
+    </div>
+</div>
 <!-- Header -->
 <a name="about"></a>
 <div class="banner">
@@ -31,10 +39,12 @@
                     <hr class="intro-divider">
 
                     <div align="center">
-                        <form action="${pageContext.request.contextPath}/student/students" method="get">
-                            <input type="submit" value="Show students" required style="color: #122b40">
+                        <form action="${pageContext.request.contextPath}/teacher/teachers" method="get">
+                            <input type="submit" value="Show teachers" required style="color: #122b40">
                         </form>
-
+                        <form action="${pageContext.request.contextPath}/course/courses" method="get">
+                            <input type="submit" value="Show courses" required style="color: #122b40">
+                        </form>
                     </div>
                 </div>
             </div>

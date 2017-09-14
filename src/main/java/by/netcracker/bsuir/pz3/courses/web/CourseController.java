@@ -65,6 +65,17 @@ public class CourseController {
         return new ModelAndView(WebPage.ADDING_COURSE_PAGE);
     }
 
+    @RequestMapping(value = "/updatingCoursePage", method = RequestMethod.GET)
+    public ModelAndView getUpdatingCoursePage(HttpServletRequest request) {
+        try {
+            request.setAttribute(RequestParameterOrAttribute.TEACHERS, teacherService.getAll());
+        }  catch (ServiceException e) {
+            logger.debug(e);
+            return new ModelAndView(WebPage.ERROR);
+        }
+        return new ModelAndView(WebPage.UPDATING_COURSE_PAGE);
+    }
+
     @RequestMapping(value = "/addCourse", method = RequestMethod.POST)
     public ModelAndView addCourseAndGoToCoursesToChangePage(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView();
@@ -99,10 +110,43 @@ public class CourseController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/coursesToChange/delete", method = RequestMethod.POST)
+    public ModelAndView updateCourseAndGoToCoursesToChangePage(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+
+
+        String courseName = request.getParameter(RequestParameterOrAttribute.COURSE_NAME);
+        String subject = request.getParameter(RequestParameterOrAttribute.SUBJECT);
+        String lessonsCount = request.getParameter(RequestParameterOrAttribute.LESSONS_COUNT);
+        String lessonDuration = request.getParameter(RequestParameterOrAttribute.LESSON_DURATION);
+        String teacherId = request.getParameter(RequestParameterOrAttribute.TEACHER_ID);
+
+        if (InputValidation.validateCourseInput(courseName, subject, lessonsCount, lessonDuration, teacherId)) {
+            try {
+                courseService.update(
+                        new Course(
+                                subject, courseName,
+                                Integer.parseInt(lessonsCount),
+                                Integer.parseInt(lessonDuration),
+                                teacherService.getById(Integer.parseInt(teacherId))));
+                modelAndView = getCoursesToChangePage(request);
+            } catch (ServiceException exception) {
+                logger.error(exception);
+                modelAndView.setViewName(WebPage.ERROR);
+                return modelAndView;
+            }
+        } else {
+            logger.info(LoggingAndExceptionMessage.WRONG_INPUT);
+            request.setAttribute(
+                    RequestParameterOrAttribute.SOMETHING_WRONG_MESSAGE,
+                    LoggingAndExceptionMessage.WRONG_INPUT); // сообщение о некорректности введенных данных
+            modelAndView = getAddingCoursePage(request);
+        }
+        return modelAndView;
+    }
+
+        @RequestMapping(value = "/coursesToChange/delete", method = RequestMethod.POST)
     public ModelAndView deleteCourse(HttpServletRequest request) {
         try {
-            logger.info("========================LKJHGFDSXCVCVBJKNLMKGJHGX BNKNLM:JHGFHCGVBNK================");
             String courseId = request.getParameter(RequestParameterOrAttribute.RADIO_ID);
             logger.info("=========================== radioId = " + courseId + " =================================");
             int id = Integer.parseInt(courseId);

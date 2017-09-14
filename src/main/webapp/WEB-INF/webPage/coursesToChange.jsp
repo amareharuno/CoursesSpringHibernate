@@ -9,6 +9,7 @@
 
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/profileStyle.css">
 
     <!-- JQuery -->
     <%--<script src="${pageContext.request.contextPath}/resources/bootstrapTheme/jquery/jquery.js"></script>--%>
@@ -22,6 +23,13 @@
           type="text/css">
 </head>
 <body>
+<div class="header_back">
+    <div class="header">
+        <div class="logo_pic">
+            <a href="<c:url value="/index"/>" style="color: #5bc0de">Log out</a>
+        </div>
+    </div>
+</div>
 <!-- Header -->
 <a name="about"></a>
 <div class="banner">
@@ -30,15 +38,19 @@
             <div class="col-lg-12">
                 <div class="intro-message" align="center">
                     <div class="buttons">
-                        <form action="${pageContext.request.contextPath}/course/coursesToChange" method="get">
+                        <form action="/course/coursesToChange" method="get">
                             <input type="submit" value="Refresh course list" required style="color: #122b40">
                         </form>
-                        <form action="${pageContext.request.contextPath}/course/addingCoursePage" method="get">
+                        <form action="/course/addingCoursePage" method="get">
                             <input type="submit" value="Add course to list" required style="color: #122b40">
                         </form>
 
-                        <form id="deleteForm" action="${pageContext.request.contextPath}/course/coursesToChange/delete" method="post">
+                        <form id="deleteForm" action="/course/coursesToChange/delete" method="post">
                             <input form="deleteForm" type="submit" value="Delete course from list" required style="color: #122b40">
+                        </form>
+
+                        <form action="/course/updatingCoursePage" method="get">
+                            <input type="submit" value="Update course" required style="color: #122b40">
                         </form>
                     </div>
 
@@ -63,7 +75,7 @@
                                 <td>
                                     <label>
                                         <input form="deleteForm" type="radio" name="radioId"
-                                               id= value="${course.id}">
+                                               id="${course.id}" value="${course.id}">
                                     </label>
                                 </td>
                                 <td>${course.id}</td>
@@ -77,6 +89,12 @@
                             </tr>
                         </c:forEach>
                     </table>
+                    <p class="network-name">
+                        <br>
+                        <a href="<c:url value="/teacher"/>" style="color: #5bc0de">
+                            <u>Go back to teacher's page</u>
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>

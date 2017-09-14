@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/profileStyle.css">
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
@@ -27,6 +28,13 @@
 </head>
 
 <body>
+<div class="header_back">
+    <div class="header">
+        <div class="logo_pic">
+            <a href="<c:url value="/index"/>" style="color: #5bc0de">Back to main page</a>
+        </div>
+    </div>
+</div>
 <!-- Header -->
 <a name="about"></a>
 <div class="intro-header">

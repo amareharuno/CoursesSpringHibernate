@@ -14,6 +14,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Repository
@@ -117,6 +119,14 @@ public class UserDaoImpl extends DaoImpl<User> implements UserDao {
     public User getUserByPassword(String password) throws DaoException {
         logger.info(LoggingAndExceptionMessage.USER_DAO_IMPL_GET_USER_BY_PASSWORD);
         User user;
+
+        List<String> list = new ArrayList<>();
+        list.add("Name");
+        list.add("Cat");
+
+
+        System.out.println();
+
         try {
             Query query = entityManager.createQuery(Queries.GET_USER_BY_PASSWORD);
             query.setParameter("password", password);

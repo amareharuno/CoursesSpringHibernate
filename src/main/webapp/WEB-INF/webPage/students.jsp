@@ -9,6 +9,7 @@
 
     <!-- Custom CSS -->
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/profileStyle.css">
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
@@ -19,7 +20,13 @@
           type="text/css">
 </head>
 <body>
-
+<div class="header_back">
+    <div class="header">
+        <div class="logo_pic">
+            <a href="<c:url value="/index"/>" style="color: #5bc0de">Log out</a>
+        </div>
+    </div>
+</div>
 <!-- Header -->
 <a name="about"></a>
 <div class="banner">
@@ -34,10 +41,10 @@
 
                     <table id="studentTable" class="table-bordered" style="background-color: #adadad">
                         <caption style="color: #122b40">
-                            <h3>Students</h3>
+                            <h2>Students</h2>
                         </caption>
                         <tr>
-                            <th></th>
+                            <%--<th></th>--%>
                             <th>Id</th>
                             <th>First Name</th>
                             <th>Last Name</th>
@@ -45,9 +52,9 @@
                         </tr>
                         <c:forEach var="student" items="${students}">
                             <tr>
-                                <td>
+                                <%--<td>
                                     <input type="radio" name="teacherId" id="${student.id}" value="${student.id}">
-                                </td>
+                                </td>--%>
                                 <td>${student.id}</td>
                                 <td>${student.user.firstName}</td>
                                 <td>${student.user.lastName}</td>
@@ -55,7 +62,12 @@
                             </tr>
                         </c:forEach>
                     </table>
-
+                    <p class="network-name">
+                        <br>
+                        <a href="<c:url value="/teacher"/>" style="color: #5bc0de">
+                            <u>Go back</u>
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>

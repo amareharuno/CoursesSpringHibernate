@@ -9,6 +9,7 @@
 
         <!-- Custom CSS -->
         <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/profileStyle.css">
 
         <!-- Custom Fonts -->
         <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
@@ -19,6 +20,13 @@
               type="text/css">
     </head>
     <body>
+    <div class="header_back">
+        <div class="header">
+            <div class="logo_pic">
+                <a href="<c:url value="/index"/>" style="color: #5bc0de">Log out</a>
+            </div>
+        </div>
+    </div>
     <!-- Header -->
     <a name="about">
         <div class="banner">
@@ -36,7 +44,7 @@
                                     <h2>Courses</h2>
                                 </caption>
                                 <tr>
-                                    <th></th>
+                                    <%--<th></th>--%>
                                     <th>Id</th>
                                     <th>Course Name</th>
                                     <th>Subject</th>
@@ -48,22 +56,29 @@
                                 </tr>
                                 <c:forEach var="course" items="${courses}">
                                 <tr>
+                                    <%--
                                     <td>
                                         <input type="radio" name="courseId" id="${course.id}" value="${course.id}">
                                     </td>
+                                    --%>
                                     <td>${course.id}</td>
-                                    <th>${course.courseName}</th>
-                                    <th>${course.subject}</th>
-                                    <th>${course.lessonsCount}</th>
-                                    <th>${course.lessonDuration}</th>
-                                    <th>${course.courseDuration}</th>
-                                    <th>${course.teacher.user.firstName}</th>
-                                    <th>${course.teacher.user.lastName}</th>
+                                    <td>${course.courseName}</td>
+                                    <td>${course.subject}</td>
+                                    <td>${course.lessonsCount}</td>
+                                    <td>${course.lessonDuration}</td>
+                                    <td>${course.courseDuration}</td>
+                                    <td>${course.teacher.user.firstName}</td>
+                                    <td>${course.teacher.user.lastName}</td>
                                 </tr>
                                 </c:forEach>
-
                             </table>
 
+                            <p class="network-name">
+                                <br>
+                                <a href="<c:url value="/student"/>" style="color: #5bc0de">
+                                    <u>Go back</u>
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>

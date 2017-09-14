@@ -14,4 +14,5 @@ public final class WebPage {
 
     public static final String ERROR = "error";
     public static final String ADDING_COURSE_PAGE = "addingCoursePage";
+    public static final String UPDATING_COURSE_PAGE = "updatingCoursePage";
 }

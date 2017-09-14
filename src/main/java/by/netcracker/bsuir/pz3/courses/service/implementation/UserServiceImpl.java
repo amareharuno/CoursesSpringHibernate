@@ -34,7 +34,7 @@ public class UserServiceImpl extends ServiceImpl<User> implements UserService {
     @Override
     public User signInUser(String login, String password) throws ServiceException {
         logger.info(LoggingAndExceptionMessage.USER_SIGN_IN);
-        return userDao.getUserByLoginAndPassword(login, password);
+        return userDao.getUserByLoginAndPassword(login, String.valueOf(password.hashCode()));
     }
 
     @Transactional
@@ -45,13 +45,13 @@ public class UserServiceImpl extends ServiceImpl<User> implements UserService {
         logger.info(LoggingAndExceptionMessage.USER_SIGN_UP);
 
         User userByLogin = userDao.getUserByLogin(login);
-        User userByPassword = userDao.getUserByPassword(password);
+        User userByPassword = userDao.getUserByPassword(String.valueOf(password.hashCode()));
 
         if (userByLogin != null || userByPassword != null) {
             logger.info(LoggingAndExceptionMessage.USER_ALREADY_EXISTS);
             return false;
         } else {
-            User user = new User(login, password, name, lastName, middleName);
+            User user = new User(login, String.valueOf(password.hashCode()), name, lastName, middleName);
             userDao.add(user);
             if (role.equals(RequestParameterOrAttribute.STUDENT)) {
                 Student student = new Student(user);

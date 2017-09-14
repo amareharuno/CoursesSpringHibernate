@@ -1,0 +1,154 @@
+/* -------------------- Fonts -------------------- */
+@font-face {
+    font-family: 'JosefinSans';
+    src: url(fonts/JosefinSans);
+}
+@font-face {
+    font-family: 'Mrs_Sheppards';
+    src: url(fonts/Mrs_Sheppards/MrsSheppards-Regular.ttf);
+}
+
+h1{
+    font-size: 22pt;
+    font-family: "JosefinSans";
+}
+h2{
+    font-size: 14pt;
+    font-family: Arial;
+    color: #cc9999;
+}
+.font_decor{
+    font-family: "Mrs_Sheppards", sans-serif;
+    color: #cc9999;
+    font-size: 22pt;
+    margin: 3em 0 3em 0;
+    -webkit-margin-before: 0.3em;
+    -webkit-margin-after: 0.3em;
+}
+/* ---------------------------------------------- */
+body{
+    background: url("img/back.jpg");
+    background-size: 100%;
+    padding: 0 0 0 0;
+}
+
+.header_back{
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: auto;
+    background-color: rgba(51, 51, 51, 0.85);
+}
+.header{
+    width: 76%;
+    margin: 0 13% 0 11%;
+    padding: 1%;
+}
+.logo_pic{
+    display: inline-block;
+    width: 7%;
+    height: 100%;
+    padding: 0 0 0 0;
+}
+.profile_name{
+    float: right;
+    width: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+
+    font-family: "Arial", sans-serif;
+    color: white;
+    font-size: 10pt;
+    font-weight: 700;
+}
+
+.content{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.part_1{
+    margin: 60px 10% 0 10%;
+    padding: 1% 9% 0 9%;
+}
+.first_row{
+    display: inline-block;
+    color: black;
+}
+.profile_img{
+    /*Ширина вместе с margin - 20+5+10=35%*/
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 2em 5em 2em 0;
+    width: auto;
+    height: 40%;
+    vertical-align: middle;
+}
+.short_information{
+    /*Ширина вместе с margin - 50+10=60%*/
+    display: inline-block;
+    margin: 0;
+    width: auto;
+    height: 40%;
+    padding: 3em 0 3em 0;
+    vertical-align: middle;
+}
+.social{
+    /*Блок, содержащий соц-сети*/
+    width: 200px;
+    margin: 1em 0 1em 0;
+}
+.icons{
+    /*Общие свойста для иконок*/
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: url("img/content/social/vk_fb_inst.png"); /*спрайт-картинка - общая для всех соц. сетей.*/
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+}
+/*отдельные свойста иконок*/
+.icon_vk{
+    background-position: 0 0;
+}
+a.icon_vk:hover{
+    background-position: 0 -35px;
+}
+.icon_fb{
+    background-position: 70.5px 0;
+}
+a.icon_fb:hover{
+    background-position: 70.5px -35px;
+}
+.icon_inst{
+    background-position: 36px 0;
+}
+a.icon_inst:hover{
+    background-position: 36px -35px;
+}
+
+.part_2{
+    height: auto;
+    margin: 0 10% 0 10%;
+    background-color: rgba(51, 51, 51, 0.95);
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 2%;
+}
+.footer{
+    height: auto;
+    margin: 0 10% 1% 10%;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 8pt;
+    font-family: Arial;
+    color: grey;
+}
+
+
+
