@@ -44,7 +44,6 @@
                                     <h2>Courses</h2>
                                 </caption>
                                 <tr>
-                                    <%--<th></th>--%>
                                     <th>Id</th>
                                     <th>Course Name</th>
                                     <th>Subject</th>
