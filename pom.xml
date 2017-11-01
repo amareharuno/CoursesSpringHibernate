@@ -16,8 +16,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>${maven-compiler-plugin.version}</source>
-                    <target>${maven-compiler-plugin.version}</target>
+                    <!-- Java version -->
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
                 </configuration>
@@ -125,7 +126,8 @@
             <artifactId>servlet-api</artifactId>
             <version>${servlet.version}</version>
         </dependency>
-        <!-- Для тегов в jsp -->
+
+        <!-- jsp -->
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
