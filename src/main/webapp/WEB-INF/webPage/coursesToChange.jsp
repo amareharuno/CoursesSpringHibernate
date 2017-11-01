@@ -5,31 +5,13 @@
     <title>Courses</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/profileStyle.css">
-
-    <!-- JQuery -->
-    <%--<script src="${pageContext.request.contextPath}/resources/bootstrapTheme/jquery/jquery.js"></script>--%>
-
-    <!-- Custom Fonts -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
-          rel="stylesheet"
-          type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
-          rel="stylesheet"
-          type="text/css">
+    <link href="$/resources/bootstrap/css/landing-page.css" rel="stylesheet">
+    <link href="/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="header_back">
-    <div class="header">
-        <div class="logo_pic">
-            <a href="<c:url value="/index"/>" style="color: #5bc0de">Log out</a>
-        </div>
-    </div>
-</div>
 <!-- Header -->
 <a name="about"></a>
 <div class="banner">
