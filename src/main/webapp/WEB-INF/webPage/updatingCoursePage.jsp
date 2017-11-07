@@ -5,19 +5,15 @@
     <title>Adding course</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<c:url value="/resources/bootstrapTheme/css/bootstrap.min.css"/>" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="${pageContext.request.contextPath}/resources/myCss.css">
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/profileStyle.css">
+    <link href="<c:url value="/resources/myCss.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/bootstrapTheme/css/landing-page.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/profileStyle.css"/>" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
-          rel="stylesheet"
-          type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
-          rel="stylesheet"
-          type="text/css">
+    <link href="<c:url value="/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet">
 </head>
 <body>
 <div class="header_back">
@@ -37,7 +33,7 @@
                     <h3>Enter some information about the course:</h3>
                     <hr class="intro-divider">
                     <label style="color: yellow; size: 26pt">${somethingWrongMessage}</label>
-                    <form id="signUpForm" class="list-inline" action="${pageContext.request.contextPath}/course/updateCourse" method="post">
+                    <form id="signUpForm" class="list-inline" action="<c:url value="/course/updateCourse"/>" method="post">
                         <p>
                             <input class="lead" type="text"
                                    name="courseName" placeholder="Course Name"

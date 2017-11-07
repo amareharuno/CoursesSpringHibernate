@@ -5,14 +5,14 @@
     <title>Adding course</title>
 
     <!-- Bootstrap -->
-    <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/resources/bootstrap/js/bootstrap.min.js"/>
+    <link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet">
+    <script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
 
-    <script src="/resources/jquery/jquery-3.2.1.min.js"/>
-    <link href="/resources/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="<c:url value="/resources/jquery/jquery-3.2.1.min.js"/>"></script>
+    <link href="<c:url value="/resources/font-awesome-4.7.0/css/font-awesome.min.css"/>" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/resources/myCss.css">
+    <link href="<c:url value="/resources/myCss.css"/>">
 
     <%--<link href="/resources/bootstrap/css/landing-page.css" rel="stylesheet">--%>
     <%--<link rel="stylesheet" type="text/css" href="/resources/profileStyle.css">--%>
