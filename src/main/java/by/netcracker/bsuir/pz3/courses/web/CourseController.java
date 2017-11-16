@@ -67,10 +67,10 @@ public class CourseController {
                 return new ModelAndView(WebPage.ADDING_COURSE_PAGE);
         }
 
-        @RequestMapping(value = "/updatingCoursePage", method = RequestMethod.GET)
+        @RequestMapping(value = "/updatingCoursePage", method = RequestMethod.POST)
         public ModelAndView getUpdatingCoursePage(HttpServletRequest request, HttpSession session) {
                 try {
-                        String courseId = request.getParameter(RequestParameterOrAttribute.RADIO_ID);
+                        String courseId = request.getParameter("itemToUpdate");
                         int id = Integer.parseInt(courseId);
                         session.setAttribute("courseId", id);
 
@@ -101,7 +101,8 @@ public class CourseController {
                                                 Integer.parseInt(lessonsCount),
                                                 Integer.parseInt(lessonDuration),
                                                 teacherService.getById(Integer.parseInt(teacherId))));
-                                modelAndView = getAddingCoursePage(request);
+
+                                modelAndView = getCoursesToChangePage(request);
                         } catch (ServiceException exception) {
                                 logger.error(exception);
                                 modelAndView.setViewName(WebPage.ERROR);
@@ -149,7 +150,7 @@ public class CourseController {
                         request.setAttribute(
                                 RequestParameterOrAttribute.SOMETHING_WRONG_MESSAGE,
                                 LoggingAndExceptionMessage.WRONG_INPUT);
-                        modelAndView = getAddingCoursePage(request);
+                        modelAndView = getUpdatingCoursePage(request, session);
                 }
                 return modelAndView;
         }
@@ -157,7 +158,8 @@ public class CourseController {
         @RequestMapping(value = "/coursesToChange/delete", method = RequestMethod.POST)
         public ModelAndView deleteCourse(HttpServletRequest request) {
                 try {
-                        String courseId = request.getParameter(RequestParameterOrAttribute.RADIO_ID);
+//                        String courseId = request.getParameter(RequestParameterOrAttribute.RADIO_ID);
+                        String courseId = request.getParameter("itemToDelete");
                         int id = Integer.parseInt(courseId);
                         courseService.delete(id);
                 } catch (NumberFormatException ex) {

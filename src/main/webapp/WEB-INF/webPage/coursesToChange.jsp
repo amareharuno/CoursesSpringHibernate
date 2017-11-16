@@ -6,42 +6,32 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css">
+    <link href="<c:url value="/resources/font-awesome-4.7.0/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css">
     <script src="<c:url value="/resources/jquery/jquery-3.2.1.min.js"/>"></script>
-    <script>
-
-    </script>
 </head>
 <body>
 <!-- Header -->
+<form id="refreshCoursesForm" action="<c:url value="/course/coursesToChange"/>"></form>
+<form id="addCourseForm" action="<c:url value="/course/addingCoursePage"/>"></form>
+<form id="deleteForm" action="<c:url value="/course/coursesToChange/delete"/>" method="post"></form>
+<form id="updateForm" action="<c:url value="/course/updatingCoursePage"/>" method="post"></form>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="intro-message" align="center">
-                <div class="buttons">
-                    <form action="<c:url value="/course/coursesToChange"/>" method="get">
-                        <input type="submit" value="Refresh course list" required style="color: #122b40">
-                    </form>
-                    <form action="<c:url value="/course/addingCoursePage"/>" method="get">
-                        <input type="submit" value="Add course to list" required style="color: #122b40">
-                    </form>
-
-                    <form id="deleteForm" action="<c:url value="/course/coursesToChange/delete"/>" method="post">
-                        <input form="deleteForm" type="submit" value="Delete course from list" required
-                               style="color: #122b40">
-                    </form>
-
-                    <form id="updateForm" action="<c:url value="/course/updatingCoursePage"/>" method="get">
-                        <input type="submit" value="Update course" required style="color: #122b40">
-                    </form>
+                <div style="color: #122b40">
+                    <h2>Courses</h2>
                 </div>
 
-                <table id="coursesTable" class="table-bordered" style="background-color: #adadad">
-                    <caption style="color: #122b40">
-                        <h2>Courses</h2>
-                    </caption>
+                <div class="buttons">
+                    <input type="submit" form="refreshCoursesForm" value="Refresh course list">
+                    <input type="submit" form="addCourseForm" value="Add course to list">
+                </div>
+
+                <table id="coursesTable" class="table-bordered">
                     <label style="color: yellow; size: 26pt">${somethingWrongMessage}</label>
                     <tr>
-                        <th></th>
                         <th>Course Id</th>
                         <th>Course Name</th>
                         <th>Subject</th>
@@ -53,21 +43,6 @@
                     </tr>
                     <c:forEach var="course" items="${courses}">
                         <tr>
-                            <td>
-                                <label>
-                                        <%--<input form="deleteForm" type="radio" name="radioId"
-                                               id="${course.id}" value="${course.id}"
-                                               onchange="updatedItemId_${course.id}.value = this.value">
-                                            <input form="updateForm" type="radio" name="radioId"
-                                               id="updatedItemId_${course.id}" value="${course.id}" style="display: none">
-                                               --%>
-                                    <input form="deleteForm" type="radio" name="radioId"
-                                           id="${course.id}" value="${course.id}">
-                                        <%-- todo --%>
-                                    <input form="updateForm" type="radio" name="radioId"
-                                           id="updatedItemId_${course.id}" value="${course.id}">
-                                </label>
-                            </td>
                             <td>${course.id}</td>
                             <td>${course.courseName}</td>
                             <td>${course.subject}</td>
@@ -76,6 +51,16 @@
                             <td>${course.courseDuration}</td>
                             <td>${course.teacher.user.firstName}</td>
                             <td>${course.teacher.user.lastName}</td>
+                            <td>
+                                <button type="submit" form="updateForm"
+                                        name="itemToUpdate" value="${course.id}"
+                                        class="fa fa-wrench" aria-hidden="true"></button>
+                            </td>
+                            <td>
+                                <button type="submit" form="deleteForm"
+                                        name="itemToDelete" value="${course.id}"
+                                        class="fa fa-trash" aria-hidden="true"></button>
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>

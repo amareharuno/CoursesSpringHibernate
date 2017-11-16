@@ -38,8 +38,7 @@
                     <h3>Change information you need:</h3>
                     <hr class="intro-divider">
                     <label style="color: yellow; size: 26pt">${somethingWrongMessage}</label>
-                    <form id="updateInfoForm" class="list-inline" action="<c:url value="/course/updateCourse"/>"
-                          method="post">
+                    <form id="updateInfoForm" class="list-inline" action="<c:url value="/course/updateCourse"/>" method="post">
                         <p>
                             <input class="lead" type="text"
                                    name="courseName" placeholder="Course Name"
