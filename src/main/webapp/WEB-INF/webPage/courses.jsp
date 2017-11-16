@@ -55,11 +55,6 @@
                                 </tr>
                                 <c:forEach var="course" items="${courses}">
                                 <tr>
-                                    <%--
-                                    <td>
-                                        <input type="radio" name="courseId" id="${course.id}" value="${course.id}">
-                                    </td>
-                                    --%>
                                     <td>${course.id}</td>
                                     <td>${course.courseName}</td>
                                     <td>${course.subject}</td>

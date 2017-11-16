@@ -9,23 +9,6 @@
     <packaging>war</packaging>
     <version>1.0</version>
 
-    <build>
-        <finalName>coursesSpring</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <!-- Java version -->
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>true</showDeprecation>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <org.spring-framework-version>4.3.8.RELEASE</org.spring-framework-version>
         <!--<spring-context-support.version>3.2.8.RELEASE</spring-context-support.version>-->
@@ -42,9 +25,45 @@
         <servlet.version>2.5</servlet.version>
 
         <maven-compiler-plugin.version>1.7</maven-compiler-plugin.version>
+        <lesscss-comliler-plugin.version>1.7.0.1.1</lesscss-comliler-plugin.version>
 
         <jstl.version>1.2</jstl.version>
     </properties>
+
+    <build>
+        <finalName>coursesSpring</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!-- Java version -->
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.lesscss</groupId>
+                <artifactId>lesscss-maven-plugin</artifactId>
+                <version>${lesscss-comliler-plugin.version}</version>
+                <configuration>
+                    <sourceDirectory>${project.basedir}/src/main/webapp/resources/courses-theme/less</sourceDirectory>
+                    <outputDirectory>${project.basedir}/src/main/webapp/resources/courses-theme/css</outputDirectory>
+                    <!--<outputDirectory>${project.build.directory}/${project.build.finalName}/resources/courses-theme/css</outputDirectory>-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <!-- Spring -->
