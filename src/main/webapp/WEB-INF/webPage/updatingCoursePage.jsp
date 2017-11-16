@@ -2,11 +2,11 @@
 <%--@elvariable id="user" type="by.netcracker.bsuir.pz3.courses.entity.User"--%>
 <%--@elvariable id="teachers" type="java.util.List<by.netcracker.bsuir.pz3.courses.entity.Teacher>"--%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Adding course</title>
+    <title>Updating course</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/bootstrapTheme/css/bootstrap.min.css"/>" rel="stylesheet">
@@ -17,7 +17,8 @@
     <link href="<c:url value="/resources/profileStyle.css"/>" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="<c:url value="/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+          rel="stylesheet">
 </head>
 <body>
 <div class="header_back">
@@ -37,7 +38,8 @@
                     <h3>Change information you need:</h3>
                     <hr class="intro-divider">
                     <label style="color: yellow; size: 26pt">${somethingWrongMessage}</label>
-                    <form id="updateInfoForm" class="list-inline" action="<c:url value="/course/updateCourse"/>" method="post">
+                    <form id="updateInfoForm" class="list-inline" action="<c:url value="/course/updateCourse"/>"
+                          method="post">
                         <p>
                             <input class="lead" type="text"
                                    name="courseName" placeholder="Course Name"
@@ -61,11 +63,12 @@
                             <br>
                             <label>
                                 Teacher Last Name <br>
-                                <select class="lead" name="teacherId" form="updateInfoForm" required style="color: #122b40">
+                                <select class="lead" name="teacherId" form="updateInfoForm" required
+                                        style="color: #122b40">
                                     <c:forEach var="teacher" items="${teachers}">
                                         <option class="lead" value=${teacher.id}
-                                            <c:if test="${teacher.user.id == course.teacher.id}">selected</c:if> >
-                                            ${teacher.user.lastName}
+                                                <c:if test="${teacher.user.id == course.teacher.id}">selected</c:if> >
+                                                ${teacher.user.lastName}
                                         </option>
                                     </c:forEach>
                                 </select>

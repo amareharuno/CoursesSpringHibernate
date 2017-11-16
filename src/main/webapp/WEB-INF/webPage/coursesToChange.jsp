@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -26,7 +26,8 @@
                     </form>
 
                     <form id="deleteForm" action="<c:url value="/course/coursesToChange/delete"/>" method="post">
-                        <input form="deleteForm" type="submit" value="Delete course from list" required style="color: #122b40">
+                        <input form="deleteForm" type="submit" value="Delete course from list" required
+                               style="color: #122b40">
                     </form>
 
                     <form id="updateForm" action="<c:url value="/course/updatingCoursePage"/>" method="get">
@@ -54,12 +55,17 @@
                         <tr>
                             <td>
                                 <label>
+                                        <%--<input form="deleteForm" type="radio" name="radioId"
+                                               id="${course.id}" value="${course.id}"
+                                               onchange="updatedItemId_${course.id}.value = this.value">
+                                            <input form="updateForm" type="radio" name="radioId"
+                                               id="updatedItemId_${course.id}" value="${course.id}" style="display: none">
+                                               --%>
                                     <input form="deleteForm" type="radio" name="radioId"
-                                           id="${course.id}" value="${course.id}"
-                                           onchange="updatedItemId_${course.id}.value = this.value">
-                                    <%-- todo --%>
-                                    <%--<input form="updateForm" type="radio" name="updatedItemId"
-                                           id="updatedItemId_${course.id}" value="${course.id}" style="display: none">--%>
+                                           id="${course.id}" value="${course.id}">
+                                        <%-- todo --%>
+                                    <input form="updateForm" type="radio" name="radioId"
+                                           id="updatedItemId_${course.id}" value="${course.id}">
                                 </label>
                             </td>
                             <td>${course.id}</td>
