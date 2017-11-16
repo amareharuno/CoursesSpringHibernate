@@ -5,11 +5,11 @@
     <title>Students list</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<c:url value="/resources/bootstrapTheme/css/bootstrap.min.css"/>" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/profileStyle.css">
+    <link href="<c:url value="/resources/bootstrapTheme/css/landing-page.css"/>" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/profileStyle.css"/>">
 
     <!-- Custom Fonts -->
     <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"

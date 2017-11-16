@@ -12,14 +12,14 @@
     <title>Sign in</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<c:url value="/resources/bootstrapTheme/css/bootstrap.min.css"/>" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/css/landing-page.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/profileStyle.css">
+    <link href="<c:url value="/resources/bootstrapTheme/css/landing-page.css"/>" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/profileStyle.css"/>">
 
     <!-- Custom Fonts -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
+    <link href="<c:url value="/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"/>"
           rel="stylesheet"
           type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
@@ -28,13 +28,6 @@
 </head>
 
 <body>
-<div class="header_back">
-    <div class="header">
-        <div class="logo_pic">
-            <a href="<c:url value="/index"/>" style="color: #5bc0de">Back to main page</a>
-        </div>
-    </div>
-</div>
 <!-- Header -->
 <a name="about"></a>
 <div class="intro-header">
@@ -48,7 +41,7 @@
 
                     <%--SIGN IN FORM--%>
                     <label style="color: yellow; size: 26pt">${somethingWrongSignInMessage}</label>
-                    <form class="list-inline" action="${pageContext.request.contextPath}/signedInUser" method="post">
+                    <form class="list-inline" action="<c:url value="/signedInUser"/>" method="post">
                         <input type="hidden" name="command" value="login">
                         <p>
                             <input class="lead" type="text" required style="color: #122b40"
