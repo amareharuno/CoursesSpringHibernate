@@ -8,6 +8,8 @@ public final class RequestParameterOrAttribute {
     public static final String MIDDLE_NAME = "middleName";
     public static final String ROLE = "role";
 
+    public static final String COURSE="course";
+
     public static final String SUBJECT = "subject";
     public static final String COURSE_NAME = "courseName";
     public static final String LESSONS_COUNT = "lessonsCount";

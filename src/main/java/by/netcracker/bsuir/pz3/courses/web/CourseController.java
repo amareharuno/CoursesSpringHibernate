@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/course")
@@ -66,8 +67,13 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/updatingCoursePage", method = RequestMethod.GET)
-    public ModelAndView getUpdatingCoursePage(HttpServletRequest request) {
+    public ModelAndView getUpdatingCoursePage(HttpServletRequest request, HttpSession session) {
         try {
+            String courseId = request.getParameter(RequestParameterOrAttribute.RADIO_ID);
+            int id = Integer.parseInt(courseId);
+            session.setAttribute("courseId", id);
+
+            request.setAttribute(RequestParameterOrAttribute.COURSE, courseService.getById(id));
             request.setAttribute(RequestParameterOrAttribute.TEACHERS, teacherService.getAll());
         }  catch (ServiceException e) {
             logger.debug(e);
@@ -77,7 +83,7 @@ public class CourseController {
     }
 
     @RequestMapping(value = "/addCourse", method = RequestMethod.POST)
-    public ModelAndView addCourseAndGoToCoursesToChangePage(HttpServletRequest request) {
+    public ModelAndView addCourseAndGoToCoursesToChangePage(HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
 
         String courseName = request.getParameter(RequestParameterOrAttribute.COURSE_NAME);
@@ -94,7 +100,7 @@ public class CourseController {
                                 Integer.parseInt(lessonsCount),
                                 Integer.parseInt(lessonDuration),
                                 teacherService.getById(Integer.parseInt(teacherId))));
-                modelAndView = getCoursesToChangePage(request);
+                modelAndView = getAddingCoursePage(request);
             } catch (ServiceException exception) {
                 logger.error(exception);
                 modelAndView.setViewName(WebPage.ERROR);
@@ -110,7 +116,8 @@ public class CourseController {
         return modelAndView;
     }
 
-    public ModelAndView updateCourseAndGoToCoursesToChangePage(HttpServletRequest request) {
+    @RequestMapping(value = "/updateCourse", method = RequestMethod.POST)
+    public ModelAndView updateCourseAndGoToCoursesToChangePage(HttpServletRequest request, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
 
 
@@ -122,6 +129,8 @@ public class CourseController {
 
         if (InputValidation.validateCourseInput(courseName, subject, lessonsCount, lessonDuration, teacherId)) {
             try {
+                Course courseToUpdate = courseService.getById((Integer) session.getAttribute("courseId"));
+
                 courseService.update(
                         new Course(
                                 subject, courseName,

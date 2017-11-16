@@ -1,3 +1,7 @@
+<%--@elvariable id="course" type="by.netcracker.bsuir.pz3.courses.entity.Course"--%>
+<%--@elvariable id="user" type="by.netcracker.bsuir.pz3.courses.entity.User"--%>
+<%--@elvariable id="teachers" type="java.util.List<by.netcracker.bsuir.pz3.courses.entity.Teacher>"--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -29,40 +33,46 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="intro-message" align="center">
-                    <h1>Adding a new course</h1>
-                    <h3>Enter some information about the course:</h3>
+                    <h1>Updating the course</h1>
+                    <h3>Change information you need:</h3>
                     <hr class="intro-divider">
                     <label style="color: yellow; size: 26pt">${somethingWrongMessage}</label>
-                    <form id="signUpForm" class="list-inline" action="<c:url value="/course/updateCourse"/>" method="post">
+                    <form id="updateInfoForm" class="list-inline" action="<c:url value="/course/updateCourse"/>" method="post">
                         <p>
                             <input class="lead" type="text"
                                    name="courseName" placeholder="Course Name"
+                                   value="${course.courseName}"
                                    required style="color: #122b40">
                             <br>
                             <input class="lead" type="text"
                                    name="subject" placeholder="Subject"
-                                   required style="color: #122b40">
+                                   value="${course.subject}"
+                                   required style="color: #122b40"/>
                             <br>
                             <input class="lead" type="text"
                                    name="lessonsCount" placeholder="Lessons count"
-                                   required style="color: #122b40">
+                                   value="${course.lessonsCount}"
+                                   required style="color: #122b40"/>
                             <br>
                             <input class="lead" type="text"
                                    name="lessonDuration" placeholder="Lesson duration (min)"
-                                   required style="color: #122b40">
+                                   value="${course.lessonDuration}"
+                                   required style="color: #122b40"/>
                             <br>
                             <label>
                                 Teacher Last Name <br>
-                                <select class="lead" name="teacherId" form="signUpForm" required style="color: #122b40">
+                                <select class="lead" name="teacherId" form="updateInfoForm" required style="color: #122b40">
                                     <c:forEach var="teacher" items="${teachers}">
-                                        <option selected class="lead" value=${teacher.id}>"${teacher.user.lastName}"</option>
+                                        <option class="lead" value=${teacher.id}
+                                            <c:if test="${teacher.user.id == course.teacher.id}">selected</c:if> >
+                                            ${teacher.user.lastName}
+                                        </option>
                                     </c:forEach>
                                 </select>
                             </label>
                         </p>
                         <p>
-                            <input class="btn btn-default btn-lg" type="submit"
-                                   value="Update course">
+                            <button class="btn btn-default btn-lg" type="submit">Update course</button>
                         </p>
                     </form>
 

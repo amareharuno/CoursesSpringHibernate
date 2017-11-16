@@ -28,13 +28,6 @@
 </head>
 
 <body>
-<div class="header_back">
-    <div class="header">
-        <div class="logo_pic">
-            <a href="<c:url value="/index"/>" style="color: #5bc0de">Back to main page</a>
-        </div>
-    </div>
-</div>
 <!-- Header -->
 <a name="about"></a>
 <div class="intro-header">

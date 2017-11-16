@@ -6,6 +6,10 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css">
+    <script src="<c:url value="/resources/jquery/jquery-3.2.1.min.js"/>"></script>
+    <script>
+
+    </script>
 </head>
 <body>
 <!-- Header -->
@@ -25,7 +29,7 @@
                         <input form="deleteForm" type="submit" value="Delete course from list" required style="color: #122b40">
                     </form>
 
-                    <form action="<c:url value="/course/updatingCoursePage"/>" method="get">
+                    <form id="updateForm" action="<c:url value="/course/updatingCoursePage"/>" method="get">
                         <input type="submit" value="Update course" required style="color: #122b40">
                     </form>
                 </div>
@@ -51,7 +55,11 @@
                             <td>
                                 <label>
                                     <input form="deleteForm" type="radio" name="radioId"
-                                           id="${course.id}" value="${course.id}">
+                                           id="${course.id}" value="${course.id}"
+                                           onchange="updatedItemId_${course.id}.value = this.value">
+                                    <%-- todo --%>
+                                    <%--<input form="updateForm" type="radio" name="updatedItemId"
+                                           id="updatedItemId_${course.id}" value="${course.id}" style="display: none">--%>
                                 </label>
                             </td>
                             <td>${course.id}</td>
