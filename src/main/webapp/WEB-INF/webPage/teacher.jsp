@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -20,34 +20,33 @@
           type="text/css">
 </head>
 <body>
-    <!-- Header -->
-    <a name="about"></a>
-    <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message" align="center">
-                        <h1>Hello, teacher</h1>
-                        <h3>Please choose what do you want to do:</h3>
-                        <hr class="intro-divider">
+<!-- Header -->
+<div class="banner intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="intro-message" align="center">
+                    <h1>Hello, teacher</h1>
+                    <h3>Please choose what do you want to do:</h3>
+                    <hr class="intro-divider">
 
-                        <div align="center">
-                            <form action="<c:url value="/teacher/teachers"/>" method="get">
-                                <input type="submit" value="Show teachers" required style="color: #122b40">
-                            </form>
-                            <form action="<c:url value="/course/coursesToChange"/>" method="get">
-                                <input type="submit" value="Show courses" required style="color: #122b40">
-                            </form>
-                            <form action="<c:url value="/student/students"/>" method="get">
-                                <input type="submit" value="Show students" required style="color: #122b40">
-                            </form>
-                        </div>
-
+                    <div align="center">
+                        <form action="<c:url value="/teacher/teachers"/>" method="get">
+                            <input type="submit" value="Show teachers" class="btn btn-default btn-lg">
+                        </form>
+                        <form action="<c:url value="/course/coursesToChange"/>" method="get">
+                            <input type="submit" value="Show courses" class="btn btn-default btn-lg">
+                        </form>
+                        <form action="<c:url value="/student/students"/>" method="get">
+                            <input type="submit" value="Show students" class="btn btn-default btn-lg">
+                        </form>
                     </div>
+
                 </div>
             </div>
         </div>
-        <!-- /.container -->
     </div>
+    <!-- /.container -->
+</div>
 </body>
 </html>
