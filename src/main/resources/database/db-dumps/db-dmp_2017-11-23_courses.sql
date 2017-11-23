@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: courses
 -- ------------------------------------------------------
--- Server version	6.0.6-alpha-community
+-- Server version	5.7.18-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,11 +29,13 @@ CREATE TABLE `course` (
   `lessonsCount` int(11) NOT NULL,
   `lessonDuration` int(11) NOT NULL,
   `courseDuration` int(11) NOT NULL,
-  `teacher_teacherId` int(11) NOT NULL,
-  PRIMARY KEY (`courseId`,`teacher_teacherId`),
-  UNIQUE KEY `courseID_UNIQUE` (`courseId`),
-  KEY `fk_course_teacher_idx` (`teacher_teacherId`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+  `Teacher_teacherId` int(11) NOT NULL,
+  PRIMARY KEY (`courseId`),
+  UNIQUE KEY `courseId_UNIQUE` (`courseId`),
+  KEY `fk_Course_Teacher1_idx` (`Teacher_teacherId`),
+  CONSTRAINT `FKi6hpw72kuo134h5dg3hsne5yk` FOREIGN KEY (`Teacher_teacherId`) REFERENCES `teacher` (`teacherId`),
+  CONSTRAINT `fk_Course_Teacher1` FOREIGN KEY (`Teacher_teacherId`) REFERENCES `teacher` (`teacherId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,36 +44,63 @@ CREATE TABLE `course` (
 
 LOCK TABLES `course` WRITE;
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES (1,'math','Numbers',1,60,60,1),(2,'english','courseName2',2,60,120,1),(18,'Math','Magic Numbers',2,75,150,0),(19,'Math','Magic Numbers',2,75,150,0),(20,'Math','Magic Numbers',2,75,150,0),(21,'Math','Magic Numbers',2,75,150,0),(22,'Math','Magic Numbers',2,75,150,0),(23,'Math','Magic Numbers',2,75,150,0),(24,'Math','Magic Numbers',2,75,150,0),(25,'Math','Magic Numbers',2,75,150,0),(26,'Math','Magic Numbers',2,75,150,0),(27,'Math','Magic Numbers',2,75,150,0);
+INSERT INTO `course` VALUES (4,'Course3Updated','111',30,30,400,1),(5,'Course3Updated','Course3Updated',30,30,900,1),(6,'NewCourse','NewCourse',23,134,3082,1);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `finished_courses`
+-- Table structure for table `finished_course`
 --
 
-DROP TABLE IF EXISTS `finished_courses`;
+DROP TABLE IF EXISTS `finished_course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `finished_courses` (
+CREATE TABLE `finished_course` (
   `finishedCourseId` int(11) NOT NULL AUTO_INCREMENT,
-  `mark` int(11) NOT NULL,
-  `review` varchar(100) NOT NULL,
-  `student_studentId` int(11) NOT NULL,
-  PRIMARY KEY (`finishedCourseId`,`student_studentId`),
-  UNIQUE KEY `finishedCourseID_UNIQUE` (`finishedCourseId`),
-  KEY `fk_finished_courses_student1_idx` (`student_studentId`),
-  CONSTRAINT `fk_finished_courses_student1` FOREIGN KEY (`student_studentId`) REFERENCES `student` (`studentId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `Student_studentId` int(11) NOT NULL,
+  `assessment` int(11) DEFAULT NULL,
+  `review` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`finishedCourseId`,`Student_studentId`),
+  UNIQUE KEY `finishedCourseId_UNIQUE` (`finishedCourseId`),
+  KEY `fk_finishedCourse_Student1_idx` (`Student_studentId`),
+  CONSTRAINT `FKk300mv7kt0gby0cv5ka0pof2x` FOREIGN KEY (`Student_studentId`) REFERENCES `student` (`studentId`),
+  CONSTRAINT `fk_finishedCourse_Student1` FOREIGN KEY (`Student_studentId`) REFERENCES `student` (`studentId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `finished_courses`
+-- Dumping data for table `finished_course`
 --
 
-LOCK TABLES `finished_courses` WRITE;
-/*!40000 ALTER TABLE `finished_courses` DISABLE KEYS */;
-/*!40000 ALTER TABLE `finished_courses` ENABLE KEYS */;
+LOCK TABLES `finished_course` WRITE;
+/*!40000 ALTER TABLE `finished_course` DISABLE KEYS */;
+/*!40000 ALTER TABLE `finished_course` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `finishedcourse`
+--
+
+DROP TABLE IF EXISTS `finishedcourse`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `finishedcourse` (
+  `finishedCourseId` int(11) NOT NULL AUTO_INCREMENT,
+  `assessment` int(11) DEFAULT NULL,
+  `review` varchar(255) DEFAULT NULL,
+  `Student_studentId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`finishedCourseId`),
+  KEY `FKk300mv7kt0gby0cv5ka0pof2x` (`Student_studentId`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `finishedcourse`
+--
+
+LOCK TABLES `finishedcourse` WRITE;
+/*!40000 ALTER TABLE `finishedcourse` DISABLE KEYS */;
+/*!40000 ALTER TABLE `finishedcourse` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -83,11 +112,12 @@ DROP TABLE IF EXISTS `student`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `student` (
   `studentId` int(11) NOT NULL AUTO_INCREMENT,
-  `firstName` varchar(45) NOT NULL,
-  `lastName` varchar(45) NOT NULL,
-  `middleName` varchar(45) NOT NULL,
-  PRIMARY KEY (`studentId`),
-  UNIQUE KEY `studentID_UNIQUE` (`studentId`)
+  `User_userId` int(11) NOT NULL,
+  PRIMARY KEY (`studentId`,`User_userId`),
+  UNIQUE KEY `studentId_UNIQUE` (`studentId`),
+  KEY `fk_Student_User1_idx` (`User_userId`),
+  CONSTRAINT `FK2547a60b9tun4i9rcmkwmvyw5` FOREIGN KEY (`User_userId`) REFERENCES `user` (`userId`),
+  CONSTRAINT `fk_Student_User1` FOREIGN KEY (`User_userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -97,7 +127,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'vjb','dfgjhk','dfghj');
+INSERT INTO `student` VALUES (1,2);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,14 +139,13 @@ DROP TABLE IF EXISTS `student_has_course`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `student_has_course` (
-  `student_studentId` int(11) NOT NULL,
-  `course_courseId` int(11) NOT NULL,
-  `course_teacher_teacherId` int(11) NOT NULL,
-  PRIMARY KEY (`student_studentId`,`course_courseId`,`course_teacher_teacherId`),
-  KEY `fk_student_has_course_course1_idx` (`course_courseId`,`course_teacher_teacherId`),
-  KEY `fk_student_has_course_student1_idx` (`student_studentId`),
-  CONSTRAINT `fk_student_has_course_course1` FOREIGN KEY (`course_courseId`, `course_teacher_teacherId`) REFERENCES `course` (`courseId`, `teacher_teacherId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_student_has_course_student1` FOREIGN KEY (`student_studentId`) REFERENCES `student` (`studentId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  `Student_studentId` int(11) NOT NULL,
+  `Course_courseId` int(11) NOT NULL,
+  PRIMARY KEY (`Student_studentId`,`Course_courseId`),
+  KEY `fk_Student_has_Course_Course1_idx` (`Course_courseId`),
+  KEY `fk_Student_has_Course_Student1_idx` (`Student_studentId`),
+  CONSTRAINT `fk_Student_has_Course_Course1` FOREIGN KEY (`Course_courseId`) REFERENCES `course` (`courseId`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Student_has_Course_Student1` FOREIGN KEY (`Student_studentId`) REFERENCES `student` (`studentId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -138,12 +167,13 @@ DROP TABLE IF EXISTS `teacher`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `teacher` (
   `teacherId` int(11) NOT NULL AUTO_INCREMENT,
-  `firstName` varchar(45) NOT NULL,
-  `lastName` varchar(45) NOT NULL,
-  `middleName` varchar(45) NOT NULL,
-  PRIMARY KEY (`teacherId`),
-  UNIQUE KEY `teacherID_UNIQUE` (`teacherId`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+  `User_userId` int(11) NOT NULL,
+  PRIMARY KEY (`teacherId`,`User_userId`),
+  UNIQUE KEY `teacherId_UNIQUE` (`teacherId`),
+  KEY `fk_Teacher_User_idx` (`User_userId`),
+  CONSTRAINT `FKpoqs6pxgf5cr26tqpeepuw2ok` FOREIGN KEY (`User_userId`) REFERENCES `user` (`userId`),
+  CONSTRAINT `fk_Teacher_User` FOREIGN KEY (`User_userId`) REFERENCES `user` (`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +182,7 @@ CREATE TABLE `teacher` (
 
 LOCK TABLES `teacher` WRITE;
 /*!40000 ALTER TABLE `teacher` DISABLE KEYS */;
-INSERT INTO `teacher` VALUES (1,'Name1','LName1','MName1'),(2,'Name2','LName2','MName2'),(3,'Name3','LName3','MName3'),(4,'Name4','LName4','MName4'),(5,'firstName','lastName','middleName'),(6,'firstName','lastName','middleName'),(7,'firstName','lastName','middleName'),(8,'firstName','lastName','middleName'),(9,'firstName','lastName','middleName'),(10,'firstName','lastName','middleName'),(11,'firstName','lastName','middleName'),(12,'klm','llknn','kllml'),(13,'mlmkl','hghcxc','teacher'),(14,'bvc','llml','ml ;;k'),(15,'firstName','lastName','middleName'),(16,'fhgjhkjlk','gjk','fgh');
+INSERT INTO `teacher` VALUES (1,1);
 /*!40000 ALTER TABLE `teacher` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,15 +194,17 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `userID` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `isTeacher` tinyint(4) NOT NULL,
-  PRIMARY KEY (`userID`),
-  UNIQUE KEY `userID_UNIQUE` (`userID`),
+  `firstName` varchar(45) NOT NULL,
+  `lastName` varchar(45) NOT NULL,
+  `middleName` varchar(45) NOT NULL,
+  PRIMARY KEY (`userId`),
+  UNIQUE KEY `userId_UNIQUE` (`userId`),
   UNIQUE KEY `login_UNIQUE` (`login`),
   UNIQUE KEY `password_UNIQUE` (`password`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +213,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'login','pass',0),(2,'l','p',0),(3,'lo','pa',0),(4,'log','sdfbnm',0),(5,'logsdfdg','Sdvdvzvzdzd',0),(6,'logsdfdgfxgx','s',0),(7,'111111','sssssssssssssssssssss',0),(8,'gk66',' ,',0),(9,'lllllllll','ppppppppp',0),(10,'26635','m,. blvjgk',0),(11,'as;mcsa;kvdsnnjv','dsvm;dkvma;lmc',0),(12,'sdfghhjkjlk','cvbdgfhgjhkj',0),(13,';lkjvgcfcgvkhblj;','dfvblj;kkjlhkj',0);
+INSERT INTO `user` VALUES (1,'teacher','-1439577118','Teacher','Teacher','Teacher'),(2,'student','-1879145925','Student','Student','Student');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -194,4 +226,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-16 12:50:00
+-- Dump completed on 2017-11-23 10:38:02
