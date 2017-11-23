@@ -39,10 +39,10 @@
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <!-- BasicDataSource - реализация интерфейсса DataSource. Фабрика коннекшенов к физической БД,
         которую представляет объект DataSource -->
-        <property name="url" value="jdbc:mysql://localhost:3306/courses?useSSL=false" />
+        <property name="url" value="jdbc:mysql://localhost:3306/courses_spring?useSSL=false" />
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="username" value="root"/>
-        <property name="password" value="ms_root"/>
+        <property name="password" value="SQL174"/>
         <property name="initialSize" value="5"/>
         <property name="maxTotal" value="10"/>
     </bean>
