@@ -4,70 +4,45 @@
 <head>
     <title>Students list</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="<c:url value="/resources/bootstrapTheme/css/bootstrap.min.css"/>" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="<c:url value="/resources/bootstrapTheme/css/landing-page.css"/>" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/profileStyle.css"/>">
-
-    <!-- Custom Fonts -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrapTheme/font-awesome/css/font-awesome.min.css"
-          rel="stylesheet"
-          type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
-          rel="stylesheet"
-          type="text/css">
+    <link href="<c:url value="/resources/courses-theme/css/courses-main-theme.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="header_back">
-    <div class="header">
-        <div class="logo_pic">
-            <a href="<c:url value="/index"/>" style="color: #5bc0de">Log out</a>
-        </div>
-    </div>
-</div>
-<!-- Header -->
-<a name="about"></a>
-<div class="banner">
+<div class="banner full-page-height">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="intro-message" align="center">
+                <div>
+                    <div class="page-name"><h2>Students</h2></div>
+                    <table id="studentTable" class="table table-hover bg-color-table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Middle name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="student" items="${students}">
+                                <tr>
+                                    <td>${student.id}</td>
+                                    <td>${student.user.firstName}</td>
+                                    <td>${student.user.lastName}</td>
+                                    <td>${student.user.middleName}</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
 
                     <form action="${pageContext.request.contextPath}/student/students" method="get">
-                        <input type="submit" value="Update students list" required style="color: #122b40">
+                        <button type="submit" class="btn btn-default btn-lg">Update students list</button>
                     </form>
 
-                    <table id="studentTable" class="table-bordered" style="background-color: #adadad">
-                        <caption style="color: #122b40">
-                            <h2>Students</h2>
-                        </caption>
-                        <tr>
-                            <%--<th></th>--%>
-                            <th>Id</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Middle name</th>
-                        </tr>
-                        <c:forEach var="student" items="${students}">
-                            <tr>
-                                <%--<td>
-                                    <input type="radio" name="teacherId" id="${student.id}" value="${student.id}">
-                                </td>--%>
-                                <td>${student.id}</td>
-                                <td>${student.user.firstName}</td>
-                                <td>${student.user.lastName}</td>
-                                <td>${student.user.middleName}</td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                    <p class="network-name">
-                        <br>
-                        <a href="<c:url value="/teacher"/>" style="color: #5bc0de">
-                            <u>Go back</u>
-                        </a>
-                    </p>
+                    <div class="network-name">
+                        <a href="<c:url value="/teacher"/>" class="color-link">Go back</a>
+                    </div>
                 </div>
             </div>
         </div>

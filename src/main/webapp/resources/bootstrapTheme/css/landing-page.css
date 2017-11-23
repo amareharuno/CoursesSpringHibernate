@@ -43,8 +43,8 @@ h6 {
 }
 
 .intro-message {
+    padding: 0;
     /*position: relative;
-    padding-top: 20%;
     padding-bottom: 20%;*/
 }
 

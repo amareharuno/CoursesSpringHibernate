@@ -57,7 +57,7 @@
                 <hr class="section-heading-spacer">
                 <div class="clearfix"></div>
                 <p class="lead">
-                    <u>The TASK of COURSES project:</u> <br>
+                    <u>The TASK of the COURSES project:</u> <br>
                     - There is a list of courses. One teacher is assigned for each course. <br>
                     - A student can see a list of courses and teachers. <br>
                     - A teacher can edit information about courses (teacher can add course, delete it or update).
