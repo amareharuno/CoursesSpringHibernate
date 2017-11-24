@@ -45,9 +45,9 @@ public class UserServiceImpl extends ServiceImpl<User> implements UserService {
         logger.info(LoggingAndExceptionMessage.USER_SIGN_UP);
 
         User userByLogin = userDao.getUserByLogin(login);
-        User userByPassword = userDao.getUserByPassword(String.valueOf(password.hashCode()));
+//        User userByPassword = userDao.getUserByPassword(String.valueOf(password.hashCode()));
 
-        if (userByLogin != null || userByPassword != null) {
+        if (userByLogin != null) {
             logger.info(LoggingAndExceptionMessage.USER_ALREADY_EXISTS);
             return false;
         } else {

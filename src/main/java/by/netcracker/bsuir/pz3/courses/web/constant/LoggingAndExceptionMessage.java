@@ -7,7 +7,7 @@ public final class LoggingAndExceptionMessage {
     public static final String USER_CONTROLLER_GET_INDEX_PAGE = "getIndexPage method: UserController";
     public static final String USER_CONTROLLER_SIGN_IN_USER = "signInUser method: UserController";
     public static final String USER_CONTROLLER_SIGN_UP_USER = "signUpUser method: UserController";
-    public static final String USER_ALREADY_EXISTS = "A user with such login or password already exists. Please try again.";
+    public static final String USER_ALREADY_EXISTS = "A user with such login already exists. Please try again.";
     public static final String NO_SUCH_USER = "No such user. Try to enter your login and password again.";
 
     // Common

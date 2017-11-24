@@ -22,11 +22,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div>
-                    <div>
-                        <h2>Courses</h2>
-                    </div>
+                    <div><h2>Courses</h2></div>
                     <div class="warning-text"> ${somethingWrongMessage} </div>
-
 
                     <table id="coursesTable" class="table table-hover bg-color-table">
                         <thead>

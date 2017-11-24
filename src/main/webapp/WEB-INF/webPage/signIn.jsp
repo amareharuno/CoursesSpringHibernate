@@ -34,10 +34,10 @@
                         <input type="hidden" name="command" value="login">
 
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                            <input class="form-control lead" type="text" name="login" placeholder="Login">
+                            <input class="form-control lead" type="text" name="login" placeholder="Login" required>
                         </div>
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                            <input class="form-control lead" type="password" name="password" placeholder="Password">
+                            <input class="form-control lead" type="password" name="password" placeholder="Password" required>
                         </div>
 
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">

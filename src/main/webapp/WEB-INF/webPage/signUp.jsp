@@ -35,23 +35,23 @@
                         <input type="hidden" name="command" value="register">
 
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                            <input class="form-control lead" type="text" name="firstName" placeholder="First name">
+                            <input class="form-control lead" type="text" name="firstName" placeholder="First name" required>
                         </div>
 
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                            <input class="form-control lead" type="text" name="lastName" placeholder="Last name">
+                            <input class="form-control lead" type="text" name="lastName" placeholder="Last name" required>
                         </div>
 
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                            <input class="form-control lead" type="text" name="middleName" placeholder="Middle name">
+                            <input class="form-control lead" type="text" name="middleName" placeholder="Middle name" required>
                         </div>
 
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                            <input class="form-control lead" type="text" name="login" placeholder="Login">
+                            <input class="form-control lead" type="text" name="login" placeholder="Login" required>
                         </div>
 
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                            <input class="form-control lead" type="password" name="password" placeholder="Password">
+                            <input class="form-control lead" type="password" name="password" placeholder="Password" required>
                         </div>
 
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">

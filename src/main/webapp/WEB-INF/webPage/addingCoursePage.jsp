@@ -29,16 +29,20 @@
                               method="post">
 
                             <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                                <input class="form-control lead" type="text" name="courseName" placeholder="Course Name">
+                                <input class="form-control lead" type="text"
+                                       name="courseName" placeholder="Course Name" required>
                             </div>
                             <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                                <input class="form-control lead" type="text" name="subject" placeholder="Subject">
+                                <input class="form-control lead" type="text"
+                                       name="subject" placeholder="Subject" required>
                             </div>
                             <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                                <input class="form-control lead" type="text" name="lessonsCount" placeholder="Lessons count">
+                                <input class="form-control lead" type="text"
+                                       name="lessonsCount" placeholder="Lessons count" required>
                             </div>
                             <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
-                                <input class="form-control lead" type="text" name="lessonDuration" placeholder="Lesson duration (min)">
+                                <input class="form-control lead" type="text"
+                                       name="lessonDuration" placeholder="Lesson duration (min)" required>
                             </div>
 
                             <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">

@@ -31,22 +31,22 @@
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
                             <input class="form-control lead" type="text"
                                    name="courseName" value="${course.courseName}"
-                                   placeholder="Course Name">
+                                   placeholder="Course Name" required>
                         </div>
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
                             <input class="form-control lead" type="text"
                                    name="subject" value="${course.subject}"
-                                   placeholder="Subject">
+                                   placeholder="Subject" required>
                         </div>
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
                             <input class="form-control lead" type="text"
                                    name="lessonsCount" value="${course.lessonsCount}"
-                                   placeholder="Lessons count">
+                                   placeholder="Lessons count" required>
                         </div>
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">
                             <input class="form-control lead" type="text"
                                    name="lessonDuration" value="${course.lessonDuration}"
-                                   placeholder="Lesson duration (min)">
+                                   placeholder="Lesson duration (min)" required>
                         </div>
 
                         <div class="col-lg-offset-4 col-lg-4 col-lg-offset-4">

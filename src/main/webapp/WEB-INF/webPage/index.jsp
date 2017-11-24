@@ -81,7 +81,7 @@
             <div class="col-lg-6">
                 <ul class="list-inline banner-social-buttons">
                     <li>
-                        <a href="https://github.com/amareharuno/courses" class="btn btn-default btn-lg">
+                        <a href="https://github.com/amareharuno/CoursesSpringHibernate" class="btn btn-default btn-lg">
                             <i class="fa fa-github fa-fw"></i>
                             <span class="network-name">Github</span>
                         </a>
