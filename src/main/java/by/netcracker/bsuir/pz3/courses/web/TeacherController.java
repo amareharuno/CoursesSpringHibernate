@@ -17,22 +17,22 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/teacher")
 public class TeacherController {
-    private static Logger logger = LogManager.getLogger(TeacherController.class);
+        private static Logger logger = LogManager.getLogger(TeacherController.class);
 
-    @Autowired
-    private TeacherService teacherService;
+        @Autowired
+        private TeacherService teacherService;
 
-    @RequestMapping(value = "/teachers", method = RequestMethod.GET)
-    public ModelAndView getTeachersPage(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView();
-        try {
-            request.setAttribute(RequestParameterOrAttribute.TEACHERS, teacherService.getAll());
-        }  catch (ServiceException e) {
-            logger.debug(e);
-            modelAndView.setViewName(WebPage.ERROR);
-            return modelAndView;
+        @RequestMapping(value = "/teachers", method = RequestMethod.GET)
+        public ModelAndView getTeachersPage(HttpServletRequest request) {
+                ModelAndView modelAndView = new ModelAndView();
+                try {
+                        request.setAttribute(RequestParameterOrAttribute.TEACHERS, teacherService.getAll());
+                } catch (ServiceException e) {
+                        logger.debug(e);
+                        modelAndView.setViewName(WebPage.ERROR);
+                        return modelAndView;
+                }
+                modelAndView.setViewName(WebPage.TEACHERS);
+                return modelAndView;
         }
-        modelAndView.setViewName(WebPage.TEACHERS);
-        return modelAndView;
-    }
 }

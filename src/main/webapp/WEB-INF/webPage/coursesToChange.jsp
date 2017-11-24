@@ -11,13 +11,14 @@
     <link href="<c:url value="/resources/font-awesome-4.7.0/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
-<!-- Header -->
+<%@include file="jspf/teacher-nav-bar.jspf"%>
+
 <form id="refreshCoursesForm" action="<c:url value="/course/coursesToChange"/>"></form>
 <form id="addCourseForm" action="<c:url value="/course/addingCoursePage"/>"></form>
 <form id="deleteForm" action="<c:url value="/course/coursesToChange/delete"/>" method="post"></form>
 <form id="updateForm" action="<c:url value="/course/updatingCoursePage"/>" method="post"></form>
 
-<div class="intro-header full-page-height">
+<div class="banner full-page-height">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -67,18 +68,8 @@
                     </table>
 
                     <div class="buttons">
-                        <button type="submit" form="refreshCoursesForm" class="btn btn-default btn-lg">Refresh course
-                            list
-                        </button>
-                        <button type="submit" form="addCourseForm" class="btn btn-default btn-lg">Add course to list
-                        </button>
+                        <button type="submit" form="addCourseForm" class="btn btn-default btn-lg">Add course to list</button>
                     </div>
-                    <p class="network-name">
-                        <br>
-                        <span>
-                            Go <a href="<c:url value="/teacher"/>" class="color-link">back</a> to teacher's page
-                        </span>
-                    </p>
                 </div>
             </div>
         </div>

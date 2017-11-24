@@ -9,6 +9,7 @@
     <link href="<c:url value="/resources/courses-theme/css/courses-main-theme.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
+<%@include file="jspf/teacher-nav-bar.jspf"%>
 <div class="banner intro-header full-page-height">
     <div class="container">
         <div class="row">

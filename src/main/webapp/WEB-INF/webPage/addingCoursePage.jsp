@@ -8,11 +8,10 @@
     <link href="<c:url value="/resources/font-awesome-4.7.0/css/font-awesome.min.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/bootstrapTheme/css/landing-page.css"/>" rel="stylesheet">
     <link href="<c:url value="/resources/courses-theme/css/courses-main-theme.css"/>" rel="stylesheet">
-
-    <script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
 </head>
 
 <body>
+    <%@include file="jspf/teacher-nav-bar.jspf"%>
     <div class="banner intro-header full-page-height">
         <div class="container">
             <div class="row">

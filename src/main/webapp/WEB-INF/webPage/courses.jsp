@@ -10,6 +10,7 @@
     <link href="<c:url value="/resources/courses-theme/css/courses-main-theme.css"/>" rel="stylesheet">
 </head>
 <body>
+<%@include file="jspf/student-nav-bar.jspf"%>
 <div class="banner full-page-height">
     <div class="container">
         <div class="row">
@@ -44,17 +45,6 @@
                             </c:forEach>
                         </tbody>
                     </table>
-
-                    <form action="<c:url value="/course/courses"/>" method="get">
-                        <button class="btn btn-default btn-lg" type="submit">Refresh course list</button>
-                    </form>
-
-                    <p class="network-name">
-                        <br>
-                        <a href="<c:url value="/student"/>" class="color-link">
-                            <u>Go back</u>
-                        </a>
-                    </p>
                 </div>
             </div>
         </div>

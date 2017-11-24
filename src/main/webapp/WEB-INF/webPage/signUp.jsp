@@ -28,8 +28,7 @@
 
                     <label class="warning-text">${somethingWrongSignUpMessage}</label>
 
-                    <form id="signUpForm"
-                          class="list-inline form-group"
+                    <form id="signUpForm" class="list-inline form-group"
                           action="<c:url value="/signedUpUser"/>" method="post">
 
                         <input type="hidden" name="command" value="register">

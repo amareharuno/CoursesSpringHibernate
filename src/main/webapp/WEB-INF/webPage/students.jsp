@@ -9,6 +9,7 @@
     <link href="<c:url value="/resources/courses-theme/css/courses-main-theme.css"/>" rel="stylesheet" type="text/css">
 </head>
 <body>
+<%@include file="jspf/teacher-nav-bar.jspf"%>
 <div class="banner full-page-height">
     <div class="container">
         <div class="row">
@@ -35,19 +36,10 @@
                             </c:forEach>
                         </tbody>
                     </table>
-
-                    <form action="${pageContext.request.contextPath}/student/students" method="get">
-                        <button type="submit" class="btn btn-default btn-lg">Update students list</button>
-                    </form>
-
-                    <div class="network-name">
-                        <a href="<c:url value="/teacher"/>" class="color-link">Go back</a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- /.container -->
 </div>
 
 </body>
